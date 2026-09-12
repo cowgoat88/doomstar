@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doomstar AI Arena</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Bot vs bot</p>
+          <h1>AI Arena</h1>
+        </div>
+        <nav class="topbar-actions">
+          <a class="button-link" href="index.html">Play</a>
+          <a class="button-link" href="lab.html">Balance Lab</a>
+          <a class="button-link" href="roster.html" target="_blank" rel="noopener">Unit Guide</a>
+        </nav>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <section class="panel">
+            <h2>Match setup</h2>
+            <label class="field">Ruleset <select id="rulesSelect"></select></label>
+            <div class="field-row">
+              <label class="field">Player 1 bot <select id="p1Bot"></select></label>
+              <label class="field">Player 2 bot <select id="p2Bot"></select></label>
+            </div>
+            <div class="field-row">
+              <label class="field">Seed <input id="seedInput" type="number" min="1" value="1" /></label>
+              <label class="field">&nbsp;<button id="randomSeedBtn" type="button">Random seed</button></label>
+            </div>
+            <button id="newMatchBtn" type="button">New match</button>
+          </section>
+
+          <section class="panel">
+            <h2>Playback</h2>
+            <div class="button-row">
+              <button id="playBtn" class="primary" type="button">Play</button>
+              <button id="stepBtn" type="button">Step</button>
+              <button id="turnBtn" type="button">Finish turn</button>
+            </div>
+            <label class="field spaced">Speed <input id="speedInput" type="range" min="1" max="5" value="3" /></label>
+          </section>
+
+          <section class="panel">
+            <h2>Scoreboard</h2>
+            <div id="turnBanner" class="turn-banner">Player 1</div>
+            <div id="scoreboard" class="scoreboard"></div>
+          </section>
+
+          <section class="panel">
+            <h2>Battle log</h2>
+            <ol id="battleLog" class="battle-log"></ol>
+          </section>
+
+          <section class="panel">
+            <h2>Rules in play</h2>
+            <ul id="rulesList" class="tips"></ul>
+          </section>
+        </aside>
+
+        <main class="board-panel panel">
+          <div id="board" class="board" aria-label="Game board"></div>
+          <div id="boardBanner" class="board-banner" hidden></div>
+          <div class="board-legend">
+            <span><i class="swatch p1"></i>Player 1</span>
+            <span><i class="swatch p2"></i>Player 2</span>
+            <span><i class="swatch star"></i>Star</span>
+            <span><i class="swatch wall"></i>Wall</span>
+            <span><i class="swatch asteroid"></i>Asteroid</span>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="engine.js"></script>
+    <script src="ai.js"></script>
+    <script src="board.js"></script>
+    <script src="arena.js"></script>
+  </body>
+</html>

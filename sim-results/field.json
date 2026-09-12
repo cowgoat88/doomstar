@@ -1,0 +1,2343 @@
+{
+  "suite": "field",
+  "games": 160,
+  "seed": 1,
+  "elapsedSeconds": 542,
+  "results": [
+    {
+      "index": 0,
+      "name": "field: balanced mirror",
+      "rules": "field",
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 59.4,
+      "p2Win": 40.6,
+      "draw": 0,
+      "p1WinMargin": 7.5,
+      "botAWin": 59.4,
+      "botBWin": 40.6,
+      "reasons": {
+        "command": 5.6,
+        "doomstar": 94.4
+      },
+      "roundsAvg": 18.9,
+      "roundsMedian": 18,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 8.2,
+      "attacksPerGame": 8.6,
+      "movesPerGame": 72.9,
+      "actionsPerTurn": 2.16,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 13.4,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.52,
+          "killsPerGame": 0.4,
+          "damagePerUnit": 0.38,
+          "killsPerUnit": 0.1,
+          "lossRate": 51.7
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.53,
+          "killsPerGame": 0.83,
+          "damagePerUnit": 0.38,
+          "killsPerUnit": 0.21,
+          "lossRate": 23.9
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.59,
+          "killsPerGame": 0.26,
+          "damagePerUnit": 0.15,
+          "killsPerUnit": 0.06,
+          "lossRate": 5.3
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.33,
+          "killsPerGame": 0.19,
+          "damagePerUnit": 0.17,
+          "killsPerUnit": 0.09,
+          "lossRate": 14.4
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.79,
+          "killsPerGame": 1.83,
+          "damagePerUnit": 1.89,
+          "killsPerUnit": 0.91,
+          "lossRate": 14.1
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.05,
+          "killsPerGame": 1.21,
+          "damagePerUnit": 2.03,
+          "killsPerUnit": 0.6,
+          "lossRate": 42.2
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 2.8
+        }
+      },
+      "msPerGame": 1051
+    },
+    {
+      "index": 1,
+      "name": "field: rusher mirror",
+      "rules": "field",
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "rusher",
+      "p2": "rusher",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 58.8,
+      "p2Win": 41.3,
+      "draw": 0,
+      "p1WinMargin": 7.5,
+      "botAWin": 58.8,
+      "botBWin": 41.3,
+      "reasons": {
+        "doomstar": 61.3,
+        "command": 38.8
+      },
+      "roundsAvg": 24.1,
+      "roundsMedian": 24,
+      "roundsP10": 21,
+      "roundsP90": 27,
+      "firstKillRoundAvg": 6.4,
+      "attacksPerGame": 17.9,
+      "movesPerGame": 88.6,
+      "actionsPerTurn": 2.21,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 8,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.82,
+          "killsPerGame": 0.81,
+          "damagePerUnit": 0.7,
+          "killsPerUnit": 0.2,
+          "lossRate": 68.9
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 4.03,
+          "killsPerGame": 2.31,
+          "damagePerUnit": 1.01,
+          "killsPerUnit": 0.58,
+          "lossRate": 75.2
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.79,
+          "killsPerGame": 0.99,
+          "damagePerUnit": 0.45,
+          "killsPerUnit": 0.25,
+          "lossRate": 14.4
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 1.16,
+          "killsPerGame": 0.52,
+          "damagePerUnit": 0.58,
+          "killsPerUnit": 0.26,
+          "lossRate": 39.4
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 8.73,
+          "killsPerGame": 4.03,
+          "damagePerUnit": 4.36,
+          "killsPerUnit": 2.01,
+          "lossRate": 48.8
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 6.5,
+          "killsPerGame": 1.71,
+          "damagePerUnit": 3.25,
+          "killsPerUnit": 0.85,
+          "lossRate": 94.1
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.03,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.02,
+          "killsPerUnit": 0.01,
+          "lossRate": 19.4
+        }
+      },
+      "msPerGame": 1145
+    },
+    {
+      "index": 2,
+      "name": "field: turtle mirror",
+      "rules": "field",
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "turtle",
+      "p2": "turtle",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 53.1,
+      "p2Win": 46.9,
+      "draw": 0,
+      "p1WinMargin": 7.6,
+      "botAWin": 53.1,
+      "botBWin": 46.9,
+      "reasons": {
+        "doomstar": 95,
+        "command": 5
+      },
+      "roundsAvg": 17,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 22,
+      "firstKillRoundAvg": 8.9,
+      "attacksPerGame": 4,
+      "movesPerGame": 66.7,
+      "actionsPerTurn": 2.08,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 15.9,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.51,
+          "killsPerGame": 0.49,
+          "damagePerUnit": 0.38,
+          "killsPerUnit": 0.12,
+          "lossRate": 38.1
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.25,
+          "killsPerGame": 0.15,
+          "damagePerUnit": 0.06,
+          "killsPerUnit": 0.04,
+          "lossRate": 1.9
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.23,
+          "killsPerGame": 0.1,
+          "damagePerUnit": 0.12,
+          "killsPerUnit": 0.05,
+          "lossRate": 4.7
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 1.33,
+          "killsPerGame": 0.76,
+          "damagePerUnit": 0.66,
+          "killsPerUnit": 0.38,
+          "lossRate": 3.8
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 1.55,
+          "killsPerGame": 0.63,
+          "damagePerUnit": 0.78,
+          "killsPerUnit": 0.32,
+          "lossRate": 15.6
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 2.5
+        }
+      },
+      "msPerGame": 1041
+    },
+    {
+      "index": 3,
+      "name": "field: hunter mirror",
+      "rules": "field",
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "hunter",
+      "p2": "hunter",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 53.8,
+      "p2Win": 46.3,
+      "draw": 0,
+      "p1WinMargin": 7.6,
+      "botAWin": 53.8,
+      "botBWin": 46.3,
+      "reasons": {
+        "doomstar": 98.8,
+        "command": 1.3
+      },
+      "roundsAvg": 19.3,
+      "roundsMedian": 20,
+      "roundsP10": 13,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 3.9,
+      "attacksPerGame": 8.1,
+      "movesPerGame": 75.8,
+      "actionsPerTurn": 2.17,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.4,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.09,
+          "killsPerGame": 0.39,
+          "damagePerUnit": 0.27,
+          "killsPerUnit": 0.1,
+          "lossRate": 74.7
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.01,
+          "killsPerGame": 0.49,
+          "damagePerUnit": 0.25,
+          "killsPerUnit": 0.12,
+          "lossRate": 12.5
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.26,
+          "killsPerGame": 0.55,
+          "damagePerUnit": 0.31,
+          "killsPerUnit": 0.14,
+          "lossRate": 10.6
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.29,
+          "killsPerGame": 0.08,
+          "damagePerUnit": 0.15,
+          "killsPerUnit": 0.04,
+          "lossRate": 18.4
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 7.51,
+          "killsPerGame": 3.61,
+          "damagePerUnit": 3.75,
+          "killsPerUnit": 1.8,
+          "lossRate": 32.2
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 1.68,
+          "killsPerGame": 0.47,
+          "damagePerUnit": 0.84,
+          "killsPerUnit": 0.23,
+          "lossRate": 31.9
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0.6
+        }
+      },
+      "msPerGame": 1040
+    },
+    {
+      "index": 4,
+      "name": "field: balanced vs rusher",
+      "rules": "field",
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "rusher",
+      "swapSeats": true,
+      "games": 160,
+      "p1Win": 55.6,
+      "p2Win": 44.4,
+      "draw": 0,
+      "p1WinMargin": 7.6,
+      "botAWin": 56.9,
+      "botBWin": 43.1,
+      "reasons": {
+        "doomstar": 83.8,
+        "command": 16.3
+      },
+      "roundsAvg": 21.7,
+      "roundsMedian": 22,
+      "roundsP10": 17,
+      "roundsP90": 26,
+      "firstKillRoundAvg": 7.4,
+      "attacksPerGame": 13.5,
+      "movesPerGame": 82.5,
+      "actionsPerTurn": 2.21,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 10.5,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.33,
+          "killsPerGame": 0.66,
+          "damagePerUnit": 0.58,
+          "killsPerUnit": 0.16,
+          "lossRate": 62.2
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.35,
+          "killsPerGame": 1.37,
+          "damagePerUnit": 0.59,
+          "killsPerUnit": 0.34,
+          "lossRate": 50.3
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.26,
+          "killsPerGame": 0.63,
+          "damagePerUnit": 0.32,
+          "killsPerUnit": 0.16,
+          "lossRate": 10.2
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.62,
+          "killsPerGame": 0.39,
+          "damagePerUnit": 0.31,
+          "killsPerUnit": 0.2,
+          "lossRate": 25.3
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 6.34,
+          "killsPerGame": 2.94,
+          "damagePerUnit": 3.17,
+          "killsPerUnit": 1.47,
+          "lossRate": 28.1
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 6.1,
+          "killsPerGame": 1.67,
+          "damagePerUnit": 3.05,
+          "killsPerUnit": 0.83,
+          "lossRate": 76.3
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.02,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 8.1
+        }
+      },
+      "msPerGame": 1122
+    },
+    {
+      "index": 5,
+      "name": "field: balanced vs turtle",
+      "rules": "field",
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "turtle",
+      "swapSeats": true,
+      "games": 160,
+      "p1Win": 54.4,
+      "p2Win": 45.6,
+      "draw": 0,
+      "p1WinMargin": 7.6,
+      "botAWin": 61.9,
+      "botBWin": 38.1,
+      "reasons": {
+        "doomstar": 91.9,
+        "command": 8.1
+      },
+      "roundsAvg": 17.8,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 23,
+      "firstKillRoundAvg": 8.1,
+      "attacksPerGame": 5.7,
+      "movesPerGame": 69.3,
+      "actionsPerTurn": 2.11,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 14.9,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.41,
+          "killsPerGame": 0.48,
+          "damagePerUnit": 0.35,
+          "killsPerUnit": 0.12,
+          "lossRate": 39.8
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.55,
+          "killsPerGame": 0.3,
+          "damagePerUnit": 0.14,
+          "killsPerUnit": 0.08,
+          "lossRate": 9.4
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.69,
+          "killsPerGame": 0.32,
+          "damagePerUnit": 0.17,
+          "killsPerUnit": 0.08,
+          "lossRate": 5.3
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.31,
+          "killsPerGame": 0.14,
+          "damagePerUnit": 0.15,
+          "killsPerUnit": 0.07,
+          "lossRate": 10
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 2.23,
+          "killsPerGame": 1.13,
+          "damagePerUnit": 1.11,
+          "killsPerUnit": 0.56,
+          "lossRate": 9.1
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 2.56,
+          "killsPerGame": 0.84,
+          "damagePerUnit": 1.28,
+          "killsPerUnit": 0.42,
+          "lossRate": 28.8
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 4.1
+        }
+      },
+      "msPerGame": 1038
+    },
+    {
+      "index": 6,
+      "name": "field: balanced vs hunter",
+      "rules": "field",
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "hunter",
+      "swapSeats": true,
+      "games": 160,
+      "p1Win": 56.3,
+      "p2Win": 43.8,
+      "draw": 0,
+      "p1WinMargin": 7.6,
+      "botAWin": 18.8,
+      "botBWin": 81.3,
+      "reasons": {
+        "doomstar": 98.8,
+        "command": 1.3
+      },
+      "roundsAvg": 15.2,
+      "roundsMedian": 14,
+      "roundsP10": 11,
+      "roundsP90": 21,
+      "firstKillRoundAvg": 5.3,
+      "attacksPerGame": 5.9,
+      "movesPerGame": 59.2,
+      "actionsPerTurn": 2.14,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 14.6,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.43,
+          "killsPerGame": 0.45,
+          "damagePerUnit": 0.36,
+          "killsPerUnit": 0.11,
+          "lossRate": 49.8
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.79,
+          "killsPerGame": 0.39,
+          "damagePerUnit": 0.2,
+          "killsPerUnit": 0.1,
+          "lossRate": 8.9
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.39,
+          "killsPerGame": 0.17,
+          "damagePerUnit": 0.1,
+          "killsPerUnit": 0.04,
+          "lossRate": 3.4
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.26,
+          "killsPerGame": 0.09,
+          "damagePerUnit": 0.13,
+          "killsPerUnit": 0.05,
+          "lossRate": 14.1
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.33,
+          "killsPerGame": 1.61,
+          "damagePerUnit": 1.66,
+          "killsPerUnit": 0.81,
+          "lossRate": 10.3
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 1.87,
+          "killsPerGame": 0.67,
+          "damagePerUnit": 0.93,
+          "killsPerUnit": 0.33,
+          "lossRate": 20
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0.6
+        }
+      },
+      "msPerGame": 896
+    },
+    {
+      "index": 7,
+      "name": "field: rusher vs turtle",
+      "rules": "field",
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "rusher",
+      "p2": "turtle",
+      "swapSeats": true,
+      "games": 160,
+      "p1Win": 50.6,
+      "p2Win": 49.4,
+      "draw": 0,
+      "p1WinMargin": 7.7,
+      "botAWin": 51.9,
+      "botBWin": 48.1,
+      "reasons": {
+        "doomstar": 83.8,
+        "command": 16.3
+      },
+      "roundsAvg": 20,
+      "roundsMedian": 20,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 8,
+      "attacksPerGame": 9.1,
+      "movesPerGame": 77.5,
+      "actionsPerTurn": 2.17,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 13.1,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.16,
+          "killsPerGame": 0.57,
+          "damagePerUnit": 0.54,
+          "killsPerUnit": 0.14,
+          "lossRate": 48.9
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.91,
+          "killsPerGame": 0.55,
+          "damagePerUnit": 0.23,
+          "killsPerUnit": 0.14,
+          "lossRate": 21.3
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.11,
+          "killsPerGame": 0.6,
+          "damagePerUnit": 0.28,
+          "killsPerUnit": 0.15,
+          "lossRate": 6.6
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.44,
+          "killsPerGame": 0.22,
+          "damagePerUnit": 0.22,
+          "killsPerUnit": 0.11,
+          "lossRate": 17.8
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.34,
+          "killsPerGame": 1.64,
+          "damagePerUnit": 1.67,
+          "killsPerUnit": 0.82,
+          "lossRate": 18.4
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.47,
+          "killsPerGame": 1.42,
+          "damagePerUnit": 2.23,
+          "killsPerUnit": 0.71,
+          "lossRate": 54.1
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.08,
+          "killsPerGame": 0.03,
+          "damagePerUnit": 0.04,
+          "killsPerUnit": 0.02,
+          "lossRate": 8.1
+        }
+      },
+      "msPerGame": 1118
+    },
+    {
+      "index": 8,
+      "name": "field: rusher vs hunter",
+      "rules": "field",
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "rusher",
+      "p2": "hunter",
+      "swapSeats": true,
+      "games": 160,
+      "p1Win": 61.3,
+      "p2Win": 38.8,
+      "draw": 0,
+      "p1WinMargin": 7.5,
+      "botAWin": 40,
+      "botBWin": 60,
+      "reasons": {
+        "doomstar": 97.5,
+        "command": 2.5
+      },
+      "roundsAvg": 16.3,
+      "roundsMedian": 17,
+      "roundsP10": 11,
+      "roundsP90": 22,
+      "firstKillRoundAvg": 5,
+      "attacksPerGame": 7.7,
+      "movesPerGame": 63,
+      "actionsPerTurn": 2.17,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 13.9,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.81,
+          "killsPerGame": 0.58,
+          "damagePerUnit": 0.45,
+          "killsPerUnit": 0.15,
+          "lossRate": 46.6
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.02,
+          "killsPerGame": 0.57,
+          "damagePerUnit": 0.26,
+          "killsPerUnit": 0.14,
+          "lossRate": 18.8
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.51,
+          "killsPerGame": 0.25,
+          "damagePerUnit": 0.13,
+          "killsPerUnit": 0.06,
+          "lossRate": 4.1
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.16,
+          "killsPerGame": 0.08,
+          "damagePerUnit": 0.08,
+          "killsPerUnit": 0.04,
+          "lossRate": 7.8
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.66,
+          "killsPerGame": 1.56,
+          "damagePerUnit": 1.83,
+          "killsPerUnit": 0.78,
+          "lossRate": 11.6
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.44,
+          "killsPerGame": 1.04,
+          "damagePerUnit": 1.72,
+          "killsPerUnit": 0.52,
+          "lossRate": 44.7
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 1.3
+        }
+      },
+      "msPerGame": 833
+    },
+    {
+      "index": 9,
+      "name": "field: turtle vs hunter",
+      "rules": "field",
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "turtle",
+      "p2": "hunter",
+      "swapSeats": true,
+      "games": 160,
+      "p1Win": 56.9,
+      "p2Win": 43.1,
+      "draw": 0,
+      "p1WinMargin": 7.6,
+      "botAWin": 13.1,
+      "botBWin": 86.9,
+      "reasons": {
+        "doomstar": 98.1,
+        "command": 1.9
+      },
+      "roundsAvg": 15.3,
+      "roundsMedian": 14,
+      "roundsP10": 11,
+      "roundsP90": 21,
+      "firstKillRoundAvg": 7.3,
+      "attacksPerGame": 4.7,
+      "movesPerGame": 59.8,
+      "actionsPerTurn": 2.11,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 15.3,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.55,
+          "killsPerGame": 0.48,
+          "damagePerUnit": 0.39,
+          "killsPerUnit": 0.12,
+          "lossRate": 44.7
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.29,
+          "killsPerGame": 0.16,
+          "damagePerUnit": 0.07,
+          "killsPerUnit": 0.04,
+          "lossRate": 4.2
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.34,
+          "killsPerGame": 0.18,
+          "damagePerUnit": 0.09,
+          "killsPerUnit": 0.04,
+          "lossRate": 2
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.18,
+          "killsPerGame": 0.06,
+          "damagePerUnit": 0.09,
+          "killsPerUnit": 0.03,
+          "lossRate": 8.4
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 2.76,
+          "killsPerGame": 1.36,
+          "damagePerUnit": 1.38,
+          "killsPerUnit": 0.68,
+          "lossRate": 9.4
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 1.24,
+          "killsPerGame": 0.49,
+          "damagePerUnit": 0.62,
+          "killsPerUnit": 0.24,
+          "lossRate": 15.3
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0.9
+        }
+      },
+      "msPerGame": 824
+    },
+    {
+      "index": 10,
+      "name": "field, p1 missing a scout",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p1",
+            "type": "scout"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 52.5,
+      "p2Win": 47.5,
+      "draw": 0,
+      "p1WinMargin": 7.6,
+      "botAWin": 52.5,
+      "botBWin": 47.5,
+      "reasons": {
+        "doomstar": 88.8,
+        "command": 11.3
+      },
+      "roundsAvg": 20.2,
+      "roundsMedian": 20,
+      "roundsP10": 15,
+      "roundsP90": 26,
+      "firstKillRoundAvg": 8.4,
+      "attacksPerGame": 8.4,
+      "movesPerGame": 77.2,
+      "actionsPerTurn": 2.12,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.5,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 3,
+          "damagePerGame": 0.63,
+          "killsPerGame": 0.2,
+          "damagePerUnit": 0.21,
+          "killsPerUnit": 0.07,
+          "lossRate": 43.8
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.54,
+          "killsPerGame": 0.86,
+          "damagePerUnit": 0.39,
+          "killsPerUnit": 0.22,
+          "lossRate": 31.6
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.09,
+          "killsPerGame": 0.51,
+          "damagePerUnit": 0.27,
+          "killsPerUnit": 0.13,
+          "lossRate": 6.1
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.43,
+          "killsPerGame": 0.22,
+          "damagePerUnit": 0.22,
+          "killsPerUnit": 0.11,
+          "lossRate": 18.1
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.78,
+          "killsPerGame": 1.74,
+          "damagePerUnit": 1.89,
+          "killsPerUnit": 0.87,
+          "lossRate": 17.8
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.37,
+          "killsPerGame": 1.03,
+          "damagePerUnit": 2.18,
+          "killsPerUnit": 0.52,
+          "lossRate": 46.3
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.04,
+          "killsPerGame": 0.02,
+          "damagePerUnit": 0.02,
+          "killsPerUnit": 0.01,
+          "lossRate": 5.6
+        }
+      },
+      "msPerGame": 957
+    },
+    {
+      "index": 11,
+      "name": "field, p2 missing a scout",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p2",
+            "type": "scout"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 65,
+      "p2Win": 34.4,
+      "draw": 0.6,
+      "p1WinMargin": 7.3,
+      "botAWin": 65,
+      "botBWin": 34.4,
+      "reasons": {
+        "doomstar": 88.8,
+        "command": 10.6,
+        "time": 0.6
+      },
+      "roundsAvg": 19.7,
+      "roundsMedian": 19,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 8.5,
+      "attacksPerGame": 8.5,
+      "movesPerGame": 74,
+      "actionsPerTurn": 2.09,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.4,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 3,
+          "damagePerGame": 0.38,
+          "killsPerGame": 0.14,
+          "damagePerUnit": 0.13,
+          "killsPerUnit": 0.05,
+          "lossRate": 44
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.79,
+          "killsPerGame": 0.94,
+          "damagePerUnit": 0.45,
+          "killsPerUnit": 0.24,
+          "lossRate": 30
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.92,
+          "killsPerGame": 0.46,
+          "damagePerUnit": 0.23,
+          "killsPerUnit": 0.12,
+          "lossRate": 4.8
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.56,
+          "killsPerGame": 0.29,
+          "damagePerUnit": 0.28,
+          "killsPerUnit": 0.15,
+          "lossRate": 24.7
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.92,
+          "killsPerGame": 1.79,
+          "damagePerUnit": 1.96,
+          "killsPerUnit": 0.89,
+          "lossRate": 18.1
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.43,
+          "killsPerGame": 1.09,
+          "damagePerUnit": 2.21,
+          "killsPerUnit": 0.55,
+          "lossRate": 52.5
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 5.3
+        }
+      },
+      "msPerGame": 918
+    },
+    {
+      "index": 12,
+      "name": "field, p1 missing a guard",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p1",
+            "type": "guard"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 65,
+      "p2Win": 35,
+      "draw": 0,
+      "p1WinMargin": 7.3,
+      "botAWin": 65,
+      "botBWin": 35,
+      "reasons": {
+        "doomstar": 88.8,
+        "command": 11.3
+      },
+      "roundsAvg": 19,
+      "roundsMedian": 19,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 8.1,
+      "attacksPerGame": 8.3,
+      "movesPerGame": 72.4,
+      "actionsPerTurn": 2.13,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.5,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.58,
+          "killsPerGame": 0.44,
+          "damagePerUnit": 0.39,
+          "killsPerUnit": 0.11,
+          "lossRate": 52.3
+        },
+        "guard": {
+          "fieldedPerGame": 3,
+          "damagePerGame": 1.12,
+          "killsPerGame": 0.61,
+          "damagePerUnit": 0.37,
+          "killsPerUnit": 0.2,
+          "lossRate": 25.2
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.93,
+          "killsPerGame": 0.44,
+          "damagePerUnit": 0.23,
+          "killsPerUnit": 0.11,
+          "lossRate": 5
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.49,
+          "killsPerGame": 0.29,
+          "damagePerUnit": 0.24,
+          "killsPerUnit": 0.14,
+          "lossRate": 17.2
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.56,
+          "killsPerGame": 1.78,
+          "damagePerUnit": 1.78,
+          "killsPerUnit": 0.89,
+          "lossRate": 16.9
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.6,
+          "killsPerGame": 1.08,
+          "damagePerUnit": 1.8,
+          "killsPerUnit": 0.54,
+          "lossRate": 39.7
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 5.6
+        }
+      },
+      "msPerGame": 912
+    },
+    {
+      "index": 13,
+      "name": "field, p2 missing a guard",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p2",
+            "type": "guard"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 51.9,
+      "p2Win": 48.1,
+      "draw": 0,
+      "p1WinMargin": 7.7,
+      "botAWin": 51.9,
+      "botBWin": 48.1,
+      "reasons": {
+        "doomstar": 90,
+        "command": 10
+      },
+      "roundsAvg": 18.5,
+      "roundsMedian": 18,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 8.1,
+      "attacksPerGame": 7.7,
+      "movesPerGame": 70.5,
+      "actionsPerTurn": 2.11,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.8,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.49,
+          "killsPerGame": 0.34,
+          "damagePerUnit": 0.37,
+          "killsPerUnit": 0.09,
+          "lossRate": 50.8
+        },
+        "guard": {
+          "fieldedPerGame": 3,
+          "damagePerGame": 1.08,
+          "killsPerGame": 0.56,
+          "damagePerUnit": 0.36,
+          "killsPerUnit": 0.19,
+          "lossRate": 22.9
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.79,
+          "killsPerGame": 0.38,
+          "damagePerUnit": 0.2,
+          "killsPerUnit": 0.09,
+          "lossRate": 5.5
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.34,
+          "killsPerGame": 0.18,
+          "damagePerUnit": 0.17,
+          "killsPerUnit": 0.09,
+          "lossRate": 13.8
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.3,
+          "killsPerGame": 1.62,
+          "damagePerUnit": 1.65,
+          "killsPerUnit": 0.81,
+          "lossRate": 12.5
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.55,
+          "killsPerGame": 1.25,
+          "damagePerUnit": 1.78,
+          "killsPerUnit": 0.63,
+          "lossRate": 37.8
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 5
+        }
+      },
+      "msPerGame": 899
+    },
+    {
+      "index": 14,
+      "name": "field, p1 missing a lancer",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p1",
+            "type": "lancer"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 71.3,
+      "p2Win": 28.8,
+      "draw": 0,
+      "p1WinMargin": 6.9,
+      "botAWin": 71.3,
+      "botBWin": 28.8,
+      "reasons": {
+        "doomstar": 91.9,
+        "command": 8.1
+      },
+      "roundsAvg": 18.1,
+      "roundsMedian": 18,
+      "roundsP10": 13,
+      "roundsP90": 23,
+      "firstKillRoundAvg": 8.2,
+      "attacksPerGame": 8.2,
+      "movesPerGame": 69.3,
+      "actionsPerTurn": 2.14,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.7,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.3,
+          "killsPerGame": 0.4,
+          "damagePerUnit": 0.33,
+          "killsPerUnit": 0.1,
+          "lossRate": 48
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.21,
+          "killsPerGame": 0.66,
+          "damagePerUnit": 0.3,
+          "killsPerUnit": 0.16,
+          "lossRate": 24.7
+        },
+        "lancer": {
+          "fieldedPerGame": 3,
+          "damagePerGame": 0.32,
+          "killsPerGame": 0.12,
+          "damagePerUnit": 0.11,
+          "killsPerUnit": 0.04,
+          "lossRate": 2.9
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.39,
+          "killsPerGame": 0.22,
+          "damagePerUnit": 0.19,
+          "killsPerUnit": 0.11,
+          "lossRate": 14.4
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.73,
+          "killsPerGame": 1.81,
+          "damagePerUnit": 1.86,
+          "killsPerUnit": 0.91,
+          "lossRate": 10
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.25,
+          "killsPerGame": 1.23,
+          "damagePerUnit": 2.13,
+          "killsPerUnit": 0.61,
+          "lossRate": 43.4
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 4.1
+        }
+      },
+      "msPerGame": 848
+    },
+    {
+      "index": 15,
+      "name": "field, p2 missing a lancer",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p2",
+            "type": "lancer"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 48.8,
+      "p2Win": 51.3,
+      "draw": 0,
+      "p1WinMargin": 7.7,
+      "botAWin": 48.8,
+      "botBWin": 51.3,
+      "reasons": {
+        "command": 11.9,
+        "doomstar": 88.1
+      },
+      "roundsAvg": 18.9,
+      "roundsMedian": 18,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 7.8,
+      "attacksPerGame": 9.2,
+      "movesPerGame": 72.6,
+      "actionsPerTurn": 2.17,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.1,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.5,
+          "killsPerGame": 0.46,
+          "damagePerUnit": 0.38,
+          "killsPerUnit": 0.11,
+          "lossRate": 51.1
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.56,
+          "killsPerGame": 0.78,
+          "damagePerUnit": 0.39,
+          "killsPerUnit": 0.2,
+          "lossRate": 26.1
+        },
+        "lancer": {
+          "fieldedPerGame": 3,
+          "damagePerGame": 0.61,
+          "killsPerGame": 0.33,
+          "damagePerUnit": 0.2,
+          "killsPerUnit": 0.11,
+          "lossRate": 5
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.46,
+          "killsPerGame": 0.24,
+          "damagePerUnit": 0.23,
+          "killsPerUnit": 0.12,
+          "lossRate": 18.4
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.99,
+          "killsPerGame": 1.88,
+          "damagePerUnit": 2,
+          "killsPerUnit": 0.94,
+          "lossRate": 13.4
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.4,
+          "killsPerGame": 1.28,
+          "damagePerUnit": 2.2,
+          "killsPerUnit": 0.64,
+          "lossRate": 49.1
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.02,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 5.9
+        }
+      },
+      "msPerGame": 870
+    },
+    {
+      "index": 16,
+      "name": "field, p1 missing a orbiter",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p1",
+            "type": "orbiter"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 64.4,
+      "p2Win": 35.6,
+      "draw": 0,
+      "p1WinMargin": 7.3,
+      "botAWin": 64.4,
+      "botBWin": 35.6,
+      "reasons": {
+        "doomstar": 91.9,
+        "command": 8.1
+      },
+      "roundsAvg": 19,
+      "roundsMedian": 18,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 7.8,
+      "attacksPerGame": 8.9,
+      "movesPerGame": 72.4,
+      "actionsPerTurn": 2.14,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.3,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.52,
+          "killsPerGame": 0.38,
+          "damagePerUnit": 0.38,
+          "killsPerUnit": 0.1,
+          "lossRate": 53.8
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.2,
+          "killsPerGame": 0.65,
+          "damagePerUnit": 0.3,
+          "killsPerUnit": 0.16,
+          "lossRate": 25.6
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.79,
+          "killsPerGame": 0.38,
+          "damagePerUnit": 0.2,
+          "killsPerUnit": 0.1,
+          "lossRate": 6.1
+        },
+        "orbiter": {
+          "fieldedPerGame": 1,
+          "damagePerGame": 0.18,
+          "killsPerGame": 0.1,
+          "damagePerUnit": 0.18,
+          "killsPerUnit": 0.1,
+          "lossRate": 15.6
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.24,
+          "killsPerGame": 2.03,
+          "damagePerUnit": 2.12,
+          "killsPerUnit": 1.02,
+          "lossRate": 12.5
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.14,
+          "killsPerGame": 1.24,
+          "damagePerUnit": 2.07,
+          "killsPerUnit": 0.62,
+          "lossRate": 44.4
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.02,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 4.1
+        }
+      },
+      "msPerGame": 882
+    },
+    {
+      "index": 17,
+      "name": "field, p2 missing a orbiter",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p2",
+            "type": "orbiter"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 58.1,
+      "p2Win": 41.9,
+      "draw": 0,
+      "p1WinMargin": 7.6,
+      "botAWin": 58.1,
+      "botBWin": 41.9,
+      "reasons": {
+        "doomstar": 94.4,
+        "command": 5.6
+      },
+      "roundsAvg": 19.2,
+      "roundsMedian": 19,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 7.8,
+      "attacksPerGame": 8.8,
+      "movesPerGame": 73,
+      "actionsPerTurn": 2.13,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.1,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.42,
+          "killsPerGame": 0.43,
+          "damagePerUnit": 0.35,
+          "killsPerUnit": 0.11,
+          "lossRate": 56.1
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.29,
+          "killsPerGame": 0.72,
+          "damagePerUnit": 0.32,
+          "killsPerUnit": 0.18,
+          "lossRate": 25.6
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.63,
+          "killsPerGame": 0.28,
+          "damagePerUnit": 0.16,
+          "killsPerUnit": 0.07,
+          "lossRate": 6.3
+        },
+        "orbiter": {
+          "fieldedPerGame": 1,
+          "damagePerGame": 0.23,
+          "killsPerGame": 0.14,
+          "damagePerUnit": 0.23,
+          "killsPerUnit": 0.14,
+          "lossRate": 15
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.52,
+          "killsPerGame": 2.22,
+          "damagePerUnit": 2.26,
+          "killsPerUnit": 1.11,
+          "lossRate": 12.5
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.06,
+          "killsPerGame": 1.13,
+          "damagePerUnit": 2.03,
+          "killsPerUnit": 0.57,
+          "lossRate": 46.9
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 2.8
+        }
+      },
+      "msPerGame": 872
+    },
+    {
+      "index": 18,
+      "name": "field, p1 missing a prism",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p1",
+            "type": "prism"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 63.8,
+      "p2Win": 36.3,
+      "draw": 0,
+      "p1WinMargin": 7.4,
+      "botAWin": 63.8,
+      "botBWin": 36.3,
+      "reasons": {
+        "doomstar": 93.1,
+        "command": 6.9
+      },
+      "roundsAvg": 18.3,
+      "roundsMedian": 18,
+      "roundsP10": 13,
+      "roundsP90": 24,
+      "firstKillRoundAvg": 8.4,
+      "attacksPerGame": 9,
+      "movesPerGame": 70,
+      "actionsPerTurn": 2.16,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.5,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.58,
+          "killsPerGame": 0.44,
+          "damagePerUnit": 0.39,
+          "killsPerUnit": 0.11,
+          "lossRate": 45.6
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.36,
+          "killsPerGame": 1.23,
+          "damagePerUnit": 0.59,
+          "killsPerUnit": 0.31,
+          "lossRate": 24.5
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.96,
+          "killsPerGame": 0.45,
+          "damagePerUnit": 0.24,
+          "killsPerUnit": 0.11,
+          "lossRate": 7.3
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.51,
+          "killsPerGame": 0.26,
+          "damagePerUnit": 0.25,
+          "killsPerUnit": 0.13,
+          "lossRate": 15.9
+        },
+        "prism": {
+          "fieldedPerGame": 1,
+          "damagePerGame": 1.74,
+          "killsPerGame": 0.81,
+          "damagePerUnit": 1.74,
+          "killsPerUnit": 0.81,
+          "lossRate": 11.3
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.43,
+          "killsPerGame": 1.4,
+          "damagePerUnit": 2.21,
+          "killsPerUnit": 0.7,
+          "lossRate": 50
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0.01,
+          "lossRate": 3.4
+        }
+      },
+      "msPerGame": 827
+    },
+    {
+      "index": 19,
+      "name": "field, p2 missing a prism",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p2",
+            "type": "prism"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 61.3,
+      "p2Win": 38.8,
+      "draw": 0,
+      "p1WinMargin": 7.5,
+      "botAWin": 61.3,
+      "botBWin": 38.8,
+      "reasons": {
+        "doomstar": 90.6,
+        "command": 9.4
+      },
+      "roundsAvg": 17.9,
+      "roundsMedian": 18,
+      "roundsP10": 13,
+      "roundsP90": 23,
+      "firstKillRoundAvg": 8,
+      "attacksPerGame": 8.7,
+      "movesPerGame": 68.8,
+      "actionsPerTurn": 2.16,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.8,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.44,
+          "killsPerGame": 0.44,
+          "damagePerUnit": 0.36,
+          "killsPerUnit": 0.11,
+          "lossRate": 44.4
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.87,
+          "killsPerGame": 0.99,
+          "damagePerUnit": 0.47,
+          "killsPerUnit": 0.25,
+          "lossRate": 20.6
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.68,
+          "killsPerGame": 0.34,
+          "damagePerUnit": 0.17,
+          "killsPerUnit": 0.08,
+          "lossRate": 4.8
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.52,
+          "killsPerGame": 0.28,
+          "damagePerUnit": 0.26,
+          "killsPerUnit": 0.14,
+          "lossRate": 19.4
+        },
+        "prism": {
+          "fieldedPerGame": 1,
+          "damagePerGame": 2.09,
+          "killsPerGame": 0.95,
+          "damagePerUnit": 2.09,
+          "killsPerUnit": 0.95,
+          "lossRate": 7.5
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.34,
+          "killsPerGame": 1.35,
+          "damagePerUnit": 2.17,
+          "killsPerUnit": 0.68,
+          "lossRate": 49.4
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 4.7
+        }
+      },
+      "msPerGame": 827
+    },
+    {
+      "index": 20,
+      "name": "field, p1 missing a nova",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p1",
+            "type": "nova"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 51.3,
+      "p2Win": 48.8,
+      "draw": 0,
+      "p1WinMargin": 7.7,
+      "botAWin": 51.3,
+      "botBWin": 48.8,
+      "reasons": {
+        "doomstar": 90.6,
+        "command": 9.4
+      },
+      "roundsAvg": 18.8,
+      "roundsMedian": 19,
+      "roundsP10": 14,
+      "roundsP90": 24,
+      "firstKillRoundAvg": 8.2,
+      "attacksPerGame": 7.4,
+      "movesPerGame": 72.5,
+      "actionsPerTurn": 2.13,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.9,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.56,
+          "killsPerGame": 0.46,
+          "damagePerUnit": 0.39,
+          "killsPerUnit": 0.11,
+          "lossRate": 50.2
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.73,
+          "killsPerGame": 0.95,
+          "damagePerUnit": 0.43,
+          "killsPerUnit": 0.24,
+          "lossRate": 25.3
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.68,
+          "killsPerGame": 0.33,
+          "damagePerUnit": 0.17,
+          "killsPerUnit": 0.08,
+          "lossRate": 3.4
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.36,
+          "killsPerGame": 0.2,
+          "damagePerUnit": 0.18,
+          "killsPerUnit": 0.1,
+          "lossRate": 13.1
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.09,
+          "killsPerGame": 1.75,
+          "damagePerUnit": 2.04,
+          "killsPerUnit": 0.88,
+          "lossRate": 13.8
+        },
+        "nova": {
+          "fieldedPerGame": 1,
+          "damagePerGame": 1.99,
+          "killsPerGame": 0.53,
+          "damagePerUnit": 1.99,
+          "killsPerUnit": 0.53,
+          "lossRate": 41.9
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 4.7
+        }
+      },
+      "msPerGame": 824
+    },
+    {
+      "index": 21,
+      "name": "field, p2 missing a nova",
+      "rules": {
+        "preset": "field",
+        "remove": [
+          {
+            "player": "p2",
+            "type": "nova"
+          }
+        ]
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 69.4,
+      "p2Win": 30.6,
+      "draw": 0,
+      "p1WinMargin": 7.1,
+      "botAWin": 69.4,
+      "botBWin": 30.6,
+      "reasons": {
+        "doomstar": 93.8,
+        "command": 6.3
+      },
+      "roundsAvg": 18.3,
+      "roundsMedian": 18,
+      "roundsP10": 14,
+      "roundsP90": 24,
+      "firstKillRoundAvg": 8.3,
+      "attacksPerGame": 7.1,
+      "movesPerGame": 70.2,
+      "actionsPerTurn": 2.11,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 13.1,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.47,
+          "killsPerGame": 0.37,
+          "damagePerUnit": 0.37,
+          "killsPerUnit": 0.09,
+          "lossRate": 45.2
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.65,
+          "killsPerGame": 0.84,
+          "damagePerUnit": 0.41,
+          "killsPerUnit": 0.21,
+          "lossRate": 24.2
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.59,
+          "killsPerGame": 0.26,
+          "damagePerUnit": 0.15,
+          "killsPerUnit": 0.07,
+          "lossRate": 4.4
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.25,
+          "killsPerGame": 0.12,
+          "damagePerUnit": 0.13,
+          "killsPerUnit": 0.06,
+          "lossRate": 13.1
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.88,
+          "killsPerGame": 1.69,
+          "damagePerUnit": 1.94,
+          "killsPerUnit": 0.85,
+          "lossRate": 11.6
+        },
+        "nova": {
+          "fieldedPerGame": 1,
+          "damagePerGame": 1.97,
+          "killsPerGame": 0.63,
+          "damagePerUnit": 1.97,
+          "killsPerUnit": 0.63,
+          "lossRate": 41.3
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 3.1
+        }
+      },
+      "msPerGame": 828
+    },
+    {
+      "index": 22,
+      "name": "field, 3 orders",
+      "rules": {
+        "preset": "field",
+        "activations": 3
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 57.5,
+      "p2Win": 42.5,
+      "draw": 0,
+      "p1WinMargin": 7.6,
+      "botAWin": 57.5,
+      "botBWin": 42.5,
+      "reasons": {
+        "doomstar": 86.9,
+        "command": 13.1
+      },
+      "roundsAvg": 16.7,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 21,
+      "firstKillRoundAvg": 6.2,
+      "attacksPerGame": 10.8,
+      "movesPerGame": 92.6,
+      "actionsPerTurn": 3.1,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 11.7,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.52,
+          "killsPerGame": 0.59,
+          "damagePerUnit": 0.38,
+          "killsPerUnit": 0.15,
+          "lossRate": 62.5
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.83,
+          "killsPerGame": 0.92,
+          "damagePerUnit": 0.46,
+          "killsPerUnit": 0.23,
+          "lossRate": 33.9
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.28,
+          "killsPerGame": 0.65,
+          "damagePerUnit": 0.32,
+          "killsPerUnit": 0.16,
+          "lossRate": 9.5
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.58,
+          "killsPerGame": 0.36,
+          "damagePerUnit": 0.29,
+          "killsPerUnit": 0.18,
+          "lossRate": 20
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 5.57,
+          "killsPerGame": 2.64,
+          "damagePerUnit": 2.78,
+          "killsPerUnit": 1.32,
+          "lossRate": 27.5
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.84,
+          "killsPerGame": 1.23,
+          "damagePerUnit": 2.42,
+          "killsPerUnit": 0.62,
+          "lossRate": 54.1
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.03,
+          "killsPerGame": 0.02,
+          "damagePerUnit": 0.02,
+          "killsPerUnit": 0.01,
+          "lossRate": 6.6
+        }
+      },
+      "msPerGame": 1033
+    },
+    {
+      "index": 23,
+      "name": "field, stars not contested",
+      "rules": {
+        "preset": "field",
+        "contestedStars": false
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 61.9,
+      "p2Win": 38.1,
+      "draw": 0,
+      "p1WinMargin": 7.4,
+      "botAWin": 61.9,
+      "botBWin": 38.1,
+      "reasons": {
+        "doomstar": 90,
+        "command": 10
+      },
+      "roundsAvg": 18.7,
+      "roundsMedian": 19,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 6.6,
+      "attacksPerGame": 9,
+      "movesPerGame": 71.7,
+      "actionsPerTurn": 2.15,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 13.5,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.38,
+          "killsPerGame": 0.76,
+          "damagePerUnit": 0.6,
+          "killsPerUnit": 0.19,
+          "lossRate": 46.9
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.53,
+          "killsPerGame": 0.8,
+          "damagePerUnit": 0.38,
+          "killsPerUnit": 0.2,
+          "lossRate": 25.8
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.63,
+          "killsPerGame": 0.31,
+          "damagePerUnit": 0.16,
+          "killsPerUnit": 0.08,
+          "lossRate": 4.1
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.55,
+          "killsPerGame": 0.25,
+          "damagePerUnit": 0.28,
+          "killsPerUnit": 0.13,
+          "lossRate": 17.5
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 2.66,
+          "killsPerGame": 1.32,
+          "damagePerUnit": 1.33,
+          "killsPerUnit": 0.66,
+          "lossRate": 11.6
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.78,
+          "killsPerGame": 1.17,
+          "damagePerUnit": 1.89,
+          "killsPerUnit": 0.58,
+          "lossRate": 42.5
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 5
+        }
+      },
+      "msPerGame": 877
+    },
+    {
+      "index": 24,
+      "name": "field, Nova blast 2",
+      "rules": {
+        "preset": "field",
+        "unitOverrides": {
+          "nova": {
+            "splash": 2
+          }
+        }
+      },
+      "rulesLabel": "Field: open battlefield with circular ranges (Doomstar rules)",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 160,
+      "p1Win": 60,
+      "p2Win": 40,
+      "draw": 0,
+      "p1WinMargin": 7.5,
+      "botAWin": 60,
+      "botBWin": 40,
+      "reasons": {
+        "command": 5,
+        "doomstar": 95
+      },
+      "roundsAvg": 19.1,
+      "roundsMedian": 19,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 8.2,
+      "attacksPerGame": 8.8,
+      "movesPerGame": 73.5,
+      "actionsPerTurn": 2.16,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 13.4,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.49,
+          "killsPerGame": 0.37,
+          "damagePerUnit": 0.37,
+          "killsPerUnit": 0.09,
+          "lossRate": 50.9
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.58,
+          "killsPerGame": 0.84,
+          "damagePerUnit": 0.4,
+          "killsPerUnit": 0.21,
+          "lossRate": 25
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.61,
+          "killsPerGame": 0.26,
+          "damagePerUnit": 0.15,
+          "killsPerUnit": 0.07,
+          "lossRate": 5.5
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.32,
+          "killsPerGame": 0.19,
+          "damagePerUnit": 0.16,
+          "killsPerUnit": 0.09,
+          "lossRate": 14.4
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.03,
+          "killsPerGame": 1.86,
+          "damagePerUnit": 2.02,
+          "killsPerUnit": 0.93,
+          "lossRate": 13.8
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.44,
+          "killsPerGame": 1.18,
+          "damagePerUnit": 1.72,
+          "killsPerUnit": 0.59,
+          "lossRate": 41.6
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 2.5
+        }
+      },
+      "msPerGame": 607
+    }
+  ]
+}

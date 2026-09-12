@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doomstar Unit Guide</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .guide { max-width: 1100px; margin: 0 auto; padding: 32px 24px 60px; }
+      .guide h1 { margin: 0 0 8px; }
+      .subtitle { margin: 0 0 20px; color: var(--muted); line-height: 1.5; }
+      .guide-controls { margin-bottom: 20px; }
+      .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+      }
+      .card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+      .card-head h2 { margin: 0; font-size: 1.3rem; color: var(--text); text-transform: none; letter-spacing: 0; }
+      .card-head .unit-icon { width: 48px; height: 48px; }
+      .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+      .stat {
+        padding: 8px 10px;
+        border-radius: 10px;
+        font-size: 0.8rem;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .stat strong { display: block; margin-top: 4px; font-size: 1rem; color: var(--primary); }
+      .card p { margin: 12px 0 0; color: var(--muted); line-height: 1.5; }
+    </style>
+  </head>
+  <body>
+    <div class="guide">
+      <h1>Doomstar Unit Guide</h1>
+      <p class="subtitle">
+        Move, range, health and damage for every ship, read straight from the rules engine.
+        Field stats use fine tiles (3 fine tiles = 1 original tile), and range is measured hull to hull.
+      </p>
+      <label class="inline-select guide-controls">Stats for
+        <select id="unitSet">
+          <option value="field">Field maps (open battlefield)</option>
+          <option value="grid">Tile maps (original prototype)</option>
+        </select>
+      </label>
+      <div id="cards" class="cards"></div>
+    </div>
+
+    <script src="engine.js"></script>
+    <script src="board.js"></script>
+    <script>
+      (function () {
+        const D = window.Doomstar;
+        const Board = window.DoomstarBoard;
+        const ORDER = ['command', 'guard', 'scout', 'lancer', 'prism', 'nova', 'orbiter'];
+        const select = document.getElementById('unitSet');
+
+        function render() {
+          const set = D.UNIT_SETS[select.value];
+          document.getElementById('cards').innerHTML = ORDER.map((type) => {
+            const unit = set[type];
+            const stats = [['Move', unit.move], ['Range', unit.range], ['HP', unit.hp], ['Damage', unit.damage], ['Armor', unit.armor]];
+            if (select.value === 'field') stats.push(['Size', unit.radius]);
+            if (unit.splash) stats.push(['Blast', unit.splash]);
+            if (unit.field) stats.push(['Field', unit.field]);
+            return `
+              <section class="card">
+                <div class="card-head">
+                  <h2>${unit.label}</h2>
+                  <span>${Board.unitIcon(type, 'p1')}${Board.unitIcon(type, 'p2')}</span>
+                </div>
+                <div class="stats">${stats.map(([name, value]) => `<div class="stat">${name}<strong>${value}</strong></div>`).join('')}</div>
+                <p>${unit.ability}</p>
+              </section>`;
+          }).join('');
+        }
+
+        select.addEventListener('change', render);
+        render();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,957 @@
+{
+  "suite": "compact",
+  "games": 400,
+  "seed": 1,
+  "elapsedSeconds": 172,
+  "results": [
+    {
+      "index": 0,
+      "name": "classic on outpost",
+      "rules": {
+        "preset": "classic",
+        "map": "outpost"
+      },
+      "rulesLabel": "Classic: prototype rules as coded",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 13.5,
+      "p2Win": 16.3,
+      "draw": 70.3,
+      "p1WinMargin": 3.4,
+      "botAWin": 13.5,
+      "botBWin": 16.3,
+      "reasons": {
+        "command": 29.8,
+        "time": 70.3
+      },
+      "roundsAvg": 54.4,
+      "roundsMedian": 61,
+      "roundsP10": 35,
+      "roundsP90": 61,
+      "firstKillRoundAvg": 3.2,
+      "attacksPerGame": 10.7,
+      "movesPerGame": 91.9,
+      "actionsPerTurn": 0.94,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 10.3,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.21,
+          "killsPerGame": 0.24,
+          "damagePerUnit": 0.55,
+          "killsPerUnit": 0.06,
+          "lossRate": 68.1
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.44,
+          "killsPerGame": 1.25,
+          "damagePerUnit": 0.61,
+          "killsPerUnit": 0.31,
+          "lossRate": 7.4
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 5.47,
+          "killsPerGame": 1.46,
+          "damagePerUnit": 1.37,
+          "killsPerUnit": 0.37,
+          "lossRate": 30.4
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 1.31,
+          "killsPerGame": 0.11,
+          "damagePerUnit": 0.65,
+          "killsPerUnit": 0.06,
+          "lossRate": 61.5
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 4.97,
+          "killsPerGame": 2.92,
+          "damagePerUnit": 2.48,
+          "killsPerUnit": 1.46,
+          "lossRate": 12.3
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.08,
+          "killsPerGame": 0.04,
+          "damagePerUnit": 0.04,
+          "killsPerUnit": 0.02,
+          "lossRate": 14.9
+        }
+      },
+      "msPerGame": 27
+    },
+    {
+      "index": 1,
+      "name": "complete on outpost",
+      "rules": {
+        "preset": "complete",
+        "map": "outpost"
+      },
+      "rulesLabel": "Complete: described mechanics working, every unit acts",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 37.3,
+      "p2Win": 57.5,
+      "draw": 5.3,
+      "p1WinMargin": 4.7,
+      "botAWin": 37.3,
+      "botBWin": 57.5,
+      "reasons": {
+        "stars": 83.8,
+        "time-points": 10.8,
+        "time": 5.3,
+        "command": 0.3
+      },
+      "roundsAvg": 20.4,
+      "roundsMedian": 14,
+      "roundsP10": 9,
+      "roundsP90": 61,
+      "firstKillRoundAvg": 2.1,
+      "attacksPerGame": 7.5,
+      "movesPerGame": 51.1,
+      "actionsPerTurn": 1.43,
+      "starPointsPerGame": 15,
+      "survivorsPerGame": 9.9,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.69,
+          "killsPerGame": 0.12,
+          "damagePerUnit": 0.17,
+          "killsPerUnit": 0.03,
+          "lossRate": 89
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.83,
+          "killsPerGame": 0.42,
+          "damagePerUnit": 0.21,
+          "killsPerUnit": 0.1,
+          "lossRate": 6.4
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 7.62,
+          "killsPerGame": 3.65,
+          "damagePerUnit": 1.91,
+          "killsPerUnit": 0.91,
+          "lossRate": 31.3
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.12,
+          "killsPerGame": 0.03,
+          "damagePerUnit": 0.06,
+          "killsPerUnit": 0.02,
+          "lossRate": 42.3
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.78,
+          "killsPerGame": 1.85,
+          "damagePerUnit": 1.89,
+          "killsPerUnit": 0.93,
+          "lossRate": 8.4
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0.01,
+          "lossRate": 0.1
+        }
+      },
+      "msPerGame": 15
+    },
+    {
+      "index": 2,
+      "name": "orders on outpost",
+      "rules": {
+        "preset": "orders",
+        "map": "outpost"
+      },
+      "rulesLabel": "Orders: Complete + 2 unit orders per turn",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 67.8,
+      "p2Win": 32,
+      "draw": 0.3,
+      "p1WinMargin": 4.6,
+      "botAWin": 67.8,
+      "botBWin": 32,
+      "reasons": {
+        "stars": 91,
+        "time-points": 8.8,
+        "time": 0.3
+      },
+      "roundsAvg": 15.7,
+      "roundsMedian": 11,
+      "roundsP10": 8,
+      "roundsP90": 21,
+      "firstKillRoundAvg": 3.3,
+      "attacksPerGame": 6.4,
+      "movesPerGame": 35.9,
+      "actionsPerTurn": 1.35,
+      "starPointsPerGame": 16.4,
+      "survivorsPerGame": 12,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.44,
+          "killsPerGame": 0.21,
+          "damagePerUnit": 0.61,
+          "killsPerUnit": 0.05,
+          "lossRate": 68.6
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.16,
+          "killsPerGame": 0.08,
+          "damagePerUnit": 0.04,
+          "killsPerUnit": 0.02,
+          "lossRate": 1.1
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 3,
+          "killsPerGame": 1.69,
+          "damagePerUnit": 0.75,
+          "killsPerUnit": 0.42,
+          "lossRate": 18.3
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.1,
+          "killsPerGame": 0.05,
+          "damagePerUnit": 0.05,
+          "killsPerUnit": 0.02,
+          "lossRate": 18.6
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 2.86,
+          "killsPerGame": 1.94,
+          "damagePerUnit": 1.43,
+          "killsPerUnit": 0.97,
+          "lossRate": 3.4
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0
+        }
+      },
+      "msPerGame": 14
+    },
+    {
+      "index": 3,
+      "name": "outpost, 1 order per turn",
+      "rules": {
+        "preset": "orders",
+        "map": "outpost",
+        "activations": 1
+      },
+      "rulesLabel": "Orders: Complete + 2 unit orders per turn",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 88.3,
+      "p2Win": 11.8,
+      "draw": 0,
+      "p1WinMargin": 3.2,
+      "botAWin": 88.3,
+      "botBWin": 11.8,
+      "reasons": {
+        "stars": 99.8,
+        "time-points": 0.3
+      },
+      "roundsAvg": 12.5,
+      "roundsMedian": 12,
+      "roundsP10": 11,
+      "roundsP90": 13,
+      "firstKillRoundAvg": 4,
+      "attacksPerGame": 5.7,
+      "movesPerGame": 23.6,
+      "actionsPerTurn": 1.17,
+      "starPointsPerGame": 21.1,
+      "survivorsPerGame": 13.7,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 4,
+          "killsPerGame": 0.6,
+          "damagePerUnit": 1,
+          "killsPerUnit": 0.15,
+          "lossRate": 55.6
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.18,
+          "killsPerGame": 0.09,
+          "damagePerUnit": 0.04,
+          "killsPerUnit": 0.02,
+          "lossRate": 1.3
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.05,
+          "killsPerGame": 0.04,
+          "damagePerUnit": 0.02,
+          "killsPerUnit": 0.02,
+          "lossRate": 0.3
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 1.63,
+          "killsPerGame": 1.56,
+          "damagePerUnit": 0.81,
+          "killsPerUnit": 0.78,
+          "lossRate": 0.8
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0
+        }
+      },
+      "msPerGame": 9
+    },
+    {
+      "index": 4,
+      "name": "outpost, 3 orders per turn",
+      "rules": {
+        "preset": "orders",
+        "map": "outpost",
+        "activations": 3
+      },
+      "rulesLabel": "Orders: Complete + 2 unit orders per turn",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 71.5,
+      "p2Win": 27.3,
+      "draw": 1.3,
+      "p1WinMargin": 4.4,
+      "botAWin": 71.5,
+      "botBWin": 27.3,
+      "reasons": {
+        "stars": 89.5,
+        "time-points": 9,
+        "time": 1.3,
+        "command": 0.3
+      },
+      "roundsAvg": 15.7,
+      "roundsMedian": 10,
+      "roundsP10": 7,
+      "roundsP90": 61,
+      "firstKillRoundAvg": 3.3,
+      "attacksPerGame": 6.1,
+      "movesPerGame": 39.4,
+      "actionsPerTurn": 1.45,
+      "starPointsPerGame": 14.8,
+      "survivorsPerGame": 11.8,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.65,
+          "killsPerGame": 0.13,
+          "damagePerUnit": 0.41,
+          "killsPerUnit": 0.03,
+          "lossRate": 72.1
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.27,
+          "killsPerGame": 0.13,
+          "damagePerUnit": 0.07,
+          "killsPerUnit": 0.03,
+          "lossRate": 1.3
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 4.29,
+          "killsPerGame": 2.35,
+          "damagePerUnit": 1.07,
+          "killsPerUnit": 0.59,
+          "lossRate": 16.1
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.09,
+          "killsPerGame": 0.02,
+          "damagePerUnit": 0.04,
+          "killsPerUnit": 0.01,
+          "lossRate": 24.5
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 2.56,
+          "killsPerGame": 1.55,
+          "damagePerUnit": 1.28,
+          "killsPerUnit": 0.77,
+          "lossRate": 4.9
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0.1
+        }
+      },
+      "msPerGame": 11
+    },
+    {
+      "index": 5,
+      "name": "outpost, no star scoring",
+      "rules": {
+        "preset": "orders",
+        "map": "outpost",
+        "stars": "none"
+      },
+      "rulesLabel": "Orders: Complete + 2 unit orders per turn",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 2.3,
+      "p2Win": 1.8,
+      "draw": 96,
+      "p1WinMargin": 1.5,
+      "botAWin": 2.3,
+      "botBWin": 1.8,
+      "reasons": {
+        "time": 96,
+        "command": 4
+      },
+      "roundsAvg": 60.5,
+      "roundsMedian": 61,
+      "roundsP10": 61,
+      "roundsP90": 61,
+      "firstKillRoundAvg": 23.2,
+      "attacksPerGame": 7.3,
+      "movesPerGame": 78.6,
+      "actionsPerTurn": 0.71,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 12.5,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.08,
+          "killsPerGame": 0.17,
+          "damagePerUnit": 0.52,
+          "killsPerUnit": 0.04,
+          "lossRate": 43.6
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.07,
+          "killsPerGame": 1.1,
+          "damagePerUnit": 0.52,
+          "killsPerUnit": 0.27,
+          "lossRate": 5.7
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.94,
+          "killsPerGame": 0.97,
+          "damagePerUnit": 0.74,
+          "killsPerUnit": 0.24,
+          "lossRate": 25.5
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.64,
+          "killsPerGame": 0.16,
+          "damagePerUnit": 0.32,
+          "killsPerUnit": 0.08,
+          "lossRate": 17.8
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 1.98,
+          "killsPerGame": 1.03,
+          "damagePerUnit": 0.99,
+          "killsPerUnit": 0.52,
+          "lossRate": 5.4
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.11,
+          "killsPerGame": 0.07,
+          "damagePerUnit": 0.06,
+          "killsPerUnit": 0.04,
+          "lossRate": 2
+        }
+      },
+      "msPerGame": 33
+    },
+    {
+      "index": 6,
+      "name": "outpost, doomstar",
+      "rules": {
+        "preset": "orders",
+        "map": "outpost",
+        "stars": "doomstar"
+      },
+      "rulesLabel": "Orders: Complete + 2 unit orders per turn",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 51.3,
+      "p2Win": 35.3,
+      "draw": 13.5,
+      "p1WinMargin": 4.9,
+      "botAWin": 51.3,
+      "botBWin": 35.3,
+      "reasons": {
+        "doomstar": 86,
+        "time": 13.5,
+        "command": 0.5
+      },
+      "roundsAvg": 22.3,
+      "roundsMedian": 16,
+      "roundsP10": 11,
+      "roundsP90": 61,
+      "firstKillRoundAvg": 3.2,
+      "attacksPerGame": 8,
+      "movesPerGame": 42,
+      "actionsPerTurn": 1.12,
+      "starPointsPerGame": 0,
+      "survivorsPerGame": 10.8,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.67,
+          "killsPerGame": 0.3,
+          "damagePerUnit": 0.67,
+          "killsPerUnit": 0.07,
+          "lossRate": 75.8
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.35,
+          "killsPerGame": 0.18,
+          "damagePerUnit": 0.09,
+          "killsPerUnit": 0.04,
+          "lossRate": 3.6
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 4.31,
+          "killsPerGame": 2.37,
+          "damagePerUnit": 1.08,
+          "killsPerUnit": 0.59,
+          "lossRate": 32.1
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.18,
+          "killsPerGame": 0.08,
+          "damagePerUnit": 0.09,
+          "killsPerUnit": 0.04,
+          "lossRate": 32.1
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.6,
+          "killsPerGame": 2.28,
+          "damagePerUnit": 1.8,
+          "killsPerUnit": 1.14,
+          "lossRate": 4.9
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0.3
+        }
+      },
+      "msPerGame": 14
+    },
+    {
+      "index": 7,
+      "name": "outpost, star target 8",
+      "rules": {
+        "preset": "orders",
+        "map": "outpost",
+        "starTarget": 8
+      },
+      "rulesLabel": "Orders: Complete + 2 unit orders per turn",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 72.5,
+      "p2Win": 27.3,
+      "draw": 0.3,
+      "p1WinMargin": 4.4,
+      "botAWin": 72.5,
+      "botBWin": 27.3,
+      "reasons": {
+        "stars": 92.5,
+        "time-points": 7.3,
+        "time": 0.3
+      },
+      "roundsAvg": 11.9,
+      "roundsMedian": 8,
+      "roundsP10": 5,
+      "roundsP90": 15,
+      "firstKillRoundAvg": 3.2,
+      "attacksPerGame": 5.1,
+      "movesPerGame": 28.3,
+      "actionsPerTurn": 1.4,
+      "starPointsPerGame": 11.1,
+      "survivorsPerGame": 13.2,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.39,
+          "killsPerGame": 0.22,
+          "damagePerUnit": 0.6,
+          "killsPerUnit": 0.06,
+          "lossRate": 61.4
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.03,
+          "killsPerGame": 0.02,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 0.3
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 1.68,
+          "killsPerGame": 1.05,
+          "damagePerUnit": 0.42,
+          "killsPerUnit": 0.26,
+          "lossRate": 5.3
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.06,
+          "killsPerGame": 0.02,
+          "damagePerUnit": 0.03,
+          "killsPerUnit": 0.01,
+          "lossRate": 6.9
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 2.06,
+          "killsPerGame": 1.53,
+          "damagePerUnit": 1.03,
+          "killsPerUnit": 0.77,
+          "lossRate": 1.1
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0
+        }
+      },
+      "msPerGame": 10
+    },
+    {
+      "index": 8,
+      "name": "outpost, star target 16",
+      "rules": {
+        "preset": "orders",
+        "map": "outpost",
+        "starTarget": 16
+      },
+      "rulesLabel": "Orders: Complete + 2 unit orders per turn",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 63.5,
+      "p2Win": 36.3,
+      "draw": 0.3,
+      "p1WinMargin": 4.7,
+      "botAWin": 63.5,
+      "botBWin": 36.3,
+      "reasons": {
+        "stars": 90.5,
+        "time-points": 9.3,
+        "time": 0.3
+      },
+      "roundsAvg": 18.9,
+      "roundsMedian": 14,
+      "roundsP10": 10,
+      "roundsP90": 29,
+      "firstKillRoundAvg": 3.3,
+      "attacksPerGame": 7.5,
+      "movesPerGame": 40.8,
+      "actionsPerTurn": 1.28,
+      "starPointsPerGame": 21.4,
+      "survivorsPerGame": 11.1,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.44,
+          "killsPerGame": 0.2,
+          "damagePerUnit": 0.61,
+          "killsPerUnit": 0.05,
+          "lossRate": 74.6
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.33,
+          "killsPerGame": 0.18,
+          "damagePerUnit": 0.08,
+          "killsPerUnit": 0.04,
+          "lossRate": 2.6
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 4.04,
+          "killsPerGame": 2.18,
+          "damagePerUnit": 1.01,
+          "killsPerUnit": 0.54,
+          "lossRate": 27.5
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.16,
+          "killsPerGame": 0.09,
+          "damagePerUnit": 0.08,
+          "killsPerUnit": 0.04,
+          "lossRate": 28.9
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.45,
+          "killsPerGame": 2.24,
+          "damagePerUnit": 1.72,
+          "killsPerUnit": 1.12,
+          "lossRate": 5.4
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 0
+        }
+      },
+      "msPerGame": 12
+    },
+    {
+      "index": 9,
+      "name": "outpost, Command moves 1",
+      "rules": {
+        "preset": "orders",
+        "map": "outpost",
+        "unitOverrides": {
+          "command": {
+            "move": 1
+          }
+        }
+      },
+      "rulesLabel": "Orders: Complete + 2 unit orders per turn",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 49,
+      "p2Win": 50.8,
+      "draw": 0.3,
+      "p1WinMargin": 4.9,
+      "botAWin": 49,
+      "botBWin": 50.8,
+      "reasons": {
+        "stars": 99.3,
+        "time": 0.3,
+        "time-points": 0.5
+      },
+      "roundsAvg": 12.2,
+      "roundsMedian": 11,
+      "roundsP10": 8,
+      "roundsP90": 16,
+      "firstKillRoundAvg": 3.3,
+      "attacksPerGame": 7.2,
+      "movesPerGame": 43.7,
+      "actionsPerTurn": 2.08,
+      "starPointsPerGame": 18.2,
+      "survivorsPerGame": 12,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 3.16,
+          "killsPerGame": 0.4,
+          "damagePerUnit": 0.79,
+          "killsPerUnit": 0.1,
+          "lossRate": 76.4
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.06,
+          "killsPerGame": 0.03,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0.01,
+          "lossRate": 0.4
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 2.63,
+          "killsPerGame": 1.51,
+          "damagePerUnit": 0.66,
+          "killsPerUnit": 0.38,
+          "lossRate": 9.1
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.6,
+          "killsPerGame": 0.31,
+          "damagePerUnit": 0.3,
+          "killsPerUnit": 0.15,
+          "lossRate": 24.6
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 2.29,
+          "killsPerGame": 1.75,
+          "damagePerUnit": 1.14,
+          "killsPerUnit": 0.88,
+          "lossRate": 3.9
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.02,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0.01,
+          "lossRate": 0
+        }
+      },
+      "msPerGame": 11
+    },
+    {
+      "index": 10,
+      "name": "orders (crucible), Command moves 1",
+      "rules": {
+        "preset": "orders",
+        "unitOverrides": {
+          "command": {
+            "move": 1
+          }
+        }
+      },
+      "rulesLabel": "Orders: Complete + 2 unit orders per turn",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 400,
+      "p1Win": 61,
+      "p2Win": 39,
+      "draw": 0,
+      "p1WinMargin": 4.8,
+      "botAWin": 61,
+      "botBWin": 39,
+      "reasons": {
+        "stars": 99.3,
+        "command": 0.5,
+        "time-points": 0.3
+      },
+      "roundsAvg": 13.9,
+      "roundsMedian": 14,
+      "roundsP10": 9,
+      "roundsP90": 17,
+      "firstKillRoundAvg": 11.1,
+      "attacksPerGame": 1,
+      "movesPerGame": 54.3,
+      "actionsPerTurn": 1.98,
+      "starPointsPerGame": 16,
+      "survivorsPerGame": 15.6,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.71,
+          "killsPerGame": 0.24,
+          "damagePerUnit": 0.18,
+          "killsPerUnit": 0.06,
+          "lossRate": 8.3
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.03,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 0.1
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 0.18,
+          "killsPerGame": 0.1,
+          "damagePerUnit": 0.04,
+          "killsPerUnit": 0.02,
+          "lossRate": 0.4
+        },
+        "orbiter": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.05,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.02,
+          "killsPerUnit": 0,
+          "lossRate": 1.4
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.04,
+          "killsPerGame": 0.02,
+          "damagePerUnit": 0.02,
+          "killsPerUnit": 0.01,
+          "lossRate": 0.9
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.06,
+          "killsPerGame": 0.03,
+          "damagePerUnit": 0.03,
+          "killsPerUnit": 0.01,
+          "lossRate": 0.3
+        }
+      },
+      "msPerGame": 17
+    }
+  ]
+}

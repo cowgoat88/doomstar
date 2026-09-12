@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doomstar Balance Lab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Simulation</p>
+          <h1>Balance Lab</h1>
+        </div>
+        <nav class="topbar-actions">
+          <a class="button-link" href="index.html">Play</a>
+          <a class="button-link" href="arena.html">AI Arena</a>
+          <a class="button-link" href="roster.html" target="_blank" rel="noopener">Unit Guide</a>
+        </nav>
+      </header>
+
+      <div class="lab-layout">
+        <section class="panel lab-controls">
+          <h2>Experiment</h2>
+          <label class="field">Ruleset <select id="labRules"></select></label>
+          <label class="field">Rule overrides (JSON, optional)
+            <textarea id="labOverrides" rows="3" placeholder='{"activations": 3, "unitOverrides": {"scout": {"move": 2}}}'></textarea>
+          </label>
+          <div class="field-row">
+            <label class="field">Player 1 bot <select id="labP1"></select></label>
+            <label class="field">Player 2 bot <select id="labP2"></select></label>
+          </div>
+          <label class="check"><input type="checkbox" id="labSwap" /> Alternate seats each game</label>
+          <div class="field-row">
+            <label class="field">Games <input id="labGames" type="number" value="100" min="1" max="5000" /></label>
+            <label class="field">First seed <input id="labSeed" type="number" value="1" /></label>
+          </div>
+          <button id="labRun" class="primary">Run experiment</button>
+
+          <h2 class="spaced">Suites</h2>
+          <label class="field">Saved suite <select id="labSuite"></select></label>
+          <button id="labRunSuite">Run suite</button>
+          <p id="labProgress" class="muted"></p>
+        </section>
+
+        <section class="panel lab-results">
+          <h2>Results</h2>
+          <div id="labTable"></div>
+          <h2 class="spaced">Units</h2>
+          <div id="labUnits"><p class="muted">Click a result row to see unit statistics.</p></div>
+        </section>
+      </div>
+      <pre id="results" hidden></pre>
+    </div>
+
+    <script src="engine.js"></script>
+    <script src="ai.js"></script>
+    <script src="lab.js"></script>
+  </body>
+</html>

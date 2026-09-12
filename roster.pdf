@@ -1,0 +1,54 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 1684 >>
+stream
+BT /F1 24 Tf 72 760 Td (Doomstar Unit Guide) Tj ET
+BT /F1 11 Tf 72 736 Td (Field stats in fine tiles, 3 fine tiles = 1 original tile. Range is measured hull to hull.) Tj ET
+BT /F1 13 Tf 72 700 Td (Command) Tj ET
+BT /F1 11 Tf 72 685 Td (Move 0 | Range 1.5 | HP 5 | Damage 1 | Armor 1 | Size 2) Tj ET
+BT /F1 10 Tf 72 671 Td (The command star. Lose it and the battle collapses.) Tj ET
+BT /F1 13 Tf 72 642 Td (Guard) Tj ET
+BT /F1 11 Tf 72 627 Td (Move 4.5 | Range 1.5 | HP 3 | Damage 2 | Armor 1 | Size 1.4) Tj ET
+BT /F1 10 Tf 72 613 Td (Frontline defender with extra health and armor.) Tj ET
+BT /F1 13 Tf 72 584 Td (Scout) Tj ET
+BT /F1 11 Tf 72 569 Td (Move 9 | Range 1.5 | HP 2 | Damage 1 | Armor 0 | Size 0.9) Tj ET
+BT /F1 10 Tf 72 555 Td (Fast recon unit that can move far and dart into weak points.) Tj ET
+BT /F1 13 Tf 72 526 Td (Lancer) Tj ET
+BT /F1 11 Tf 72 511 Td (Move 6 | Range 5 | HP 2 | Damage 2 | Armor 0 | Size 1.1) Tj ET
+BT /F1 10 Tf 72 497 Td (Long-range skirmisher that strikes from a distance.) Tj ET
+BT /F1 13 Tf 72 468 Td (Prism) Tj ET
+BT /F1 11 Tf 72 453 Td (Move 3 | Range 8 | HP 2 | Damage 2 | Armor 0 | Size 1.2) Tj ET
+BT /F1 10 Tf 72 439 Td (Beam artillery: needs a clear lane and ignores armor.) Tj ET
+BT /F1 13 Tf 72 410 Td (Nova) Tj ET
+BT /F1 11 Tf 72 395 Td (Move 4.5 | Range 7 | HP 2 | Damage 1 | Blast 3.5 | Size 1.2) Tj ET
+BT /F1 10 Tf 72 381 Td (Splash artillery: its blast also hits every enemy close to the target.) Tj ET
+BT /F1 13 Tf 72 352 Td (Orbiter) Tj ET
+BT /F1 11 Tf 72 337 Td (Move 6 | Range 1.5 | HP 2 | Damage 1 | Field 4 | Size 0.8) Tj ET
+BT /F1 10 Tf 72 323 Td (Small science vessel that projects a cloaking field over nearby allies.) Tj ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+2046
+%%EOF

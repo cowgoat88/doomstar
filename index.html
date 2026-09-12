@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doomstar: Sector Clash</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Prototype</p>
+          <h1>Doomstar: Sector Clash</h1>
+        </div>
+        <div class="topbar-actions">
+          <label class="inline-select">Rules <select id="rulesSelect"></select></label>
+          <label class="inline-select">Player 2 <select id="opponentSelect"></select></label>
+          <button id="endTurnBtn" class="primary">End Turn</button>
+          <button id="newGameBtn">New Match</button>
+          <a class="button-link" href="arena.html">AI Arena</a>
+          <a class="button-link" href="lab.html">Balance Lab</a>
+          <a class="button-link" href="roster.html" target="_blank" rel="noopener">Unit Guide</a>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <section class="panel">
+            <h2>Turn</h2>
+            <div id="turnBanner" class="turn-banner">Player 1</div>
+          </section>
+
+          <section class="panel">
+            <h2>Status</h2>
+            <div id="statusPanel" class="stat-list"></div>
+          </section>
+
+          <section class="panel">
+            <h2>Objectives</h2>
+            <div id="objectivePanel" class="scoreboard"></div>
+          </section>
+
+          <section class="panel">
+            <h2>Roster</h2>
+            <div id="rosterPanel" class="unit-list"></div>
+          </section>
+
+          <section class="panel">
+            <h2>How to play</h2>
+            <ul class="tips">
+              <li>Select a friendly unit to see where it can move (green) and what it can attack (red).</li>
+              <li>Click a green tile to move, or a red enemy to attack.</li>
+              <li>Click an enemy unit to inspect it.</li>
+            </ul>
+            <h2 class="spaced">Rules in play</h2>
+            <ul id="rulesList" class="tips"></ul>
+          </section>
+        </aside>
+
+        <main class="board-panel panel">
+          <div id="board" class="board" aria-label="Game board"></div>
+          <div id="boardBanner" class="board-banner" hidden></div>
+          <div class="board-legend">
+            <span><i class="swatch p1"></i>Player 1</span>
+            <span><i class="swatch p2"></i>Player 2</span>
+            <span><i class="swatch star"></i>Star</span>
+            <span><i class="swatch wall"></i>Wall</span>
+            <span><i class="swatch asteroid"></i>Asteroid</span>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="engine.js"></script>
+    <script src="ai.js"></script>
+    <script src="board.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>
