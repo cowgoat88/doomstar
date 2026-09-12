@@ -20,8 +20,7 @@
   const NON_COMMAND = UNIT_KEYS.filter((type) => type !== 'command');
   const PERSONA_KEYS = Object.keys(AI.PERSONAS);
   const PAIRINGS = PERSONA_KEYS.flatMap((a, i) => PERSONA_KEYS.slice(i + 1).map((b) => [a, b]));
-  const classicWith = (changes) => ({ preset: 'classic', ...changes });
-  const ordersWith = (changes) => ({ preset: 'orders', ...changes });
+  const withRules = (changes) => ({ preset: 'doomstar', ...changes });
 
   // Every persona mirror and pairing (seats alternate) on one ruleset.
   const matchups = (label, rules) => [
@@ -40,106 +39,43 @@
       })));
   };
 
+  // Rule variants, each compared against the balanced mirror.
+  const VARIANTS = [
+    { name: 'charge 3', rules: withRules({ doomstarCharge: 3 }) },
+    { name: 'charge 6', rules: withRules({ doomstarCharge: 6 }) },
+    { name: 'Doomstar damage 3', rules: withRules({ doomstarDamage: 3 }) },
+    { name: 'fires without crew (old rule)', rules: withRules({ doomstarNeedsCrew: false }) },
+    { name: 'Scouts crew too', rules: withRules({ crew: ['scout', 'guard', 'lancer', 'prism', 'nova'] }) },
+    { name: 'stars not contested', rules: withRules({ contestedStars: false }) },
+    { name: 'P1 opens with 1 order', rules: withRules({ firstTurnOrders: 1 }) },
+    { name: '3 orders per turn', rules: withRules({ activations: 3 }) },
+    { name: 'Scout range 1.5 (old)', rules: withRules({ unitOverrides: { scout: { range: 1.5 } } }) },
+    { name: 'Nova 4.5 / Prism 3 move (old)', rules: withRules({ unitOverrides: { nova: { move: 4.5 }, prism: { move: 3 } } }) },
+  ];
+
   const SUITES = {
     smoke: {
-      label: 'Smoke test: each ruleset, balanced mirror',
-      experiments: Object.keys(D.RULESETS).map((preset) => ({ name: `${preset}: balanced mirror`, rules: preset })),
-    },
-    ablation: {
-      label: 'Ablation: Classic plus one mechanic at a time',
-      experiments: [
-        { name: 'classic', rules: 'classic' },
-        { name: 'classic + pathing', rules: classicWith({ pathing: true }) },
-        { name: 'classic + armor', rules: classicWith({ armor: true }) },
-        { name: 'classic + walls block all shots', rules: classicWith({ lineOfFire: 'ranged' }) },
-        { name: 'classic + orbiter field', rules: classicWith({ cloak: 'field' }) },
-        { name: 'classic + asteroids block', rules: classicWith({ asteroids: 'block' }) },
-        { name: 'classic + crucible map', rules: classicWith({ map: 'crucible' }) },
-        { name: 'classic + star points (prototype map)', rules: classicWith({ stars: 'points' }) },
-        { name: 'classic + star points (crucible map)', rules: classicWith({ stars: 'points', map: 'crucible' }) },
-        { name: 'classic + 1 order per turn', rules: classicWith({ activations: 1 }) },
-        { name: 'classic + 2 orders per turn', rules: classicWith({ activations: 2 }) },
-        { name: 'classic + 3 orders per turn', rules: classicWith({ activations: 3 }) },
-        { name: 'complete (all mechanics)', rules: 'complete' },
-        { name: 'orders (complete + 2 orders)', rules: 'orders' },
-        { name: 'orders, 3 orders per turn', rules: ordersWith({ activations: 3 }) },
-        { name: 'orders, doomstar instead of points', rules: ordersWith({ stars: 'doomstar' }) },
-        { name: 'orders, no star scoring', rules: ordersWith({ stars: 'none' }) },
-      ],
-    },
-    strategies: {
-      label: 'Strategies: every bot pairing, seats alternate',
-      experiments: ['classic', 'orders'].flatMap((preset) => matchups(preset, preset)),
+      label: 'Smoke test: balanced mirror',
+      experiments: [{ name: 'doomstar: balanced mirror', rules: 'doomstar' }],
     },
     doomstar: {
-      label: 'Doomstar rules: bot matchups and unit value',
-      experiments: [...matchups('doomstar', 'doomstar'), ...unitRemovals('doomstar', 'doomstar')],
+      label: 'Doomstar: bot matchups, ship value and rule variants',
+      experiments: [...matchups('doomstar', 'doomstar'), ...unitRemovals('doomstar', 'doomstar'), ...VARIANTS],
     },
-    field: {
-      label: 'Field map: bot matchups, unit value and variants',
-      experiments: [
-        ...matchups('field', 'field'),
-        ...unitRemovals('field', 'field'),
-        { name: 'field, 3 orders', rules: { preset: 'field', activations: 3 } },
-        { name: 'field, stars not contested', rules: { preset: 'field', contestedStars: false } },
-        { name: 'field, Nova blast 2', rules: { preset: 'field', unitOverrides: { nova: { splash: 2 } } } },
-      ],
+    matchups: {
+      label: 'Bot matchups (seats alternate)',
+      experiments: matchups('doomstar', 'doomstar'),
     },
-    compact: {
-      label: 'Compact map: Outpost 11x11 variants',
-      experiments: [
-        { name: 'classic on outpost', rules: classicWith({ map: 'outpost' }) },
-        { name: 'complete on outpost', rules: { preset: 'complete', map: 'outpost' } },
-        { name: 'orders on outpost', rules: ordersWith({ map: 'outpost' }) },
-        { name: 'outpost, 1 order per turn', rules: ordersWith({ map: 'outpost', activations: 1 }) },
-        { name: 'outpost, 3 orders per turn', rules: ordersWith({ map: 'outpost', activations: 3 }) },
-        { name: 'outpost, no star scoring', rules: ordersWith({ map: 'outpost', stars: 'none' }) },
-        { name: 'outpost, doomstar', rules: ordersWith({ map: 'outpost', stars: 'doomstar' }) },
-        { name: 'outpost, star target 8', rules: ordersWith({ map: 'outpost', starTarget: 8 }) },
-        { name: 'outpost, star target 16', rules: ordersWith({ map: 'outpost', starTarget: 16 }) },
-        { name: 'outpost, Command moves 1', rules: ordersWith({ map: 'outpost', unitOverrides: { command: { move: 1 } } }) },
-        { name: 'orders (crucible), Command moves 1', rules: ordersWith({ unitOverrides: { command: { move: 1 } } }) },
-      ],
-    },
-    candidates: {
-      label: 'Candidates: first-move edge, win condition, slow units',
-      experiments: [
-        { name: 'orders + points', rules: 'orders' },
-        { name: 'orders + points, P1 opens with 1 order', rules: ordersWith({ firstTurnOrders: 1 }) },
-        { name: 'orders + doomstar', rules: ordersWith({ stars: 'doomstar' }) },
-        { name: 'doomstar, P1 opens with 1 order', rules: ordersWith({ stars: 'doomstar', firstTurnOrders: 1 }) },
-        { name: 'doomstar, charge 4', rules: ordersWith({ stars: 'doomstar', doomstarCharge: 4 }) },
-        { name: 'doomstar, charge 8', rules: ordersWith({ stars: 'doomstar', doomstarCharge: 8 }) },
-        { name: 'doomstar, Guard moves 2', rules: ordersWith({ stars: 'doomstar', unitOverrides: { guard: { move: 2 } } }) },
-        { name: 'doomstar, Prism moves 2', rules: ordersWith({ stars: 'doomstar', unitOverrides: { prism: { move: 2 } } }) },
-        { name: 'doomstar, Scout moves 2', rules: ordersWith({ stars: 'doomstar', unitOverrides: { scout: { move: 2 } } }) },
-        { name: 'doomstar, 3 orders', rules: ordersWith({ stars: 'doomstar', activations: 3 }) },
-        { name: 'outpost + doomstar', rules: ordersWith({ map: 'outpost', stars: 'doomstar' }) },
-        { name: 'outpost + doomstar, P1 opens with 1 order', rules: ordersWith({ map: 'outpost', stars: 'doomstar', firstTurnOrders: 1 }) },
-        { name: 'outpost + points, P1 opens with 1 order', rules: ordersWith({ map: 'outpost', firstTurnOrders: 1 }) },
-        { name: 'outpost + doomstar, 3 orders', rules: ordersWith({ map: 'outpost', stars: 'doomstar', activations: 3 }) },
-        { name: 'points, contested stars', rules: ordersWith({ contestedStars: true }) },
-        { name: 'doomstar, contested stars', rules: ordersWith({ stars: 'doomstar', contestedStars: true }) },
-        { name: 'doomstar, contested, P1 opens with 1', rules: ordersWith({ stars: 'doomstar', contestedStars: true, firstTurnOrders: 1 }) },
-        { name: 'outpost + doomstar, contested stars', rules: ordersWith({ map: 'outpost', stars: 'doomstar', contestedStars: true }) },
-        { name: 'outpost + doomstar, Prism damage 1', rules: ordersWith({ map: 'outpost', stars: 'doomstar', unitOverrides: { prism: { damage: 1 } } }) },
-        { name: 'outpost + doomstar, Prism range 2', rules: ordersWith({ map: 'outpost', stars: 'doomstar', unitOverrides: { prism: { range: 2 } } }) },
-        {
-          name: 'outpost + doomstar, contested, P1 opens 1, Prism range 2',
-          rules: ordersWith({ map: 'outpost', stars: 'doomstar', contestedStars: true, firstTurnOrders: 1, unitOverrides: { prism: { range: 2 } } }),
-        },
-      ],
-    },
-    units: {
-      label: 'Unit value: remove one unit from one side (orders rules)',
-      experiments: [{ name: 'orders baseline', rules: 'orders' }, ...unitRemovals('orders', 'orders')],
+    variants: {
+      label: 'Rule variants (balanced mirror)',
+      experiments: [{ name: 'baseline', rules: 'doomstar' }, ...VARIANTS],
     },
   };
 
   function normalise(experiment) {
     return {
       name: experiment.name || 'Experiment',
-      rules: experiment.rules || 'classic',
+      rules: experiment.rules || 'doomstar',
       p1: experiment.p1 || 'balanced',
       p2: experiment.p2 || 'balanced',
       swapSeats: Boolean(experiment.swapSeats),
@@ -184,7 +120,7 @@
     let attacks = 0;
     let moves = 0;
     let ms = 0;
-    let starPoints = 0;
+    let shots = 0;
     let survivors = 0;
 
     for (const r of results) {
@@ -198,7 +134,7 @@
       if (r.summary.firstKillTurn !== null) firstKillRounds.push(Math.ceil(r.summary.firstKillTurn / 2));
       attacks += r.summary.attacks;
       moves += r.summary.moves;
-      starPoints += r.summary.starPoints.p1 + r.summary.starPoints.p2;
+      shots += r.summary.doomstarShots.p1 + r.summary.doomstarShots.p2;
       survivors += r.survivors.p1 + r.survivors.p2;
       ms += r.ms;
       for (const player of D.PLAYERS) {
@@ -247,7 +183,7 @@
       attacksPerGame: round(attacks / n),
       movesPerGame: round(moves / n),
       actionsPerTurn: round((attacks + moves) / rounds.reduce((s, v) => s + 2 * v, 0), 2),
-      starPointsPerGame: round(starPoints / n),
+      doomstarShotsPerGame: round(shots / n),
       survivorsPerGame: round(survivors / n),
       units: unitReport,
       msPerGame: round(ms / n, 0),
@@ -284,14 +220,14 @@
   // Headless
 
   function parseRulesParam(value) {
-    if (!value) return 'classic';
+    if (!value) return 'doomstar';
     return value.trim().startsWith('{') ? JSON.parse(value) : value;
   }
 
-  // Text map: Player 1 units are capitals, Player 2 lower case; # wall, % asteroid, * star.
+  // Text map: Player 1 ship centres are capitals, Player 2 lower case; # wall, % asteroid, * star, @ Doomstar.
   function asciiBoard(state) {
-    const letters = { scout: 's', guard: 'g', lancer: 'l', orbiter: 'o', prism: 'p', nova: 'n', command: 'c' };
-    const terrain = { empty: '.', wall: '#', asteroid: '%', star: '*' };
+    const letters = { scout: 's', guard: 'g', lancer: 'l', prism: 'p', nova: 'n', command: 'c' };
+    const terrain = { empty: '.', wall: '#', asteroid: '%', star: '*', doomstar: '@' };
     const lines = [`   ${Array.from({ length: state.size }, (_, x) => x % 10).join(' ')}`];
     for (let y = 0; y < state.size; y += 1) {
       const row = [];
@@ -371,14 +307,12 @@
 
   function initPage() {
     const $ = (id) => document.getElementById(id);
-    const rulesSelect = $('labRules');
     const suiteSelect = $('labSuite');
     const progress = $('labProgress');
     const tableEl = $('labTable');
     const unitsEl = $('labUnits');
     const rows = [];
 
-    for (const [key, preset] of Object.entries(D.RULESETS)) rulesSelect.add(new Option(preset.label, key));
     for (const select of [$('labP1'), $('labP2')]) {
       for (const [key, persona] of Object.entries(AI.PERSONAS)) select.add(new Option(persona.label, key));
     }
@@ -461,7 +395,7 @@
         progress.textContent = `Rule overrides are not valid JSON: ${error.message}`;
         return;
       }
-      const preset = rulesSelect.value;
+      const preset = 'doomstar';
       const rules = Object.keys(overrides).length ? { preset, ...overrides } : preset;
       run([{
         name: Object.keys(overrides).length ? `${preset} + ${JSON.stringify(overrides)}` : preset,

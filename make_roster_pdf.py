@@ -1,32 +1,41 @@
-"""Write roster.pdf, a one-page printable unit reference (field-map stats).
+"""Write roster.pdf, a one-page printable unit reference.
 
-Keep UNITS in sync with FIELD_STATS and UNIT_TYPES in engine.js. PDF strings must not contain
-unbalanced parentheses or backslashes.
+Keep UNITS and DOOMSTAR in sync with UNIT_TYPES and DEFAULT_RULES in engine.js. PDF strings must not
+contain unbalanced parentheses or backslashes.
 """
 from pathlib import Path
 
+DOOMSTAR = [
+    "Charge: at the end of your turn, each star held by a Guard, Lancer, Prism or Nova adds 1 charge.",
+    "Fire: at 4 charge, one of those ships inside the Doomstar fires instead of attacking: 2 damage to the enemy Command.",
+    "Contest: an enemy ship at close range, Scouts included, stops a star from charging and a gunner from firing.",
+]
+
 UNITS = [
     ("Command", "Move 0 | Range 1.5 | HP 5 | Damage 1 | Armor 1 | Size 2",
-     "The command star. Lose it and the battle collapses."),
+     "Your command star. It cannot move. Lose it and you lose the battle."),
     ("Guard", "Move 4.5 | Range 1.5 | HP 3 | Damage 2 | Armor 1 | Size 1.4",
-     "Frontline defender with extra health and armor."),
-    ("Scout", "Move 9 | Range 1.5 | HP 2 | Damage 1 | Armor 0 | Size 0.9",
-     "Fast recon unit that can move far and dart into weak points."),
+     "Armored frontline defender with extra health. Doomstar crew."),
+    ("Scout", "Move 9 | Range 3 | HP 2 | Damage 1 | Armor 0 | Size 0.9",
+     "Fast raider that harasses from short range and contests enemy stars. Cannot charge or fire."),
     ("Lancer", "Move 6 | Range 5 | HP 2 | Damage 2 | Armor 0 | Size 1.1",
-     "Long-range skirmisher that strikes from a distance."),
-    ("Prism", "Move 3 | Range 8 | HP 2 | Damage 2 | Armor 0 | Size 1.2",
-     "Beam artillery: needs a clear lane and ignores armor."),
-    ("Nova", "Move 4.5 | Range 7 | HP 2 | Damage 1 | Blast 3.5 | Size 1.2",
-     "Splash artillery: its blast also hits every enemy close to the target."),
-    ("Orbiter", "Move 6 | Range 1.5 | HP 2 | Damage 1 | Field 4 | Size 0.8",
-     "Small science vessel that projects a cloaking field over nearby allies."),
+     "Mid-range skirmisher that strikes from a distance. Doomstar crew."),
+    ("Prism", "Move 2.5 | Range 8 | HP 2 | Damage 2 | Armor 0 | Size 1.2",
+     "Slow beam artillery with the longest range. Ignores armor. Doomstar crew."),
+    ("Nova", "Move 3.5 | Range 7 | HP 2 | Damage 1 | Blast 3.5 | Size 1.2",
+     "Slow splash artillery: its blast also hits every enemy close to the target. Doomstar crew."),
 ]
 
 content_lines = [
     "BT /F1 24 Tf 72 760 Td (Doomstar Unit Guide) Tj ET",
-    "BT /F1 11 Tf 72 736 Td (Field stats in fine tiles, 3 fine tiles = 1 original tile. Range is measured hull to hull.) Tj ET",
+    "BT /F1 11 Tf 72 736 Td (Distances in board tiles, 33 across. Range is measured hull to hull.) Tj ET",
+    "BT /F1 14 Tf 72 706 Td (The Doomstar) Tj ET",
 ]
-y = 700
+y = 690
+for line in DOOMSTAR:
+    content_lines.append(f"BT /F1 10 Tf 72 {y} Td ({line}) Tj ET")
+    y -= 14
+y -= 20
 for name, stats, text in UNITS:
     content_lines += [
         f"BT /F1 13 Tf 72 {y} Td ({name}) Tj ET",
@@ -64,6 +73,6 @@ pdf.extend(
     f"trailer\n<< /Size {len(objects) + 1} /Root 1 0 R >>\nstartxref\n{xref_start}\n%%EOF\n".encode("latin1")
 )
 
-output_path = Path("roster.pdf")
+output_path = Path(__file__).resolve().with_name("roster.pdf")
 output_path.write_bytes(pdf)
-print(f"Created {output_path.resolve()}")
+print(f"Created {output_path}")

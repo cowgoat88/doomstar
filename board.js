@@ -1,16 +1,16 @@
 /*
  * Battlefield rendering shared by the game (game.js) and the AI arena (arena.js).
  *
- * Draws a tile-free SVG board: terrain shapes, star zones, ships sized by their footprint,
- * range circles for the selected unit, and effects for the last actions. The rules stay
- * grid-based; clicks snap to the nearest legal tile. Requires engine.js; exposes `window.DoomstarBoard`.
+ * Draws a tile-free SVG board: terrain shapes, charging stars, the Doomstar, ships sized by
+ * their footprint, the selected ship's move and attack areas (shaped by terrain) and effects
+ * for the last actions. The rules stay grid-based; clicks snap to the nearest legal spot.
+ * Requires engine.js; exposes `window.DoomstarBoard`.
  */
 (function (root) {
   'use strict';
 
   const D = root.Doomstar;
-  // Ship sizes on tile maps, where footprints are one tile.
-  const TILE_RADIUS = { scout: 0.32, guard: 0.4, lancer: 0.34, orbiter: 0.26, prism: 0.36, nova: 0.36, command: 0.46 };
+  const SNAP_TOLERANCE = 1.6;
 
   function starPath(points, outer, inner) {
     const corners = [];
@@ -28,20 +28,13 @@
     guard: '<path d="M0.95 0 L0.48 0.85 L-0.48 0.85 L-0.95 0 L-0.48 -0.85 L0.48 -0.85 Z"/>'
       + '<path class="detail" d="M0.45 0 L0.22 0.4 L-0.22 0.4 L-0.45 0 L-0.22 -0.4 L0.22 -0.4 Z"/>',
     lancer: '<path d="M1 0 L-0.15 0.45 L-0.95 0.2 L-0.95 -0.2 L-0.15 -0.45 Z"/><path class="detail" d="M0.85 0 L-0.7 0"/>',
-    // Small science vessel: round hull, sensor ring and two solar panels.
-    orbiter: '<rect class="panel" x="-0.22" y="-1" width="0.44" height="0.4" rx="0.06"/>'
-      + '<rect class="panel" x="-0.22" y="0.6" width="0.44" height="0.4" rx="0.06"/>'
-      + '<ellipse class="ring" rx="0.95" ry="0.32"/><circle r="0.42"/><circle class="detail" cx="0.12" r="0.15"/>',
     prism: '<path d="M1 0 L0 0.64 L-1 0 L0 -0.64 Z"/><path class="detail" d="M1 0 L-1 0 M0 0.64 L0 -0.64"/>',
-    // Splash artillery: round mortar body with a short barrel.
     nova: '<path d="M0.5 -0.3 L1 -0.17 L1 0.17 L0.5 0.3 Z"/><circle r="0.74"/><circle class="detail" r="0.36"/>',
-    // Command star: eight-pointed star with a glowing core.
-    command: `<path d="${starPath(8, 1, 0.52)}"/><circle class="core" r="0.32"/>`,
+    command: `<path d="${starPath(5, 1, 0.45)}"/>`,
   };
 
-  const isField = (state) => state.metric === 'euclidean';
-  const shipRadius = (state, unit) => (isField(state) ? unit.radius : TILE_RADIUS[unit.type]);
   const px = (value) => (value + 0.5).toFixed(2);
+  const num = (value) => +value.toFixed(2);
 
   function isSpent(state, unit) {
     if (state.winner || unit.player !== state.currentPlayer) return false;
@@ -58,25 +51,7 @@
     return { p1: angle, p2: angle + 180 };
   }
 
-  function starfield(size) {
-    let seed = 20260912;
-    const rand = () => {
-      seed = (seed * 16807) % 2147483647;
-      return seed / 2147483647;
-    };
-    let dots = '';
-    for (let i = 0; i < 120; i += 1) {
-      const r = (0.015 + rand() * 0.04) * (size / 15);
-      dots += `<circle class="speck" cx="${(rand() * size).toFixed(2)}" cy="${(rand() * size).toFixed(2)}" r="${r.toFixed(3)}"/>`;
-    }
-    return dots;
-  }
-
   function terrainMarkup(entry, kind) {
-    if (Array.isArray(entry)) {
-      const [x, y] = entry;
-      return `<rect class="${kind}" x="${x + 0.06}" y="${y + 0.06}" width="0.88" height="0.88" rx="0.2"/>`;
-    }
     if (entry.rect) {
       const [x, y, w, h] = entry.rect;
       return `<rect class="${kind}" x="${x}" y="${y}" width="${w}" height="${h}" rx="0.7"/>`;
@@ -85,21 +60,103 @@
     return `<circle class="${kind}" cx="${px(cx)}" cy="${px(cy)}" r="${r + 0.5}"/>`;
   }
 
-  // Circle on field maps, diamond on tile maps, centred on a unit.
-  function rangeShape(state, unit, cls, radius) {
-    const cx = unit.x + 0.5;
-    const cy = unit.y + 0.5;
-    if (isField(state)) return `<circle class="${cls}" cx="${cx}" cy="${cy}" r="${radius}"/>`;
-    const r = radius + 0.5;
-    return `<polygon class="${cls}" points="${cx},${cy - r} ${cx + r},${cy} ${cx},${cy + r} ${cx - r},${cy}"/>`;
+  function starMarkup(state, star) {
+    const holder = D.starHolder(state, star);
+    const r = star.r + 0.5;
+    return `<g class="star${holder ? ` held-${holder.player}` : ''}" transform="translate(${px(star.x)} ${px(star.y)})">`
+      + `<circle class="star-zone" r="${r}"/><path class="star-core" d="${starPath(4, r * 0.45, r * 0.12)}"/></g>`;
   }
 
-  function unitMarkup(state, unit, ring, facing) {
+  function doomstarMarkup(state) {
+    const zone = state.doomstar;
+    const r = zone.r + 0.5;
+    const inner = num(r * 0.3);
+    const armed = D.PLAYERS.filter((p) => D.doomstarReady(state, p)).map((p) => ` armed-${p}`).join('');
+    return `<g class="doomstar${armed}" transform="translate(${px(zone.x)} ${px(zone.y)})">`
+      + `<circle class="doomstar-zone" r="${r}"/><circle class="doomstar-ring" r="${num(r * 0.6)}"/>`
+      + `<path class="doomstar-cross" d="M${-r} 0H${-inner}M${inner} 0H${r}M0 ${-r}V${-inner}M0 ${inner}V${r}"/>`
+      + `<circle class="doomstar-core" r="${num(r * 0.16)}"/></g>`;
+  }
+
+  // Fill and outline of the cells whose value is positive, traced between cell centres (marching
+  // squares). Edges are placed by linear interpolation, so circular limits stay round.
+  function areaPaths(size, values) {
+    const at = (x, y) => (x < 0 || y < 0 || x >= size || y >= size ? -1 : values[y * size + x]);
+    const fill = [];
+    const edge = [];
+    for (let y = -1; y < size; y += 1) {
+      let run = null;
+      for (let x = -1; x <= size; x += 1) {
+        const v = [at(x, y), at(x + 1, y), at(x + 1, y + 1), at(x, y + 1)];
+        const inside = v.map((value) => value > 0);
+        if (inside.every(Boolean)) {
+          if (run === null) run = x;
+          continue;
+        }
+        if (run !== null) {
+          fill.push(`M${run + 0.5} ${y + 0.5}h${x - run}v1h${run - x}z`);
+          run = null;
+        }
+        if (!inside.some(Boolean)) continue;
+        const corners = [[x, y], [x + 1, y], [x + 1, y + 1], [x, y + 1]];
+        const points = [];
+        for (let i = 0; i < 4; i += 1) {
+          const j = (i + 1) % 4;
+          const [ax, ay] = corners[i];
+          if (inside[i]) points.push({ x: ax + 0.5, y: ay + 0.5, edge: false });
+          if (inside[i] !== inside[j]) {
+            const t = v[i] / (v[i] - v[j]);
+            points.push({ x: ax + (corners[j][0] - ax) * t + 0.5, y: ay + (corners[j][1] - ay) * t + 0.5, edge: true });
+          }
+        }
+        fill.push(`M${points.map((p) => `${num(p.x)} ${num(p.y)}`).join('L')}z`);
+        points.forEach((p, k) => {
+          const q = points[(k + 1) % points.length];
+          if (p.edge && q.edge) edge.push(`M${num(p.x)} ${num(p.y)}L${num(q.x)} ${num(q.y)}`);
+        });
+      }
+    }
+    return { fill: fill.join(''), edge: edge.join('') };
+  }
+
+  function areaMarkup(cls, size, values) {
+    const { fill, edge } = areaPaths(size, values);
+    return `<path class="${cls}-fill" d="${fill}"/><path class="${cls}-edge" d="${edge}"/>`;
+  }
+
+  // Values for `areaPaths`: positive (distance to the limit, capped at 1) where the ship can go or hit,
+  // the negative overshoot just outside the circle, and -1 where terrain or ships cut the area.
+  function circleValues(state, unit, radius, isOpen) {
+    const { size } = state;
+    const values = new Float32Array(size * size).fill(-1);
+    const span = Math.ceil(radius) + 1;
+    for (let y = Math.max(0, unit.y - span); y <= Math.min(size - 1, unit.y + span); y += 1) {
+      for (let x = Math.max(0, unit.x - span); x <= Math.min(size - 1, unit.x + span); x += 1) {
+        const slack = radius - Math.hypot(x - unit.x, y - unit.y);
+        if (slack < 0) values[y * size + x] = Math.max(-1, slack);
+        else if ((x === unit.x && y === unit.y) || isOpen(x, y)) values[y * size + x] = Math.min(1, Math.max(0.05, slack));
+      }
+    }
+    return values;
+  }
+
+  function moveArea(state, unit, moves) {
+    const open = new Set(moves.map((c) => c.y * state.size + c.x));
+    return areaMarkup('move-area', state.size, circleValues(state, unit, unit.move, (x, y) => open.has(y * state.size + x)));
+  }
+
+  // Where shots can land from the ship's current spot; walls cast shadows beyond close range.
+  function attackArea(state, unit) {
+    const isOpen = (x, y) => D.terrainAt(state, x, y) !== 'wall' && D.canFireAt(state, unit, unit.x, unit.y, x, y);
+    return areaMarkup('attack-area', state.size, circleValues(state, unit, unit.radius + unit.range, isOpen));
+  }
+
+  function unitMarkup(unit, ring, facing, spent) {
     // Hulls are drawn slightly larger than their footprint so small ships stay readable.
-    const r = shipRadius(state, unit) * (isField(state) ? 1.15 : 1);
-    const badge = isField(state) ? 0.42 : 0.15;
+    const r = unit.radius * 1.15;
+    const badge = 0.42;
     const label = `${D.PLAYER_NAMES[unit.player]} ${D.UNIT_TYPES[unit.type].label}, ${unit.hp}/${unit.maxHp} HP`;
-    return `<g class="unit ${unit.player} ${unit.type}${isSpent(state, unit) ? ' spent' : ''}" transform="translate(${px(unit.x)} ${px(unit.y)})">`
+    return `<g class="unit ${unit.player} ${unit.type}${spent ? ' spent' : ''}" transform="translate(${px(unit.x)} ${px(unit.y)})">`
       + (ring ? `<circle class="${ring}" r="${(r + badge).toFixed(2)}"/>` : '')
       + `<g class="hull" transform="rotate(${facing.toFixed(1)}) scale(${r})">${SHAPES[unit.type]}</g>`
       + `<g class="hp" transform="translate(${(r * 0.8).toFixed(2)} ${(-r * 0.8).toFixed(2)})">`
@@ -115,51 +172,40 @@
     const events = view.events || [];
     const selected = view.selectedId ? D.getUnit(state, view.selectedId) : null;
     const targets = new Set((view.targets || []).map((u) => u.id));
-    const under = [];
+    const under = [`<rect class="space" width="${size}" height="${size}"/>`];
     const over = [];
 
-    under.push(`<rect class="space" width="${size}" height="${size}"/>`, starfield(size));
-    state.stars.forEach((star) => {
-      const holder = D.starHolder(state, star);
-      const r = star.r ? star.r + 0.5 : 0.42;
-      under.push(`<circle class="star-zone${holder ? ` held-${holder.player}` : ''}" cx="${px(star.x)}" cy="${px(star.y)}" r="${r}"/>`);
-      under.push(`<circle class="star-core" cx="${px(star.x)}" cy="${px(star.y)}" r="${(r * 0.28).toFixed(2)}"/>`);
-    });
+    for (const star of state.stars) under.push(starMarkup(state, star));
+    under.push(doomstarMarkup(state));
     for (const entry of map.asteroids) under.push(terrainMarkup(entry, 'asteroid'));
     for (const entry of map.walls) under.push(terrainMarkup(entry, 'wall'));
 
-    if (state.rules.cloak === 'field') {
-      for (const u of state.units) {
-        if (u.type === 'orbiter') under.push(rangeShape(state, u, `cloak ${u.player}`, u.field));
-      }
-    }
     if (selected) {
-      if (view.moves && view.moves.length) under.push(rangeShape(state, selected, 'move-range', selected.move));
-      if (!selected.attacked && D.canActivate(state, selected)) {
-        under.push(rangeShape(state, selected, 'attack-range', (selected.radius || 0) + selected.range));
-      }
+      if (!selected.attacked && D.canActivate(state, selected)) under.push(attackArea(state, selected));
+      if (view.moves && view.moves.length) under.push(moveArea(state, selected, view.moves));
     }
 
+    const line = (cls, from, to) => `<line class="${cls}" x1="${px(from.x)}" y1="${px(from.y)}" x2="${px(to.x)}" y2="${px(to.y)}"/>`;
     for (const e of events) {
       if (e.type === 'move') {
-        under.push(`<line class="trail ${e.player}" x1="${px(e.from.x)}" y1="${px(e.from.y)}" x2="${px(e.to.x)}" y2="${px(e.to.y)}"/>`);
+        under.push(line(`trail ${e.player}`, e.from, e.to));
       } else if (e.type === 'attack') {
-        over.push(`<line class="beam ${e.player}" x1="${px(e.from.x)}" y1="${px(e.from.y)}" x2="${px(e.to.x)}" y2="${px(e.to.y)}"/>`);
-        if (e.splash) over.push(`<circle class="blast" cx="${px(e.to.x)}" cy="${px(e.to.y)}" r="${isField(state) ? e.splash : e.splash + 0.5}"/>`);
+        over.push(line(`beam ${e.player}`, e.from, e.to));
+        if (e.splash) over.push(`<circle class="blast" cx="${px(e.to.x)}" cy="${px(e.to.y)}" r="${e.splash}"/>`);
       } else if (e.type === 'doomstar') {
-        over.push(`<circle class="doomstar-hit" cx="${px(e.to.x)}" cy="${px(e.to.y)}" r="${isField(state) ? 3.5 : 0.8}"/>`);
+        over.push(line('doomstar-beam', e.from, e.to));
+        over.push(`<circle class="doomstar-hit" cx="${px(e.to.x)}" cy="${px(e.to.y)}" r="3.5"/>`);
       }
       if (e.type === 'attack' || e.type === 'splash' || e.type === 'doomstar') {
-        const fontSize = isField(state) ? 1.8 : 0.45;
-        over.push(`<text class="float${e.killed ? ' kill' : ''}" x="${px(e.to.x)}" y="${(e.to.y + 0.5 - fontSize * 0.6).toFixed(2)}" font-size="${fontSize}">${e.killed ? 'KO' : `-${e.damage}`}</text>`);
+        over.push(`<text class="float${e.killed ? ' kill' : ''}" x="${px(e.to.x)}" y="${(e.to.y - 0.6).toFixed(2)}" font-size="1.8">${e.killed ? 'KO' : `-${e.damage}`}</text>`);
       }
     }
 
     const units = state.units.map((u) => {
       const ring = u === selected ? 'select-ring' : targets.has(u.id) ? 'target-ring' : '';
-      return unitMarkup(state, u, ring, facing[u.player]);
+      return unitMarkup(u, ring, facing[u.player], isSpent(state, u));
     });
-    const ghostRadius = selected ? shipRadius(state, selected) : 0.4;
+    const ghostRadius = selected ? selected.radius : 0.4;
 
     boardEl.innerHTML = `<svg class="battlefield${view.onBoardClick ? ' interactive' : ''}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Battlefield">`
       + `${under.join('')}${units.join('')}${over.join('')}<circle class="ghost" cx="-10" cy="-10" r="${ghostRadius}"/></svg>`;
@@ -175,7 +221,6 @@
     }
     const svg = boardEl.firstElementChild;
     const ghost = svg.querySelector('.ghost');
-    const tolerance = isField(state) ? 1.6 : 0.75;
     const toBoard = (event) => {
       const rect = svg.getBoundingClientRect();
       return {
@@ -185,7 +230,7 @@
     };
     const nearestMove = (point) => {
       let best = null;
-      let bestDistance = tolerance;
+      let bestDistance = SNAP_TOLERANCE;
       for (const cell of view.moves || []) {
         const d = Math.hypot(cell.x - point.x, cell.y - point.y);
         if (d <= bestDistance) {
@@ -195,18 +240,15 @@
       }
       return best;
     };
-    const unitAtPoint = (point) => (isField(state)
-      ? D.unitNear(state, point.x, point.y)
-      : D.unitAt(state, Math.round(point.x), Math.round(point.y)));
 
     boardEl.onclick = (event) => {
       const point = toBoard(event);
-      const unit = unitAtPoint(point);
+      const unit = D.unitNear(state, point.x, point.y);
       view.onBoardClick({ ...point, unit, move: unit ? null : nearestMove(point) });
     };
     boardEl.onmousemove = (event) => {
       const point = toBoard(event);
-      const cell = selected && !unitAtPoint(point) ? nearestMove(point) : null;
+      const cell = selected && !D.unitNear(state, point.x, point.y) ? nearestMove(point) : null;
       ghost.setAttribute('cx', cell ? cell.x + 0.5 : -10);
       ghost.setAttribute('cy', cell ? cell.y + 0.5 : -10);
     };
@@ -235,30 +277,22 @@
   }
 
   function scoreboardHtml(state) {
-    const starCount = D.starCells(state).length;
     return D.PLAYERS.map((player) => {
       const command = D.commandOf(state, player);
       const maxHp = command ? command.maxHp : D.UNIT_TYPES.command.hp;
       const hp = command ? command.hp : 0;
-      const units = state.units.filter((u) => u.player === player && u.type !== 'command');
-      const rows = [`<div class="side-stat"><span>Units</span><strong>${units.length}</strong></div>`];
-      if (state.rules.stars !== 'none') {
-        rows.push(`<div class="side-stat"><span>Stars held</span><strong>${D.starsHeld(state, player)} / ${starCount}</strong></div>`);
-      }
-      if (state.rules.stars === 'points') {
-        rows.push(`<div class="side-stat"><span>Star points</span><strong>${state.score[player]} / ${state.rules.starTarget}</strong></div>`);
-      }
-      if (state.rules.stars === 'doomstar') {
-        rows.push(`<div class="side-stat"><span>Doomstar charge</span><strong>${state.charge[player]} / ${state.rules.doomstarCharge}</strong></div>`);
-      }
+      const ships = state.units.filter((u) => u.player === player && u.type !== 'command');
+      const ready = D.doomstarReady(state, player);
       const active = !state.winner && state.currentPlayer === player ? ' active' : '';
       return `
         <div class="side-card ${player}${active}">
           <div class="side-name">${D.PLAYER_NAMES[player]}</div>
           <div class="side-stat"><span>Command</span><strong>${hp} / ${maxHp}</strong></div>
           <div class="hp-bar"><span style="width:${Math.round((100 * hp) / maxHp)}%"></span></div>
-          ${rows.join('')}
-          <div class="mini-row">${units.map((u) => unitIcon(u.type, player)).join('')}</div>
+          <div class="side-stat"><span>Ships</span><strong>${ships.length}</strong></div>
+          <div class="side-stat"><span>Stars held</span><strong>${D.starsHeld(state, player)} / ${state.stars.length}</strong></div>
+          <div class="side-stat${ready ? ' ready' : ''}"><span>Doomstar charge</span><strong>${state.charge[player]} / ${state.rules.doomstarCharge}${ready ? ' ready' : ''}</strong></div>
+          <div class="mini-row">${ships.map((u) => unitIcon(u.type, player)).join('')}</div>
         </div>`;
     }).join('');
   }
@@ -269,59 +303,49 @@
     return `<strong>${title}</strong><span>${detail}</span><span class="muted">Round ${Math.ceil(state.turn / 2)}${extra}</span>`;
   }
 
+  // "Guards, Lancers, Prisms or Novas"
+  function crewText(rules) {
+    const names = rules.crew.map((type) => `${D.UNIT_TYPES[type].label}s`);
+    return names.length < 2 ? names.join('') : `${names.slice(0, -1).join(', ')} or ${names[names.length - 1]}`;
+  }
+
+  // The Doomstar objective in three steps (rules panel and unit guide).
+  function doomstarSteps(rules) {
+    const crew = crewText(rules);
+    return [
+      `Charge: at the end of your turn, each star held by one of your ${crew} adds 1 Doomstar charge.`,
+      rules.doomstarNeedsCrew
+        ? `Fire: at ${rules.doomstarCharge} charge, one of your ${crew} inside the Doomstar can fire instead of attacking: ${rules.doomstarDamage} damage to the enemy Command.`
+        : `Fire: at ${rules.doomstarCharge} charge the Doomstar fires by itself: ${rules.doomstarDamage} damage to the enemy Command.`,
+      rules.contestedStars
+        ? 'Contest: an enemy ship at close range, Scouts included, stops a star from charging and a gunner from firing.'
+        : 'Contest: off. Enemy ships nearby do not stop charging or firing.',
+    ];
+  }
+
   function describeRules(rules) {
-    const field = D.MAPS[rules.map].metric === 'euclidean';
     const lines = [];
     lines.push(rules.activations
-      ? `Each turn, give orders to up to ${rules.activations} units. An ordered unit may move and attack, in either order.`
-      : 'Each turn, every unit may move once and attack once, in either order.');
+      ? `Each turn, give orders to up to ${rules.activations} ships. An ordered ship may move and attack, in either order.`
+      : 'Each turn, every ship may move once and attack once, in either order.');
     if (rules.firstTurnOrders) {
       lines.push(`Player 1 opens the match with only ${rules.firstTurnOrders} order${rules.firstTurnOrders === 1 ? '' : 's'}.`);
     }
-    if (field) {
-      lines.push('Ships move anywhere inside their green move circle, steering around walls, asteroids and enemy ships. Allies can be passed.');
-      lines.push('A target is in range when its hull is inside the red attack circle.');
-    } else {
-      lines.push(rules.pathing
-        ? `Units walk along open tiles (no diagonals). Walls${rules.asteroids === 'block' ? ', asteroids' : ''} and enemy units block movement; allies can be passed.`
-        : `Units jump to any open tile within move range, even across walls${rules.asteroids === 'block' ? ' (asteroids cannot be entered)' : ''}.`);
-    }
-    lines.push(rules.lineOfFire === 'ranged'
-      ? 'Walls block every ranged shot. Close-range attacks always land.'
-      : 'Walls block Prism beams; other units shoot over walls.');
-    if (rules.armor) lines.push('Armor reduces damage taken (minimum 1). Prism beams ignore armor.');
-    lines.push('Nova blasts also hit every enemy inside the blast circle around the target.');
-    if (rules.cloak === 'field') {
-      lines.push('Orbiter field: ships inside an Orbiter\'s field can only be attacked at close range.');
-    }
-    if (rules.stars === 'points') {
-      lines.push(`Stars: at the end of your turn, score 1 point per star you hold. First to ${rules.starTarget} points wins.`);
-    } else if (rules.stars === 'doomstar') {
-      lines.push(`Doomstar: at the end of your turn, gain 1 charge per star you hold. At ${rules.doomstarCharge} charge it fires for ${rules.doomstarDamage} damage on the enemy Command.`);
-    }
-    if (rules.stars !== 'none' && rules.contestedStars) {
-      lines.push('A star does not count while an enemy ship is at close range of its holder.');
-    }
+    lines.push('Ships move anywhere inside their green area, steering around walls, asteroids and enemy ships. Allies can be passed.');
+    lines.push('A target is in range when its hull touches the red area. Walls block shots beyond close range; asteroids do not.');
+    lines.push('Armor reduces damage taken (minimum 1). Prism beams ignore armor. Nova blasts also hit enemies close to the target.');
+    lines.push(...doomstarSteps(rules));
     lines.push('Destroy the enemy Command to win.');
-    lines.push(`After ${Math.ceil(rules.turnLimit / 2)} rounds the match ends${rules.stars === 'points' ? '; most star points wins' : ' in a draw'}.`);
+    lines.push(`After ${Math.ceil(rules.turnLimit / 2)} rounds the match ends in a draw.`);
     return lines;
   }
 
   function abilityText(rules, type) {
-    switch (type) {
-      case 'orbiter':
-        return rules.cloak === 'field'
-          ? 'Science vessel: allies inside its field can only be attacked at close range.'
-          : 'Science vessel. (Cloaking field is off in this ruleset.)';
-      case 'prism':
-        return `Beam artillery: needs a clear lane${rules.armor ? ' and ignores armor' : ''}.`;
-      case 'guard':
-        return rules.armor ? 'Armored frontline defender.' : 'Frontline defender. (Armor is off in this ruleset.)';
-      case 'command':
-        return rules.armor ? 'The command star (armored). Lose it and the battle collapses.' : D.UNIT_TYPES.command.ability;
-      default:
-        return D.UNIT_TYPES[type].ability;
-    }
+    const base = D.UNIT_TYPES[type].ability;
+    if (type === 'command') return base;
+    return rules.crew.includes(type)
+      ? `${base} Doomstar crew: charges stars and fires the Doomstar.`
+      : `${base} Cannot charge stars or fire the Doomstar.`;
   }
 
   root.DoomstarBoard = {
@@ -331,6 +355,8 @@
     renderTurnBanner,
     scoreboardHtml,
     winnerBannerHtml,
+    crewText,
+    doomstarSteps,
     describeRules,
     abilityText,
   };

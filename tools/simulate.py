@@ -6,12 +6,12 @@ collects the JSON each process writes into the page.
 
 Usage:
     python tools/simulate.py --suite smoke --games 10
-    python tools/simulate.py --suite rulesets --games 200 --parallel 4
+    python tools/simulate.py --suite doomstar --games 200 --parallel 6
     python tools/simulate.py --config my_experiments.json --games 100
-    python tools/simulate.py --narrate --rules orders --p1 rusher --p2 turtle --seed 3
+    python tools/simulate.py --narrate --p1 rusher --p2 turtle --seed 3
 
 A config file is a JSON array of experiments:
-    [{"name": "orders, 3 activations", "rules": {"preset": "orders", "activations": 3},
+    [{"name": "charge 3", "rules": {"preset": "doomstar", "doomstarCharge": 3},
       "p1": "balanced", "p2": "balanced", "swapSeats": false}]
 """
 
@@ -81,7 +81,7 @@ def run_lab(browser, params, timeout):
 def print_table(results):
     header = (
         f"{'experiment':46} {'games':>5} {'P1%':>6} {'P2%':>6} {'draw%':>6} {'A%':>6} {'B%':>6} "
-        f"{'rounds':>6} {'kill@':>6} {'ms/g':>5}  endings"
+        f"{'rounds':>6} {'kill@':>6} {'shots':>5} {'ms/g':>5}  endings"
     )
     print(header)
     print("-" * len(header))
@@ -90,7 +90,7 @@ def print_table(results):
         print(
             f"{r['name'][:46]:46} {r['games']:>5} {r['p1Win']:>6} {r['p2Win']:>6} {r['draw']:>6} "
             f"{r['botAWin']:>6} {r['botBWin']:>6} {r['roundsMedian']:>6} {str(r['firstKillRoundAvg']):>6} "
-            f"{r['msPerGame']:>5}  {endings}"
+            f"{r['doomstarShotsPerGame']:>5} {r['msPerGame']:>5}  {endings}"
         )
 
 
@@ -104,7 +104,7 @@ def main():
     parser.add_argument("--timeout", type=int, default=3600, help="seconds allowed per browser process")
     parser.add_argument("--out", type=Path, help="where to write the JSON report")
     parser.add_argument("--narrate", action="store_true", help="print a turn-by-turn log of one game instead")
-    parser.add_argument("--rules", default="classic", help="with --narrate: ruleset name or JSON rules object")
+    parser.add_argument("--rules", default="doomstar", help="with --narrate: ruleset name or JSON rules object")
     parser.add_argument("--p1", default="balanced", help="with --narrate: Player 1 persona")
     parser.add_argument("--p2", default="balanced", help="with --narrate: Player 2 persona")
     args = parser.parse_args()

@@ -20,8 +20,8 @@
     roster: $('rosterPanel'),
     rulesList: $('rulesList'),
     endTurn: $('endTurnBtn'),
+    fire: $('fireBtn'),
     newGame: $('newGameBtn'),
-    rules: $('rulesSelect'),
     opponent: $('opponentSelect'),
   };
 
@@ -33,16 +33,17 @@
   let message = '';
 
   function setup() {
-    for (const [key, preset] of Object.entries(D.RULESETS)) el.rules.add(new Option(preset.label, key));
-    el.rules.value = 'field';
     el.opponent.add(new Option('Human (hot-seat)', 'human'));
     for (const [key, persona] of Object.entries(AI.PERSONAS)) el.opponent.add(new Option(`Bot: ${persona.label}`, key));
 
     el.endTurn.addEventListener('click', () => {
       if (!isBotTurn()) perform({ type: 'endTurn' });
     });
+    el.fire.addEventListener('click', () => {
+      const selected = selectedId ? D.getUnit(state, selectedId) : null;
+      if (!isBotTurn() && D.canFireDoomstar(state, selected)) perform({ type: 'fire', unitId: selected.id });
+    });
     el.newGame.addEventListener('click', newMatch);
-    el.rules.addEventListener('change', newMatch);
     el.opponent.addEventListener('change', newMatch);
     el.roster.addEventListener('click', (event) => {
       const card = event.target.closest('[data-unit]');
@@ -53,7 +54,7 @@
 
   function newMatch() {
     clearTimeout(botTimer);
-    state = D.createGame(el.rules.value);
+    state = D.createGame('doomstar');
     bot = el.opponent.value === 'human'
       ? null
       : AI.createBot({ p2: el.opponent.value, seed: 1 + Math.floor(Math.random() * 1e9) });
@@ -92,7 +93,7 @@
     if (unit) {
       message = describeUnit(unit);
     } else {
-      message = selected ? 'Out of reach. Pick a spot inside the green circle.' : 'Select one of your ships.';
+      message = selected ? 'Out of reach. Pick a spot inside the green area.' : 'Select one of your ships.';
     }
     select(null);
   }
@@ -107,7 +108,8 @@
       } else {
         const canMove = D.legalMoves(state, unit).length > 0;
         const targets = D.legalTargets(state, unit).length;
-        message = `${label}: ${canMove ? 'click inside the green circle to move' : 'no moves left'}; ${targets} target${targets === 1 ? '' : 's'} in range.`;
+        const fireHint = D.canFireDoomstar(state, unit) ? ' In the Doomstar with full charge: press Fire Doomstar!' : '';
+        message = `${label}: ${canMove ? 'click inside the green area to move' : 'no moves left'}; ${targets} target${targets === 1 ? '' : 's'} in range.${fireHint}`;
       }
     }
     render();
@@ -115,7 +117,7 @@
 
   function describeUnit(unit) {
     const label = D.UNIT_TYPES[unit.type].label;
-    const armor = state.rules.armor && unit.armor ? `, armor ${unit.armor}` : '';
+    const armor = unit.armor ? `, armor ${unit.armor}` : '';
     return `${D.PLAYER_NAMES[unit.player]} ${label}: HP ${unit.hp}/${unit.maxHp}, move ${unit.move}, range ${unit.range}, damage ${unit.damage}${armor}. ${Board.abilityText(state.rules, unit.type)}`;
   }
 
@@ -130,7 +132,8 @@
     message = events.map(D.describeEvent).filter(Boolean).join(' ');
 
     const selected = selectedId ? D.getUnit(state, selectedId) : null;
-    if (!selected || (!D.legalMoves(state, selected).length && !D.legalTargets(state, selected).length)) {
+    if (!selected || (!D.legalMoves(state, selected).length && !D.legalTargets(state, selected).length
+      && !D.canFireDoomstar(state, selected))) {
       selectedId = null;
     }
     render();
@@ -162,6 +165,7 @@
     el.banner.hidden = !state.winner;
     if (state.winner) el.banner.innerHTML = Board.winnerBannerHtml(state);
     el.endTurn.disabled = Boolean(state.winner) || isBotTurn();
+    el.fire.disabled = isBotTurn() || !D.canFireDoomstar(state, selected);
   }
 
   function rosterHtml() {
@@ -170,7 +174,7 @@
       .filter((u) => u.player === player)
       .map((u) => {
         const label = D.UNIT_TYPES[u.type].label;
-        const armor = state.rules.armor && u.armor ? ` • Armor ${u.armor}` : '';
+        const armor = u.armor ? ` • Armor ${u.armor}` : '';
         return `
           <div class="unit-card${u.id === selectedId ? ' selected' : ''}" data-unit="${u.id}">
             <div class="info">
@@ -190,6 +194,7 @@
   function unitStatus(unit) {
     if (state.winner || unit.player !== state.currentPlayer) return '';
     if (!D.canActivate(state, unit)) return 'Waiting';
+    if (D.canFireDoomstar(state, unit)) return 'Can fire';
     const canMove = !unit.moved && unit.move > 0;
     if (canMove && !unit.attacked) return 'Ready';
     if (canMove) return 'Can move';

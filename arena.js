@@ -1,6 +1,6 @@
 /*
  * AI Arena: watch two Doomstar bots play, one action at a time.
- * URL parameters (all optional): rules (preset name or JSON rules), p1, p2, seed, speed (1-5), autoplay=1.
+ * URL parameters (all optional): rules (JSON rule overrides), p1, p2, seed, speed (1-5), autoplay=1.
  */
 (function () {
   'use strict';
@@ -15,7 +15,6 @@
   const el = {
     board: $('board'),
     banner: $('boardBanner'),
-    rules: $('rulesSelect'),
     p1: $('p1Bot'),
     p2: $('p2Bot'),
     seed: $('seedInput'),
@@ -42,19 +41,14 @@
   function setup() {
     const params = new URLSearchParams(location.search);
 
-    for (const [key, preset] of Object.entries(D.RULESETS)) el.rules.add(new Option(preset.label, key));
-    el.rules.value = 'field';
+    // Balance Lab links pass rule variants as JSON.
     const rulesParam = params.get('rules');
     if (rulesParam && rulesParam.trim().startsWith('{')) {
       try {
         customRules = JSON.parse(rulesParam);
-        el.rules.add(new Option('Custom rules (from link)', 'custom'));
-        el.rules.value = 'custom';
       } catch {
         customRules = null;
       }
-    } else if (rulesParam && D.RULESETS[rulesParam]) {
-      el.rules.value = rulesParam;
     }
 
     for (const select of [el.p1, el.p2]) {
@@ -70,7 +64,7 @@
       el.seed.value = String(randomSeed());
       newMatch();
     });
-    for (const select of [el.rules, el.p1, el.p2]) select.addEventListener('change', newMatch);
+    for (const select of [el.p1, el.p2]) select.addEventListener('change', newMatch);
     el.play.addEventListener('click', () => (playing ? pause() : play()));
     el.step.addEventListener('click', () => {
       pause();
@@ -83,7 +77,7 @@
   }
 
   function currentRules() {
-    return el.rules.value === 'custom' ? customRules : el.rules.value;
+    return customRules || 'doomstar';
   }
 
   function newMatch() {
@@ -99,11 +93,11 @@
 
   function syncUrl() {
     const params = new URLSearchParams({
-      rules: el.rules.value === 'custom' ? JSON.stringify(customRules) : el.rules.value,
       p1: el.p1.value,
       p2: el.p2.value,
       seed: String(seed),
     });
+    if (customRules) params.set('rules', JSON.stringify(customRules));
     try {
       history.replaceState(null, '', `?${params}`);
     } catch {
