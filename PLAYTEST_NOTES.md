@@ -1,190 +1,99 @@
 # Doomstar Playtest Notes
 
-Simulated playtests run by Claude Code on 2026-09-12. Raw numbers are in `sim-results/*.json`; every experiment can be re-run with `python tools/simulate.py --suite <name>` or watched in `arena.html`.
+Simulated playtests run by Claude Code with the bot in `ai.js`. Raw numbers for the current rules are in `sim-results/doomstar.json`. Re-run with `python tools/simulate.py --suite doomstar --games 200 --parallel 8`, or watch games in `arena.html`.
 
-## How the tests were run
-- **Bot:** a greedy, one-turn-lookahead player (`ai.js`). Each decision scores every legal move and attack for every unit it may order, using material, Command health, the damage enemies could deal next turn, support from allies, progress toward stars and the enemy Command.
-- **Play styles (personas):** Balanced, Rusher (charges the Command), Turtle (defends, avoids exposure) and Star Hunter (plays for stars).
-- **Sample size:** 400 games per experiment. With 400 games a win rate is accurate to about ±5 percentage points, so differences under ~5 points are noise.
+## How the tests are run
+- **Bot:** a greedy, one-turn-lookahead player. Each decision scores every legal move, attack and Doomstar shot for the ships it may order, using material, Command health, the damage enemies could deal next turn, support from allies, and progress toward stars, the Doomstar and the enemy Command.
+- **Play styles (personas):** Balanced, Rusher (charges the Command), Turtle (defends, avoids exposure) and Star Hunter (plays for the stars and the Doomstar).
+- **Sample size:** 200 games per experiment, so a win rate is accurate to about ±7 percentage points. Treat smaller differences as noise.
 - **Common seeds:** game *n* of every experiment uses the same random seed, so experiments differ only by the rule being tested.
-- **Limits of the bot:** it does not plan more than one turn ahead and it is not a strong player. Treat these results as a map of where to look, then confirm with human games. Where a result looked like a bot quirk rather than a rule effect, it is flagged.
+- **Limits of the bot:** it plans one turn ahead and is not a strong player. Results show where to look; human games decide. Results that look like bot quirks are flagged.
 
-## What is working
-- **The core loop is clear and decisive.** Under the prototype rules (Classic), 98% of bot games end with a destroyed Command, in a median of 13 rounds.
-- **The armies are fair.** Both sides get the same army rotated 180 degrees, and the Classic balanced mirror is close to even (Player 1 44.5%, Player 2 53.8%).
-- **Units read well.** The shapes and colors are easy to tell apart. Roles come through in play: Scouts raid and die (28% lost per game), Lancers do the most damage per unit, and the Command is a real target.
-- **The theme and look are strong** and match the "approachable space tactics" goal.
+## Earlier rounds (rulesets since removed)
+Rounds 1-4 tested the original tile rules and the first open-field map. Those rulesets were removed in session 3. The full write-up and raw results are in git history (commit `f77c122`). What carried forward:
+- **Waiting wins** when every unit acts each turn and nothing needs holding. Fix: 2 orders per turn plus an objective.
+- **Limiting orders without an objective stalls** into draws. Star points alone turned the game into a race with about 1 attack per game.
+- **Contested stars were the best single fix.** They removed the first-move edge and doubled the fighting.
+- **The Doomstar beat plain points:** one goal (destroy the enemy Command), with stars as the way to get there.
+- **Symmetric maps matter.** An uneven star layout alone swung games to 72/28.
+- **On tiles, only the Scout mattered.** The open field map (Round 4) made every ship fight (8.6 attacks per game) but brought back a 59/41 first-move edge. The Star Hunter dominated (beat Balanced 81-19) because stars were a short Scout run from each army. That fed operator notes round 2: Scouts no longer charge, stars moved to the flanks, and firing needs a crew ship in the center.
+- **Bugs fixed during the takeover:** the Prism line-of-sight freeze, no game over, squashed tokens, and mechanics that were described but inert.
 
-## Bugs fixed during the takeover
-| Bug | Effect | Fix |
+## Round 5: crew rules on the Proving Ground
+Rules: 2 orders per turn; Guards, Lancers, Prisms and Novas charge at the two flank stars (+1 per star per turn, up to 4) and fire from the central Doomstar (2 damage); Scouts range 3 but cannot charge or fire; 33x33 map.
+
+### Bot fix found along the way
+The first run of the suite drew 44.5% of balanced mirror games. Narrated games showed why: after an early brawl, each side was left with a lone Prism that stood off out of range for 35 rounds while an empty star sat a few moves away. The bot's pull toward stars was half its pull toward the enemy Command, so a lone ship never went to charge. Strengthening the star pull (in `ai.js`) cut balanced-mirror draws to 35% and doubled Doomstar shots (0.7 to 1.2 per game), but pushed Star Hunter mirror draws from 24% to 45.5%. The tables below use the fixed bot.
+
+### Headline numbers
+| Balanced mirror | Round 4 (open field, old rules) | Round 5 (Proving Ground) |
 | --- | --- | --- |
-| Prism line-of-sight loop | Selecting a Prism with an enemy at an L-shaped offset (for example 1 across, 2 down) froze the browser tab | New line-of-fire tracer in `engine.js` |
-| No game over | Destroying a Command printed a message but play continued | The engine declares a winner and rejects further actions |
-| Squashed tokens | Board tiles are buttons and inherited button padding, shrinking units to slivers (the open "board cell sizing" issue) | `button.cell { padding: 0 }` |
-| Inert mechanics | Armor, the Orbiter cloak, stars and asteroids had no effect; moves ignored walls | Implemented as rule switches, see Rulesets in `AGENTS.md` |
-| Unfair star layout | Prototype-map stars are closer to Player 2 (total distance 36 vs 44) | Added the symmetric `crucible` map |
-
-## What needs help
-
-### 1. In the prototype rules, waiting wins
-With every unit acting each turn and no reason to leave home, the side that steps into range first loses units.
-
-| Classic matchup (seats alternate) | Result |
-| --- | --- |
-| Turtle vs Rusher | Turtle wins 80% |
-| Turtle vs Star Hunter | Turtle wins 70% |
-| Turtle vs Balanced | Turtle wins 67% |
-| Balanced vs Rusher | Balanced wins 63% |
-
-A game where the best plan is "don't move" will not feel fun between two humans. The game needs a reason to advance.
-
-### 2. Moving every unit every turn doesn't feel like chess
-In Classic, the bots take about 4.8 unit actions per turn (about 140 per game) and must consider all nine units each turn. That is closer to a wargame than to chess, and it makes turns long for humans. Limiting each turn to 2 "orders" cuts that to about 2 actions per turn.
-
-### 3. Limiting orders without an objective stalls the game
-| Big board, no star scoring | Draws (60-round limit) |
-| --- | --- |
-| Every unit acts | 2% |
-| 3 orders per turn | 46% |
-| 2 orders per turn | 56% |
-| 1 order per turn | 83% |
-
-On the small Outpost map with 2 orders and no stars, 96% of games were draws. Fewer actions make each move matter, but only if there is something to fight over.
-
-### 4. Star points fix stalling but turn the game into a race
-Adding star points (first to 12) makes games decisive again, but on the big board almost nobody fights:
-- 99% of Orders games end on star points, with only **1.3 attacks per game**.
-- Only speed matters. Taking a Scout away from a player shifts the result by about 10 points. Taking away a Guard, Lancer, Orbiter or Prism changes nothing measurable.
-- Parking a unit on a star inside the Orbiter's cloaking field makes it immune to ranged attacks; the bot won a narrated game this way without being challenged.
-
-### 5. Star layout decides games
-On the prototype map, where stars sit closer to Player 2, star points hand Player 2 **72%** of games. The symmetric crucible map brings it back to 55/45.
-
-### 6. Smaller boards create fights, and a first-move edge
-The 11x11 Outpost face-off gets units into contact by round 2 and averages 6-8 attacks per game, but:
-- Player 1 wins 68% with 2 orders per turn, and 88% with 1 order per turn.
-- **The Prism dominates:** about one kill per Prism per game, and it is lost only 3-5% of the time. Scouts die in 68-76% of games.
-
-### 7. Guards rarely matter
-Across every objective-based ruleset, Guards deal 0.02-0.12 damage per game and are almost never lost. Move 1 keeps them out of every fight except a pure siege, where the Turtle uses them well.
-
-### 8. Strategies the bots found
-- **Classic:** patience and counter-punching beat aggression (see 1). Rusher mirrors burn through Scouts (91% lost).
-- **Orders with star points:** no single play style dominates; every pairing lands between 41% and 59%. Star Hunter beats Turtle 59-41, and Balanced beats Rusher 58-42. That spread is healthy; the problem is that it comes from racing, not fighting.
-- **Scout-to-star openings** are the strongest move in any star mode.
-- **The Orbiter plus a star** is a defensive lock against ranged units.
-
-### Also noted
-- `roster.html` and `make_roster_pdf.py` describe abilities that don't match the rules (armor, cloaking) and don't show armor. Update them once the rules settle.
-- Command raids: in Classic a pair of Scouts can walk around the defense to an immobile Command and finish it off (seen in narrated games), because Guards (move 1) cannot get back in time.
-- "Command moves 1" looked perfectly balanced on Outpost (49/51), but narrated games show the bot wasting orders shuffling its Command. Treat that result as a bot artifact, not a finding.
-
-## Round 2: candidate fixes
-All rows use 2 orders per turn, path movement, armor, the Orbiter field and the symmetric crucible map unless noted. 400 games each, balanced bot mirror.
-
-| Change | P1 / P2 / draw % | Avg rounds | Attacks per game | How games end |
-| --- | --- | --- | --- | --- |
-| Star points (the `orders` preset) | 55.5 / 44.5 / 0 | 13.9 | 1.3 | points 99% |
-| Points, Player 1 opens with 1 order | 46.3 / 53.8 / 0 | 14.5 | 1.6 | points 98% |
-| **Points, contested stars** | **49.5 / 50.5 / 0** | 14.4 | 2.7 | points 99% |
-| Doomstar instead of points | 56.3 / 43.8 / 0 | 18.1 | 2.6 | Doomstar 78%, Command 22% |
-| Doomstar, Player 1 opens with 1 order | 49.5 / 50.3 / 0.3 | 18.5 | 2.8 | Doomstar 80%, Command 20% |
-| **Doomstar, contested stars** | **49.3 / 50.8 / 0** | 18.1 | 3.7 | Doomstar 86%, Command 14% |
-| Doomstar, charge 4 | 57.0 / 43.0 / 0 | 14.0 | 1.2 | Doomstar 97% |
-| Doomstar, charge 8 | 55.8 / 44.3 / 0 | 20.7 | 3.8 | Doomstar 72%, Command 28% |
-| Doomstar, Guard moves 2 | 52.0 / 48.0 / 0 | 17.2 | 2.0 | Doomstar 96% |
-| Doomstar, Prism moves 2 | 54.8 / 45.3 / 0 | 19.4 | 4.7 | Doomstar 80%, Command 20% |
-| Doomstar, Scout moves 2 | 52.3 / 47.8 / 0 | 22.6 | 3.4 | Doomstar 81%, Command 19% |
-| Doomstar, 3 orders | 55.8 / 44.3 / 0 | 16.1 | 4.4 | Doomstar 65%, Command 35% |
-| Outpost map + Doomstar | 51.3 / 35.3 / 13.5 | 22.3 | 8.0 | Doomstar 86%, draw 14% |
-| Outpost + Doomstar, Prism range 2 | 47.5 / 45.0 / 7.5 | 19.9 | 10.2 | Doomstar 86%, draw 8% |
-| Outpost + Doomstar, contested, P1 opens with 1, Prism range 2 | 45.8 / 48.3 / 6.0 | 21.1 | 12.2 | Doomstar 91%, draw 6% |
+| Player 1 / Player 2 / draw | 59.4 / 40.6 / 0 | 31.5 / 33.5 / 35 |
+| Median rounds | 18 | 28 |
+| First kill (round) | 8.2 | 4.5 |
+| Doomstar shots per game | not tracked | 1.2 |
+| How games end | Doomstar 94%, Command 6% | Command 39%, draw 35%, Doomstar 26% |
 
 What this shows:
-- **Contested stars are the best single fix.** One sentence of rules ("a star doesn't count while an enemy stands next to it") removes the first-move edge and roughly doubles the fighting, because you have to go and push enemies off stars.
-- **Doomstar beats plain points.** It keeps one goal (destroy the enemy Command) and makes stars the way to get there, which fits the game's name. Games run a little longer (about 18 rounds) with more combat and some Command kills.
-- **Charge 6 is the sweet spot.** Charge 4 turns into a pure race; charge 8 drags on.
-- **"Player 1 opens with 1 order"** also fixes the first-move edge, but it isn't needed once stars are contested.
-- **Outpost (11x11) has the most fighting but keeps drawing** (6-15% of games) as armies lock up on the cramped board; weakening the Prism to range 2 helps.
-- **Still unsolved: combat is thin on the 15x15 board.** Even the best candidate averages under 4 attacks per game, and Guards, Prisms and Orbiters rarely act. The next lever is board size and starting distance (for example 13x13, or armies starting two rows closer), not more rules.
+- **The first-move edge is gone:** 31.5% vs 33.5%, down from 59/41.
+- **No play style dominates, and the well-rounded one wins.** Balanced beats every other style, and the Star Hunter no longer runs away with games (it beat Balanced 81-19 in Round 4; now Balanced leads 43.5-30).
+- **Every ship matters** (table below).
+- **But a third of games stall.** 35% end in a draw at the 60-round limit, and the median game lasts 28 rounds, about 56 orders per player. That is longer than the 10-20 minute target.
+- **The crew requirement causes most of the stalls.** With automatic firing, draws fall to 8.5% and games last 19 rounds. Armies trade down early (first kill in round 4.5), and the bot won't send its last ships into the center. Humans may do better, so test in person before changing the rule.
+- **Slower artillery adds to it.** With the old Nova and Prism speeds, draws fall to 25.5% and games last 23 rounds.
 
-Pacing estimate for Doomstar with contested stars: about 18 rounds is 36 orders per player. At an assumed 10-20 seconds per order, that is roughly 12-24 minutes, inside the 10-20 minute target for experienced players.
-
-## Round 3: stress-testing the Doomstar rules
-The best candidate became the `doomstar` ruleset. Re-run with `python tools/simulate.py --suite doomstar --games 400 --parallel 5`.
-
-### No play style dominates
+### Play styles
 | Matchup (seats alternate) | Result |
 | --- | --- |
-| Balanced vs Rusher | Balanced wins 63% |
-| Balanced vs Turtle | Balanced wins 61% |
-| Balanced vs Star Hunter | Balanced wins 54% |
-| Rusher vs Turtle | Turtle 53%, even |
-| Rusher vs Star Hunter | Star Hunter 51%, even |
-| Turtle vs Star Hunter | Star Hunter wins 60% |
+| Balanced vs Rusher | Balanced 44%, Rusher 12.5%, draw 43.5% |
+| Balanced vs Turtle | Balanced 43%, Turtle 24.5%, draw 32.5% |
+| Balanced vs Star Hunter | Balanced 43.5%, Star Hunter 30%, draw 26.5% |
+| Rusher vs Turtle | Turtle 40.5%, Rusher 26%, draw 33.5% |
+| Rusher vs Star Hunter | Star Hunter 48.5%, Rusher 20.5%, draw 31% |
+| Turtle vs Star Hunter | Turtle 47.5%, Star Hunter 17.5%, draw 35% |
 
-Compared with Classic, where the Turtle won 67-80%, waiting no longer wins. The best style is the adaptive, well-rounded one, which is what a game for repeat play should reward. One caution: when *both* players rush, Player 1 wins 62%, so check first-move advantage in aggressive human games.
+Mirror matches draw often: Rusher 68%, Turtle 47%, Star Hunter 45.5%. Rushers ignore the stars, so neither side charges.
 
-### Only the Scout matters
-Each row removes one unit from one side (baseline: Player 1 wins 49.3%).
+### Ship value
+Each row removes one ship from one side. Value is the average drop in the owner's wins minus losses, in percentage points (baseline: Player 1 31.5%, Player 2 33.5%).
 
-| Unit removed | From Player 1: P1 wins | From Player 2: P1 wins | Value of the unit |
+| Ship removed | From Player 1: P1 / P2 wins | From Player 2: P1 / P2 wins | Value |
 | --- | --- | --- | --- |
-| Scout | 34.5% | 69.0% | about 17 points of win rate |
-| Guard | 54.0% | 48.5% | none measurable |
-| Lancer | 50.8% | 50.0% | none measurable |
-| Orbiter | 53.8% | 50.3% | none measurable |
-| Prism | 51.3% | 48.3% | none measurable |
+| Guard | 12.5 / 59 | 62.5 / 11.5 | 49 |
+| Lancer | 15.5 / 53 | 50 / 13.5 | 37 |
+| Prism | 23.5 / 51.5 | 57.5 / 18.5 | 34 |
+| Scout | 25 / 42 | 43 / 18 | 21 |
+| Nova | 24 / 41 | 36 / 23.5 | 15 |
 
-With only 2 orders per turn, the bot spends them on the unit that can reach and contest stars fastest. A human may use the slower units better, but the pattern is consistent across every star ruleset tested. **The roster is the biggest open problem:** four of the five unit types don't change the result.
+The Guard, the weakest ship in Round 4, is now the most valuable: it survives on stars and in the Doomstar. The Nova, the strongest in Round 4, is now the weakest, likely because it is slower and its low damage is soaked by armor.
 
-## Recommendations
-1. **Make "2 orders per turn" the core turn.** It is the biggest step toward chess pacing and short turns. It only works alongside an objective; without one the game stalls into draws.
-2. **Use the Doomstar with contested stars as the objective.** It gives one goal (destroy the enemy Command), a 49/51 split, no dominant play style and about 18 rounds. It is now selectable as the `doomstar` ruleset in the game, arena and lab.
-3. **Keep maps symmetric.** The original star layout alone swung games to 72/28.
-4. **Give the slow units a job before tuning anything else.** Ideas to test next, simplest first:
-   - Scouts can contest stars but not hold them (recon, not occupation).
-   - Guards move 2 (this already balanced Doomstar at 52/48 and tripled Guard activity).
-   - A 13x13 board, or armies starting two rows closer, so Lancers and Prisms reach the fight within the order budget.
-   - A Guard ability that interacts with stars, such as "enemies next to a Guard can't hold a star".
-5. **Watch the Prism on small boards.** At 11x11, range 3 dominates; range 2 fixed most of it.
-6. **Refresh `roster.html` and the PDF** once the rules settle.
-7. **Playtest with humans.** Bots can't tell you whether contested stars are intuitive, whether the Orbiter field feels good, or how long a turn really takes. Suggested first session: three hot-seat games on the `doomstar` ruleset, timing each game and noting every rules question asked.
-
-## Round 4: the open Field map
-The `field` ruleset plays the Doomstar rules on the tile-free Expanse map: a hidden 45x45 grid, circular ranges, ship footprints and the new Nova. This round used 160 games per experiment, so differences under about 8 points are noise. Re-run with `python tools/simulate.py --suite field --games 400 --parallel 8`.
-
-| Balanced mirror | Tile `doomstar` | `field` |
-| --- | --- | --- |
-| Player 1 / Player 2 wins | 49.3% / 50.8% | 59.4% / 40.6% |
-| Average rounds | 18.1 | 18.9 |
-| Attacks per game | 3.7 | 8.6 |
-| First kill (round) | 9.5 | 8.2 |
-| Ships destroyed per game | 1.5 of 16 | 4.6 of 18 |
+### Rule variants
+| Change (balanced mirror) | P1 / P2 / draw % | Median rounds | Doomstar shots | How games end |
+| --- | --- | --- | --- | --- |
+| **Baseline** | 31.5 / 33.5 / 35 | 28 | 1.2 | Command 39%, draw 35%, Doomstar 26% |
+| Charge 3 | 33.5 / 32 / 34.5 | 28 | 1.2 | Command 42.5%, draw 34.5%, Doomstar 23% |
+| Charge 6 | 27 / 27 / 46 | 42 | 0.8 | draw 46%, Command 40.5%, Doomstar 13.5% |
+| Doomstar damage 3 | 30.5 / 36 / 33.5 | 27 | 1.0 | Doomstar 38%, draw 33.5%, Command 28.5% |
+| Fires without crew (old rule) | 45.5 / 46 / 8.5 | 19 | 2.5 | Doomstar 75%, Command 16.5%, draw 8.5% |
+| Scouts crew too | 15 / 77.5 / 7.5 | 13 | 3.8 | Doomstar 67%, Command 25.5%, draw 7.5% |
+| Stars not contested | 30.5 / 35 / 34.5 | 28 | 1.2 | Command 42.5%, draw 34.5%, Doomstar 23% |
+| Player 1 opens with 1 order | 38.5 / 28.5 / 33 | 30 | 1.1 | Command 41%, draw 33%, Doomstar 26% |
+| 3 orders per turn | 42.5 / 26 / 31.5 | 25 | 0.9 | Command 49%, draw 31.5%, Doomstar 19.5% |
+| Scout range 1.5 (old) | 32.5 / 28 / 39.5 | 34 | 1.1 | Command 40.5%, draw 39.5%, Doomstar 20% |
+| Nova 4.5 / Prism 3 move (old) | 40 / 34.5 / 25.5 | 23 | 1.2 | Command 52.5%, draw 25.5%, Doomstar 22% |
 
 What this shows:
-- **More fighting in the same match length.** Attacks per game more than doubled and three times as many ships are destroyed, while games still last about 19 rounds.
-- **Artillery earns its place.** Each Prism deals 1.9 damage and gets 0.9 kills per game; each Nova deals 2.0 damage, with splash working as intended. Guards now fight too (0.4 damage per game, 24% lost).
-- **The first-move edge is back: 59/41.** On tiles, "Player 1 opens with 1 order" fixed the same edge; test it here next.
-- **Star Hunter dominates.** It beats Balanced 81-19, Turtle 87-13 and Rusher 60-40. The flank stars are only a couple of Scout moves from each army, so grabbing stars pays better than fighting. Options: move the flank stars farther out, widen the contest reach, or stop Scouts from holding stars.
-- **Unit value** (remove one ship from one side; value = average swing in win rate):
+- **Automatic firing is the only change that fixes the stalls**, but it removes the fight over the center that the crew rule was meant to create.
+- **Letting Scouts crew makes games fast but hands Player 2 77.5% of them.** A likely cause: Scouts race to the stars, and the side that moves second picks them off. Keep Scouts off the crew.
+- **Charge 3, turning off contested stars and the opening-order limit change nothing measurable.** Charge 6 makes stalls worse, and 3 orders per turn brings back a first-move edge (42.5/26).
+- **Scout range 3 is fine:** going back to 1.5 adds draws.
 
-| Ship removed | From Player 1: P1 wins | From Player 2: P1 wins | Value |
-| --- | --- | --- | --- |
-| Nova | 51.3% | 69.4% | +9 |
-| Scout | 52.5% | 65.0% | +6 |
-| Prism | 63.8% | 61.3% | about 0 |
-| Orbiter | 64.4% | 58.1% | about -3 |
-| Guard | 65.0% | 51.9% | -7 |
-| Lancer | 71.3% | 48.8% | -11 |
-
-  The Nova is now the most valuable ship. Losing a Lancer or Guard appeared to *help* its owner, which is implausible as a rule effect. The likely cause is the bot walking those ships into return fire; the Lancer's move circle (6) and attack circle (6.1) nearly coincide. Confirm at 400 games before changing any stats.
-- **Variants:** 3 orders per turn gave 57.5/42.5 with 10.8 attacks and 16.7 rounds. Turning contested stars off gave 62/38, so keep them. A smaller Nova blast (2) changed nothing.
-
-**Verdict:** the Field map delivers the combat the tile board lacked, and every ship type now shows up in the damage numbers. Next: fix the first-move edge, rebalance star placement against the Star Hunter, and re-check the Lancer and Guard with more games.
+### Verdict
+The crew rules fixed the Round 4 problems: no first-move edge, no dominant play style, and every ship matters. The open problem is stalling. Under the crew rule a third of bot games run out the clock, and the rest run long. Before changing the rules, play a few human games to see whether people push gunners into the center better than the bot does. If they stall too, test these as rule toggles, in order: a larger Doomstar zone, firing that ignores contesting, and a draw breaker. Also consider giving the Nova and Prism back some speed.
 
 ## Watch these in the AI Arena
 Open from disk or via `python -m http.server 8000`:
-- `arena.html?rules=doomstar&p1=balanced&p2=hunter&seed=12&autoplay=1`: the recommended rules.
-- `arena.html?rules=classic&p1=rusher&p2=turtle&seed=3&autoplay=1`: a Rusher attacking a Turtle under the prototype rules.
-- `arena.html?rules=orders&p1=balanced&p2=balanced&seed=2&autoplay=1`: the star race with almost no combat.
+- `arena.html?p1=balanced&p2=balanced&seed=4&autoplay=1`: Player 2 wins with the Doomstar in round 21.
+- `arena.html?p1=balanced&p2=balanced&seed=3&autoplay=1`: an early brawl that ends in a stand-off draw at round 60.
+- `arena.html?p1=balanced&p2=balanced&seed=2&autoplay=1`: crew rule; Player 2 fires once and wins by destroying the Command in round 40.
+- `arena.html?p1=balanced&p2=balanced&seed=2&autoplay=1&rules={"doomstarNeedsCrew":false}`: the same seed with automatic firing; three Doomstar hits end it in round 19.

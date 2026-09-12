@@ -41,7 +41,7 @@ Operator direction: the map and art can stay simple; the fun is the strategy. Do
 | 7 | Game (Fire Doomstar button), arena and lab on the single ruleset | done |
 | 8 | Unit guide and PDF | done |
 | 9 | Repository cleanup: dead CSS, old sim results, docs | done |
-| 10 | Simulate the Doomstar rules; Round 5 in `PLAYTEST_NOTES.md` | in progress |
+| 10 | Simulate the Doomstar rules; Round 5 in `PLAYTEST_NOTES.md` | done (also strengthened the bot's star pull) |
 
 ### Known rough edges
 - The move area has holes around allied ships (you can't stop on them). Accurate, but busy in the starting formation.
@@ -49,6 +49,10 @@ Operator direction: the map and art can stay simple; the fun is the strategy. Do
 - The Fire Doomstar button is the only way to fire; there is no board click for it.
 
 ## Backlog
+- **Stalls under the crew rule (needs an owner decision).** In bot games, needing a crew ship in the center to fire leaves many games drawn at the 60-round limit: 35% of balanced mirrors vs 8.5% with automatic firing (Round 5, 200 games each). Armies trade down early, then the last ships won't step into the center. Options to test, all as `DEFAULT_RULES` toggles: fire from anywhere inside a larger Doomstar zone; contesting does not stop firing; unspent charge keeps building so a late shot hits harder; a draw breaker such as Commands losing HP late in the game.
+- **Slower artillery adds to the stalls.** With the old Nova and Prism speeds (4.5 and 3), balanced-mirror draws fall from 35% to 25.5% and games shorten from 28 to 23 rounds. Worth checking in human playtests before deciding.
+- **Early brawl.** The first ship dies around round 4 and most ships are dead by round 15, before the stars matter. 33x33 is small for these move and range stats; try a 39x39 or 45x45 Proving Ground once the Doomstar rules settle.
+- **Bot tuning.** The stronger star pull (session 3) helped the Balanced bot but raised Star Hunter mirror draws from 24% to 45.5%. Rusher mirrors draw 68-74% because Rushers ignore the objective.
 - Map variety: more layouts and sizes once the mechanics settle.
 - Human playtests (time per game, rules confusion).
 - Setup phase with limited loadouts; networking.
