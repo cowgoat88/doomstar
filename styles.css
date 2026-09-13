@@ -81,7 +81,7 @@ h2.spaced, .field.spaced { margin-top: 18px; }
   box-shadow: 0 10px 24px var(--shadow);
 }
 .hud-bar .turn-banner { flex: 0 0 auto; margin-bottom: 0; }
-.hud-bar .scoreboard { flex: 1 1 320px; }
+.hud-bar .scoreboard { flex: 1 1 auto; min-width: 0; }
 
 .layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 24px; margin-top: 22px; align-items: start; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 10px 24px var(--shadow); }
@@ -249,6 +249,7 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 .board-banner strong { font-size: 1.5rem; color: var(--warning); }
 
 .board-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 14px; font-size: 0.8rem; color: var(--muted); }
+.sidebar-legend { justify-content: flex-start; gap: 10px 16px; margin-top: 0; }
 .board-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
 .swatch.p1 { background: var(--p1); border-radius: 50%; }
@@ -461,9 +462,11 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 }
 
 @media (max-width: 720px) {
-  .topbar { padding: 10px 12px; gap: 10px; }
-  h1 { font-size: 1.3rem; }
-  .eyebrow { font-size: 0.66rem; }
+  /* The board is the whole point on a phone; every other row of chrome is trimmed as far as it
+     will go (see the .hud-bar rules below) so it gets almost the entire screen. */
+  .topbar { padding: 8px 10px; gap: 8px; }
+  .eyebrow { display: none; }
+  h1 { font-size: 1.05rem; margin-top: 0; }
 
   /* Fire Doomstar and End Turn move to a thumb-reachable bar fixed along the bottom of the
      screen; the page reserves matching space so it never covers content. */
@@ -474,16 +477,40 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
     bottom: 0;
     z-index: 20;
     gap: 8px;
-    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
     background: var(--panel);
     border-top: 1px solid var(--line);
     box-shadow: 0 -8px 24px var(--shadow);
   }
-  .turn-actions button { flex: 1; min-height: 46px; }
-  .page-shell { padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)); }
+  .turn-actions button { flex: 1; min-height: 44px; padding: 8px 10px; font-size: 0.85rem; }
+  .page-shell { padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)); }
 
-  .hud-bar { padding: 8px 12px; gap: 8px; flex-direction: column; align-items: stretch; }
-  .hud-bar .turn-banner { font-size: 0.82rem; padding: 6px 10px; min-width: 0; width: 100%; white-space: normal; }
+  /* A single compact row: a short turn pill plus both sides' HP/charge, no card chrome. This is
+     the entire "HUD" on a phone -- everything else lives in the menu. */
+  .hud-bar { flex-wrap: nowrap; padding: 6px 10px; gap: 8px; margin-top: 8px; }
+  .hud-bar .turn-banner {
+    font-size: 0.66rem;
+    padding: 5px 8px;
+    min-width: 0;
+    max-width: 38%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Truncating centered text clips both ends with no ellipsis; left-align so only the tail goes. */
+    justify-content: flex-start;
+    display: block;
+  }
+  .hud-bar .scoreboard { gap: 6px; }
+  .hud-bar .side-card { padding: 4px 7px; gap: 1px; font-size: 0.66rem; border-radius: 8px; }
+  .hud-bar .side-name { font-size: 0.62rem; }
+  .hud-bar .hp-bar { height: 4px; }
+
+  /* Reference-only chrome moves into the menu; a compact copy of the legend lives there too
+     (.sidebar-legend, in the "How to play" panel), so only the board's own copy is dropped. */
+  .board-panel .board-legend { display: none; }
+  .board-panel { padding: 8px; }
+  .status-strip { margin-top: 6px; font-size: 0.85rem; }
+  .status-strip .status-message { padding: 6px 8px; }
 }
 
 @media (max-width: 520px) {
