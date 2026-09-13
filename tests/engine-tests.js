@@ -6,24 +6,7 @@
   'use strict';
 
   const D = window.Doomstar;
-  const results = [];
-
-  function test(name, fn) {
-    try {
-      fn();
-      results.push({ name, ok: true });
-    } catch (error) {
-      results.push({ name, ok: false, error: String(error.message || error) });
-    }
-  }
-
-  function assert(condition, message) {
-    if (!condition) throw new Error(message);
-  }
-
-  function equal(actual, expected, message) {
-    if (actual !== expected) throw new Error(`${message}: expected ${expected}, got ${actual}`);
-  }
+  const { test, assert, equal } = window.TestHarness;
 
   // A match with only the listed ships: [player, type, x, y, overrides?]. Terrain is cleared unless
   // `mapTerrain` is set, so geometry tests don't depend on the map layout. Star and Doomstar zones stay.
@@ -293,9 +276,45 @@
     }
   });
 
-  const list = document.getElementById('list');
-  list.innerHTML = results
-    .map((r) => `<li class="${r.ok ? 'pass' : 'fail'}">${r.ok ? 'PASS' : 'FAIL'} ${r.name}${r.ok ? '' : ` - ${r.error}`}</li>`)
-    .join('');
-  document.getElementById('results').textContent = JSON.stringify({ ok: true, passed: results.every((r) => r.ok), results });
+  // --- Networking helpers ---
+
+  test('serializeState and deserializeState round-trip through JSON', () => {
+    const s = D.createGame('doomstar');
+    const bot = D.AI.createBot({ seed: 5 });
+    for (let step = 0; step < 40 && !s.winner; step += 1) D.applyAction(s, bot.nextAction(s));
+    const revived = D.deserializeState(JSON.parse(JSON.stringify(D.serializeState(s))));
+    equal(revived.units.length, s.units.length, 'Same number of units');
+    for (const u of s.units) {
+      const r = D.getUnit(revived, u.id);
+      assert(r, `${u.id} survives the round trip`);
+      equal(r.x, u.x, `${u.id} x`);
+      equal(r.y, u.y, `${u.id} y`);
+      equal(r.hp, u.hp, `${u.id} hp`);
+      equal(D.legalMoves(revived, r).length, D.legalMoves(s, u).length, `${u.id} legal move count`);
+    }
+    equal(revived.turn, s.turn, 'Turn');
+    equal(revived.currentPlayer, s.currentPlayer, 'Current player');
+    equal(revived.charge.p1, s.charge.p1, 'P1 charge');
+    equal(revived.charge.p2, s.charge.p2, 'P2 charge');
+  });
+
+  test('applyActionAs rejects actions out of turn', () => {
+    const s = scenario('doomstar', [...COMMANDS, ['p1', 'scout', 6, 6], ['p2', 'scout', 26, 26]]);
+    equal(s.currentPlayer, 'p1', 'Player 1 moves first');
+    assert(!D.applyActionAs(s, 'p2', { type: 'endTurn' }).ok, 'Player 2 cannot end Player 1\'s turn');
+    assert(!D.applyActionAs(s, 'p2', { type: 'move', unitId: 'p1-scout-1', x: 6, y: 10 }).ok, 'Player 2 cannot move Player 1\'s ship');
+    assert(D.applyActionAs(s, 'p1', { type: 'move', unitId: 'p1-scout-1', x: 6, y: 10 }).ok, 'Player 1 may act on their own turn');
+    assert(D.applyActionAs(s, 'p1', { type: 'endTurn' }).ok, 'Player 1 may end their own turn');
+    equal(s.currentPlayer, 'p2', 'Turn passed to Player 2');
+    assert(!D.applyActionAs(s, 'p1', { type: 'endTurn' }).ok, 'Player 1 cannot end Player 2\'s turn');
+  });
+
+  test('unitNear finds a ship past its hull only with slack', () => {
+    const s = scenario('doomstar', [...COMMANDS, ['p1', 'scout', 6, 6]]);
+    const hullEdge = 6 + D.UNIT_TYPES.scout.radius;
+    assert(D.unitNear(s, hullEdge - 0.1, 6), 'A point just inside the hull hits');
+    assert(!D.unitNear(s, hullEdge + 0.3, 6), 'A point just outside the hull misses with no slack');
+    assert(D.unitNear(s, hullEdge + 0.3, 6, 0.8), 'The same point hits with touch slack');
+  });
+
 })();

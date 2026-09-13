@@ -4,14 +4,30 @@ Tracks to-dos and implementation status. Update the table rows as work lands. De
 
 Last updated: 2026-09-12
 
-## Current focus: Doomstar charge and the Nova
+## Current focus: play online, and on a phone
+The owner asked to make the game playable over the internet without any paid services, and then whether it works on a phone (it did, but not comfortably -- reading the code found rough edges, so phone support was folded into the same pass).
+
+### What landed
+- **Online 1v1**, peer-to-peer via PeerJS (free public signaling server + Google's free STUN), hosted from a public GitHub Pages repo once the owner publishes it (see "Needs the owner" below). Host a match, share the invite link or room code; the other player's browser connects directly. Host-authoritative: the host runs the rules engine and is the only copy of the truth; see "Online play" in `AGENTS.md` for the protocol.
+- **Rejoin, rematch, chat**: a dropped connection or refresh rejoins the same match from `localStorage`; a finished match offers a rematch with seats swapped; a small chat panel (last 50 lines, 200 chars each).
+- **Phone support**: the board comes first below 1024px wide; Fire Doomstar/End Turn move to a bottom bar below 720px; a tap previews a move and a second tap on the same spot confirms it; ship hit-testing gets slack on touch; inputs are 16px so iOS doesn't zoom in on focus.
+- **Tests**: `serializeState`/`deserializeState`/`applyActionAs` and the slack-widened `unitNear`, plus a full `tests/online-tests.js` suite (loopback transport: a complete bot game through the protocol, rejects, disconnect+rejoin, wrong token, rematch, chat) -- all run via `python tools/run_tests.py` (33/33 passing). A scripted headless-Chrome check confirmed the mouse click flow is unchanged and the touch preview/confirm flow works, at four widths from 360px to 1440px, with no horizontal overflow.
+- Docs: `AGENTS.md` (protocol, rejoin, touch input), `README.md` (new), `.nojekyll`.
+
+### Needs the owner (not something this session can do on its own)
+1. **Publish**: create a free GitHub account and a public repository, `git remote add origin <url>` and `git push -u origin main`, then turn on Pages (Settings -> Pages -> Deploy from branch `main`, folder `/`). The site is then at `https://<user>.github.io/<repo>/`.
+2. **Real-network test**: after publishing, open the Pages URL from two different networks (e.g. home Wi-Fi and a phone hotspot) and play a full match, including a refresh mid-game. The headless tests can't exercise real WebRTC.
+3. **Real phone test**: open the site on an actual phone and play a bot game, to confirm the touch/layout choices feel right (this session only verified them in headless Chrome at phone-sized viewports).
+
+### Standing direction
+The map and art stay simple; the fun is the strategy.
+
+## Previous focus: Doomstar charge and the Nova
 Operator notes (2026-09-12, round 4, after human playtests):
 1. Lower the charge needed to fire the Doomstar to 3.
 2. The Nova isn't effective. Try a big move and attack range with weaker damage, so it is a nuisance but not deadly. (Alternative: remove the Nova and add another Prism.)
 
 Owner instruction: no testing this round, just the changes.
-
-Standing direction: the map and art stay simple; the fun is the strategy.
 
 ### Design decisions (assumptions; change them here if they are wrong)
 - **Charge:** `doomstarCharge` 4 -> 3. In Round 6 bot games this variant ended 60.5% of games with the Doomstar, in 15 rounds.
@@ -54,9 +70,12 @@ Doomstar: charge 3, damage 5, gunners may fire while contested; charging needs a
 - **Early brawl.** The first ship dies around round 3-4 on the 33x33 map. Try a larger Proving Ground once the rules settle.
 - Map variety: more layouts and sizes once the mechanics settle; bigger maps can bring obstacles back.
 - Human playtests: time per game, rules confusion.
-- Setup phase with limited loadouts; networking.
+- Setup phase with limited loadouts.
+- **[operator, not started]** Add a small health bar with hitpoints remaining below each unit, instead of just the number.
+- **[operator, incomplete note -- ask the owner]** "move the" -- this line in the backlog was cut off before this session started working. Left as-is rather than guessed at; ask the owner what it meant.
 
 ## Done
+- Session 6: online 1v1 (PeerJS, host-authoritative, rejoin/rematch/chat) and phone support (responsive layout, tap-to-preview touch input). See "Current focus" above.
 - Session 4 (operator notes round 3): no armor with rebalanced HP and damage; faster Nova and Prism; gunners fire while contested; no asteroids on the test map; sphere Command; Round 6 simulations (7.5% draws, 17-round games).
 - Session 3 (operator notes round 2): git repository; the Doomstar crew mode; the Proving Ground test map; Orbiter, tile rules and old rulesets removed; terrain-shaped move and attack areas; Fire Doomstar button; Round 5 simulations.
 - Session 2: tile-free battlefield on a hidden fine grid, ship footprints, the Nova splash unit.

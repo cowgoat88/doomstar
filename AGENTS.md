@@ -11,6 +11,7 @@ Doomstar is a browser prototype for a quick, one-screen tactics game in a space 
 - Keep the map and art simple. The fun is the strategy, so don't spend effort on art polish.
 - Small maps stay open: obstacles only where they shape the objective (walls between the Doomstar and the charging stars). Bigger maps may add more.
 - The Doomstar is the game mode. Charging happens at dispersed stars and firing needs a ship in the center, so there is a central fight over charging and firing, with only a small chance to raid an undefended Command.
+- Playable with a friend over the internet for free (no accounts, no paid services) and comfortably on a phone, alongside hot-seat and vs-bot play.
 
 ## Where things are tracked
 - `STATUS.md`: to-dos, implementation status and open design assumptions. Update it whenever a task starts or lands.
@@ -31,7 +32,11 @@ All pages are plain HTML + classic scripts (no build step, no Node required). Th
 | `roster.html` | Unit guide; reads stats, ship art and Doomstar steps from the engine and renderer. |
 | `make_roster_pdf.py` | Writes `roster.pdf`; stats are hand-copied, keep in sync with `engine.js`. |
 | `tools/simulate.py` | Runs lab suites in headless Chrome/Edge, writes `sim-results/*.json`; `--narrate` prints one game as text. |
-| `tools/run_tests.py` | Runs `tests/engine-tests.html` headlessly. |
+| `tools/run_tests.py` | Runs `tests/engine-tests.html` headlessly (engine tests and online-session tests together). |
+| `online.js` | Host-authoritative online session protocol (`Doomstar.Online` -> `window.DoomstarOnline`). No DOM, no networking library; the transport is injected so it can be unit tested with an in-memory loopback. |
+| `net.js` | Wraps `vendor/peerjs.min.js` as the transport `online.js` expects: hosts a room under a short code, joins one, reconnects on drop. |
+| `vendor/peerjs.min.js` | Vendored PeerJS (MIT, see `vendor/peerjs.LICENSE.txt`) so the game does not depend on a CDN at runtime; only the free public PeerJS signaling server is used at connection time. |
+| `README.md` | How to play (hot-seat, bot, online, phone) and how to run the site locally. |
 
 ## Current rules
 - **Board:** the Proving Ground, a hidden 33x33 grid. Player 2's army is Player 1's rotated 180 degrees. Two charging stars sit on the midline flanks, the Doomstar in the center, and walls between the flanks and the center. No asteroids: human playtests found them too congesting on a small map.
@@ -46,6 +51,15 @@ All pages are plain HTML + classic scripts (no build step, no Node required). Th
 ## Rendering notes
 - The move area is traced around the ship's legal destinations and the attack area around the cells it could hit from where it stands, so walls, asteroids and other ships cut into them. Both use marching squares with interpolated edges (`areaPaths` in `board.js`).
 - Hulls are drawn 15% larger than their footprint so small ships stay readable.
+- Touch input (`board.js` `wireInput`, `game.js` `handleBoardClick`): a tap sends both the exact ship under the finger and a slack-widened `nearUnit` (`D.unitNear(state, x, y, 0.8)`), since a fingertip lands less precisely than a mouse cursor. Priority is: an exact hit selects or attacks; otherwise a legal move spot nearby starts a tap-to-preview (a ghost marker, "Tap again to move here."), confirmed by a second tap on the same spot; otherwise the nearby ship. A mouse click is unaffected (`nearUnit` equals the exact hit, and a move spot commits immediately, no preview).
+- Below 1024px wide the board comes before the sidebar (CSS `order`, visual only); below 720px, Fire Doomstar and End Turn move into a bar fixed to the bottom of the screen.
+
+## Online play
+- **Model:** host-authoritative peer-to-peer. The host's browser is the only copy of the truth: it runs `engine.js`, validates every action (its own and the guest's, via `applyActionAs`), and broadcasts a full state snapshot after each one. The guest never applies an action itself, only renders whatever snapshot it was last sent -- the two copies cannot drift apart, and rejoining is just "send the latest snapshot". Doomstar has no hidden information, so a full snapshot never reveals anything a legal query couldn't already.
+- **`online.js`** (`window.DoomstarOnline`): `createHost`/`createGuest` take an injected `transport` (`{ send, onMessage, onOpen, onClose }`) so the protocol can be unit tested with an in-memory loopback (`tests/online-tests.js`) independent of real networking. Messages (`hello`, `welcome`, `action`, `state`, `reject`, `chat`, `rematch`, `ping`/`pong`) all carry a protocol version `v`. A rejoin presents a token from the previous `welcome`; a mismatched token while someone is already connected is refused as room-full. Rematch swaps which seat the host and guest each hold and starts a fresh game; the seat swap rides on the next `state` message so the guest picks it up without an extra round trip.
+- **`net.js`** wraps a vendored PeerJS (`vendor/peerjs.min.js`) as that transport. A room code is the PeerJS peer id `doomstar-` plus 6 characters; Google's free STUN servers are used for NAT traversal. No accounts, no server to run -- only the free public PeerJS signaling server, used solely to introduce the two browsers before they connect directly.
+- **Rejoin:** both sides save `{ role, code, data }` to `localStorage` after every update (`data` from `session.snapshotForResume()`); on load, a saved session resumes automatically (matching a `?join=CODE` link's code takes priority over a stale save for a different room). A host re-registers the same peer id and retries on `unavailable-id` for up to 60s (the old id can take a while to free up); a guest reconnects with its saved token.
+- **`game.js`** picks one of three modes: hot-seat, vs a bot, or online (`session` set). `isInputLocked()` generalizes the old bot-turn check: locked on the bot's turn, or online when it isn't this seat's turn or the opponent isn't connected. Chat is rendered with `textContent`, never `innerHTML` (it's text from the other player).
 
 ## History
 - Original prototype: 15x15 tile board, six unit classes, hot-seat play, unit guide and PDF.
@@ -72,6 +86,13 @@ All pages are plain HTML + classic scripts (no build step, no Node required). Th
 - 2026-09-12, session 5 (operator notes, round 4; owner asked for no testing):
   - Doomstar charge needed 4 -> 3.
   - Nova reworked into a nuisance: move 5 -> 7, range 7 -> 10, damage 2 -> 1. (Alternative the owner raised: remove the Nova and field a second Prism.)
+- 2026-09-12, session 6: play over the internet, free, and on a phone.
+  - Engine: `serializeState`/`deserializeState` and `applyActionAs` (a networked guest's actions rejected out of turn before they reach `applyAction`); `unitNear` takes an optional slack for touch hit tests.
+  - `online.js` (host-authoritative session protocol) and `net.js` (PeerJS transport), with `vendor/peerjs.min.js` vendored so the game does not depend on a CDN at runtime.
+  - `index.html`/`game.js`: an Online panel (host/join, invite link, chat, rematch), rejoin after a refresh or dropped connection via `localStorage`, and a `?join=CODE` link that auto-joins.
+  - Phone support: the board comes first below 1024px wide; Fire Doomstar/End Turn move to a bottom bar below 720px; touch taps preview a move and confirm on a second tap, with slack added to ship hit-testing; `button:hover` only applies where a real hover device is present.
+  - `tests/test-harness.js` extracted so `tests/engine-tests.js` and the new `tests/online-tests.js` share one results report; `tools/run_tests.py` is unchanged but now covers both.
+  - `.nojekyll` and `README.md` added for GitHub Pages.
 
 ## Workflow
 - Change rules only in `engine.js`, and add new mechanics as `DEFAULT_RULES` toggles first so they can be compared in simulation.

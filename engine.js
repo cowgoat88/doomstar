@@ -210,6 +210,36 @@
     };
   }
 
+  // A JSON-safe copy of everything a move can change, for sending over the network.
+  // Terrain and the zone layout are rebuilt from `rules.map` by deserializeState, and the log
+  // (a client never needs the whole history) is dropped, so the payload stays small.
+  function serializeState(state) {
+    return {
+      rules: state.rules,
+      turn: state.turn,
+      currentPlayer: state.currentPlayer,
+      activated: state.activated.slice(),
+      charge: { ...state.charge },
+      winner: state.winner,
+      winReason: state.winReason,
+      units: state.units.map((u) => ({ ...u })),
+    };
+  }
+
+  // The inverse of serializeState: rebuilds terrain and zones from the map, then restores the
+  // fields a move can change.
+  function deserializeState(data) {
+    const state = createGame(data.rules);
+    state.turn = data.turn;
+    state.currentPlayer = data.currentPlayer;
+    state.activated = data.activated.slice();
+    state.charge = { ...data.charge };
+    state.winner = data.winner;
+    state.winReason = data.winReason;
+    state.units = data.units.map((u) => ({ ...u }));
+    return state;
+  }
+
   // ---------------------------------------------------------------------------
   // Queries
 
@@ -234,12 +264,13 @@
   }
 
   // The ship whose footprint covers the board point (px, py), preferring the closest centre.
-  function unitNear(state, px, py) {
+  // `slack` widens the hit test past the hull (touch taps land less precisely than a mouse cursor).
+  function unitNear(state, px, py, slack = 0) {
     let best = null;
     let bestDistance = Infinity;
     for (const u of state.units) {
       const d = distance(u.x, u.y, px, py);
-      if (d <= Math.max(u.radius, 0.5) && d < bestDistance) {
+      if (d <= Math.max(u.radius, 0.5) + slack && d < bestDistance) {
         best = u;
         bestDistance = d;
       }
@@ -558,6 +589,15 @@
     return { ok: true, events };
   }
 
+  // For a networked guest: refuses an action taken out of turn before it reaches applyAction.
+  // (applyAction's own legality checks already refuse ordering an enemy ship, but endTurn has no
+  // owner to check, so this is the only guard against an out-of-turn endTurn.)
+  function applyActionAs(state, player, action) {
+    if (state.winner) return { ok: false, error: 'The match is over.', events: [] };
+    if (state.currentPlayer !== player) return { ok: false, error: "It isn't your turn.", events: [] };
+    return applyAction(state, action);
+  }
+
   function attack(state, unit, target, events) {
     const { damage } = unit;
     const dealt = Math.min(damage, target.hp);
@@ -701,7 +741,10 @@
     createGame,
     createUnit,
     cloneState,
+    serializeState,
+    deserializeState,
     applyAction,
+    applyActionAs,
     otherPlayer,
     distance,
     gap,

@@ -165,7 +165,10 @@
       + `<title>${label}</title></g>`;
   }
 
-  // view: { events, selectedId, moves: [{x, y}], targets: [unit], onBoardClick({ x, y, unit, move }) }
+  // view: { events, selectedId, moves: [{x, y}], targets: [unit], preview: {x,y}|null,
+  //         onBoardClick({ x, y, unit, nearUnit, move, touch }) }
+  // `preview` is the touch tap-to-confirm spot (game.js's pendingMove): drawn like the mouse hover
+  // ghost, but seeded here so it survives a re-render instead of only following a live pointer.
   function renderBoard(boardEl, state, view = {}) {
     const { size } = state;
     const map = D.MAPS[state.rules.map];
@@ -207,21 +210,26 @@
       return unitMarkup(u, ring, facing[u.player], isSpent(state, u));
     });
     const ghostRadius = selected ? selected.radius : 0.4;
+    const preview = view.preview;
+    const ghostCx = preview ? px(preview.x) : '-10';
+    const ghostCy = preview ? px(preview.y) : '-10';
 
     boardEl.innerHTML = `<svg class="battlefield${view.onBoardClick ? ' interactive' : ''}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Battlefield">`
-      + `${under.join('')}${units.join('')}${over.join('')}<circle class="ghost" cx="-10" cy="-10" r="${ghostRadius}"/></svg>`;
+      + `${under.join('')}${units.join('')}${over.join('')}<circle class="ghost${preview ? ' pending' : ''}" cx="${ghostCx}" cy="${ghostCy}" r="${ghostRadius}"/></svg>`;
     wireInput(boardEl, state, view, selected);
   }
 
   function wireInput(boardEl, state, view, selected) {
     if (!view.onBoardClick) {
       boardEl.onclick = null;
-      boardEl.onmousemove = null;
-      boardEl.onmouseleave = null;
+      boardEl.onpointerdown = null;
+      boardEl.onpointermove = null;
+      boardEl.onpointerleave = null;
       return;
     }
     const svg = boardEl.firstElementChild;
     const ghost = svg.querySelector('.ghost');
+    let lastPointerType = 'mouse';
     const toBoard = (event) => {
       const rect = svg.getBoundingClientRect();
       return {
@@ -242,18 +250,30 @@
       return best;
     };
 
+    // A touch tap lands less precisely than a mouse cursor, so it also gets a slack-widened hit
+    // test (`nearUnit`); game.js decides how to use it (an exact hit still wins first).
+    boardEl.onpointerdown = (event) => {
+      lastPointerType = event.pointerType || 'mouse';
+    };
     boardEl.onclick = (event) => {
       const point = toBoard(event);
+      const touch = lastPointerType === 'touch';
       const unit = D.unitNear(state, point.x, point.y);
-      view.onBoardClick({ ...point, unit, move: unit ? null : nearestMove(point) });
+      const nearUnit = touch ? D.unitNear(state, point.x, point.y, 0.8) : unit;
+      view.onBoardClick({ ...point, unit, nearUnit, move: unit ? null : nearestMove(point), touch });
     };
-    boardEl.onmousemove = (event) => {
+    // The hover ghost only makes sense for a pointer that hovers; touch has no equivalent, so its
+    // preview instead comes from `view.preview` (seeded above) and stays put between taps.
+    boardEl.onpointermove = (event) => {
+      if (event.pointerType === 'touch') return;
       const point = toBoard(event);
+      if (view.preview) return; // a touch preview elsewhere takes precedence over the hover ghost
       const cell = selected && !D.unitNear(state, point.x, point.y) ? nearestMove(point) : null;
       ghost.setAttribute('cx', cell ? cell.x + 0.5 : -10);
       ghost.setAttribute('cy', cell ? cell.y + 0.5 : -10);
     };
-    boardEl.onmouseleave = () => {
+    boardEl.onpointerleave = (event) => {
+      if (event.pointerType === 'touch' || view.preview) return;
       ghost.setAttribute('cx', -10);
       ghost.setAttribute('cy', -10);
     };

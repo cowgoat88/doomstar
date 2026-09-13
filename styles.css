@@ -47,6 +47,8 @@ button, select, input, textarea {
 }
 
 .topbar-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px; }
+.turn-actions { display: flex; gap: 8px; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
 .eyebrow { margin: 0; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--primary); }
 h1 { margin: 6px 0 0; font-size: clamp(1.7rem, 3vw, 3rem); }
 h2 { margin: 0 0 12px; font-size: 1rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted); }
@@ -76,18 +78,24 @@ button,
   transition: transform 0.12s ease, border-color 0.12s ease;
 }
 
-button:hover, .button-link:hover { transform: translateY(-1px); border-color: rgba(255, 255, 255, 0.4); }
+/* Only lift buttons on devices that actually hover; otherwise a tap leaves the button looking raised. */
+@media (hover: hover) {
+  button:hover, .button-link:hover { transform: translateY(-1px); border-color: rgba(255, 255, 255, 0.4); }
+}
 button:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 button.primary { background: linear-gradient(135deg, #72d0ff, #8b8cff); border: none; color: #05111d; font-weight: 700; }
 button.danger { background: linear-gradient(135deg, #ffb35c, #ff5d5d); border: none; color: #1d0505; font-weight: 700; }
 .button-link.small { padding: 4px 10px; font-size: 0.8rem; }
+button, .button-link { touch-action: manipulation; }
 
-select, input[type="number"], textarea {
+select, input[type="number"], input[type="text"], textarea {
   color: var(--text);
   background: #0a1120;
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 8px 10px;
+  /* 16px keeps iOS Safari from zooming in when an input is focused. */
+  font-size: 16px;
 }
 
 textarea { width: 100%; resize: vertical; font-family: Consolas, "Courier New", monospace; font-size: 0.82rem; }
@@ -182,8 +190,8 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 
 /* Board */
 
-.board-panel { position: relative; padding: 20px; }
-.board { position: relative; width: min(75vw, 760px); aspect-ratio: 1; margin: 0 auto; }
+.board-panel { position: relative; padding: 20px; min-width: 0; }
+.board { position: relative; width: 100%; max-width: 760px; aspect-ratio: 1; margin: 0 auto; }
 
 .board-banner {
   position: absolute;
@@ -225,6 +233,9 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
   border-radius: 16px;
   border: 1px solid rgba(146, 171, 255, 0.25);
   user-select: none;
+  /* Blocks double-tap-to-zoom on the board (a common way to accidentally tap twice) while still
+     allowing pinch-zoom. */
+  touch-action: manipulation;
 }
 
 .battlefield * { vector-effect: non-scaling-stroke; }
@@ -250,6 +261,9 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 .battlefield .attack-area-fill { fill: rgba(255, 111, 125, 0.07); }
 .battlefield .attack-area-edge { fill: none; stroke: rgba(255, 111, 125, 0.75); stroke-width: 1.2px; stroke-linecap: round; }
 .battlefield .ghost { fill: rgba(126, 240, 180, 0.28); stroke: #7ef0b4; stroke-width: 1.5px; pointer-events: none; }
+/* The touch tap-to-confirm preview: a firmer fill than the mouse hover ghost, since it stays put
+   between taps rather than following a live cursor. */
+.battlefield .ghost.pending { fill: rgba(126, 240, 180, 0.55); animation: pulse 0.9s ease-in-out infinite alternate; }
 
 .battlefield .trail { stroke-width: 2px; stroke-dasharray: 6 5; opacity: 0.8; }
 .battlefield .trail.p1 { stroke: #8ed0ff; }
@@ -303,6 +317,31 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
   to { opacity: 1; }
 }
 
+/* Online panel and chat */
+
+.invite-row { display: flex; gap: 8px; }
+.invite-row input[type="text"] { flex: 1; min-width: 0; }
+.online-status { min-height: 1.2em; margin: 0; font-size: 0.85rem; color: var(--muted); }
+.seat-label { font-weight: 700; }
+
+.chat-log {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 180px;
+  margin: 0 0 8px;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  font-size: 0.82rem;
+}
+
+.chat-log li { padding: 5px 9px; border-radius: 10px; background: rgba(255, 255, 255, 0.04); align-self: flex-start; max-width: 90%; overflow-wrap: anywhere; }
+.chat-log li.me { align-self: flex-end; background: rgba(114, 208, 255, 0.14); }
+.chat-log .chat-from { font-weight: 700; color: var(--muted); }
+.chat-form { display: flex; gap: 8px; }
+.chat-form input { flex: 1; min-width: 0; }
+
 /* Balance lab */
 
 .lab-layout { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 24px; margin-top: 22px; align-items: start; }
@@ -315,7 +354,33 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 
 @media (max-width: 1024px) {
   .layout, .lab-layout { grid-template-columns: 1fr; }
-  .board { width: min(88vw, 760px); }
+  /* The board is what a visitor came to look at; put it before the sidebar once they stack.
+     (Visual order only -- keyboard/reader order still follows the markup.) */
+  .board-panel { order: -1; }
+}
+
+@media (max-width: 720px) {
+  .topbar { padding: 12px 14px; gap: 10px; }
+  h1 { font-size: 1.4rem; }
+  .eyebrow { font-size: 0.68rem; }
+  .nav-links .button-link { padding: 4px 10px; font-size: 0.78rem; }
+
+  /* Fire Doomstar and End Turn move to a thumb-reachable bar fixed along the bottom of the
+     screen; the page gets matching bottom padding so it never covers content. */
+  .turn-actions {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    gap: 8px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -8px 24px var(--shadow);
+  }
+  .turn-actions button { flex: 1; }
+  body { padding-bottom: 68px; }
 }
 
 @media (max-width: 520px) {
