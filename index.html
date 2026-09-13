@@ -9,27 +9,43 @@
   <body>
     <div class="page-shell">
       <header class="topbar">
-        <div>
+        <button id="menuBtn" class="icon-btn menu-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu">☰</button>
+        <div class="topbar-title">
           <p class="eyebrow">Prototype</p>
           <h1>Doomstar: Sector Clash</h1>
         </div>
-        <div class="topbar-actions">
-          <label class="inline-select" id="opponentField">Player 2 <select id="opponentSelect"></select></label>
-          <div class="turn-actions">
-            <button id="fireBtn" class="danger" disabled>Fire Doomstar</button>
-            <button id="endTurnBtn" class="primary">End Turn</button>
-          </div>
-          <button id="newGameBtn">New Match</button>
-          <div class="nav-links">
-            <a class="button-link" href="arena.html">AI Arena</a>
-            <a class="button-link" href="lab.html">Balance Lab</a>
-            <a class="button-link" href="roster.html" target="_blank" rel="noopener">Unit Guide</a>
-          </div>
+        <div class="turn-actions">
+          <button id="fireBtn" class="danger" disabled>Fire Doomstar</button>
+          <button id="endTurnBtn" class="primary">End Turn</button>
         </div>
       </header>
 
+      <div class="hud-bar">
+        <div id="turnBanner" class="turn-banner">Player 1</div>
+        <div id="objectivePanel" class="scoreboard"></div>
+      </div>
+
       <div class="layout">
-        <aside class="sidebar">
+        <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-head">
+            <h2>Menu</h2>
+            <button id="closeMenuBtn" class="icon-btn" aria-label="Close menu">✕</button>
+          </div>
+
+          <section class="panel">
+            <h2>Match</h2>
+            <label class="inline-select" id="opponentField">Player 2 <select id="opponentSelect"></select></label>
+            <div class="button-row">
+              <button id="newGameBtn">New Match</button>
+            </div>
+            <div class="nav-links">
+              <a class="button-link" href="arena.html">AI Arena</a>
+              <a class="button-link" href="lab.html">Balance Lab</a>
+              <a class="button-link" href="roster.html" target="_blank" rel="noopener">Unit Guide</a>
+            </div>
+          </section>
+
           <section class="panel" id="onlinePanel">
             <h2>Play online</h2>
             <div id="onlineSetup">
@@ -71,21 +87,6 @@
           </section>
 
           <section class="panel">
-            <h2>Turn</h2>
-            <div id="turnBanner" class="turn-banner">Player 1</div>
-          </section>
-
-          <section class="panel">
-            <h2>Status</h2>
-            <div id="statusPanel" class="stat-list"></div>
-          </section>
-
-          <section class="panel">
-            <h2>Objectives</h2>
-            <div id="objectivePanel" class="scoreboard"></div>
-          </section>
-
-          <section class="panel">
             <h2>Roster</h2>
             <div id="rosterPanel" class="unit-list"></div>
           </section>
@@ -106,6 +107,7 @@
         <main class="board-panel panel">
           <div id="board" class="board" aria-label="Game board"></div>
           <div id="boardBanner" class="board-banner" hidden></div>
+          <div id="statusPanel" class="status-strip"></div>
           <div class="board-legend">
             <span><i class="swatch p1"></i>Player 1</span>
             <span><i class="swatch p2"></i>Player 2</span>

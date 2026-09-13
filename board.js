@@ -308,11 +308,11 @@
       return `
         <div class="side-card ${player}${active}">
           <div class="side-name">${D.PLAYER_NAMES[player]}</div>
-          <div class="side-stat"><span>Command</span><strong>${hp} / ${maxHp}</strong></div>
+          <div class="side-stat stat-command"><span>Command</span><strong>${hp} / ${maxHp}</strong></div>
           <div class="hp-bar"><span style="width:${Math.round((100 * hp) / maxHp)}%"></span></div>
-          <div class="side-stat"><span>Ships</span><strong>${ships.length}</strong></div>
-          <div class="side-stat"><span>Stars held</span><strong>${D.starsHeld(state, player)} / ${state.stars.length}</strong></div>
-          <div class="side-stat${ready ? ' ready' : ''}"><span>Doomstar charge</span><strong>${state.charge[player]} / ${state.rules.doomstarCharge}${ready ? ' ready' : ''}</strong></div>
+          <div class="side-stat stat-ships"><span>Ships</span><strong>${ships.length}</strong></div>
+          <div class="side-stat stat-stars"><span>Stars held</span><strong>${D.starsHeld(state, player)} / ${state.stars.length}</strong></div>
+          <div class="side-stat stat-charge${ready ? ' ready' : ''}"><span>Doomstar charge</span><strong>${state.charge[player]} / ${state.rules.doomstarCharge}${ready ? ' ready' : ''}</strong></div>
           <div class="mini-row">${ships.map((u) => unitIcon(u.type, player)).join('')}</div>
         </div>`;
     }).join('');

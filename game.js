@@ -28,6 +28,10 @@
     newGame: $('newGameBtn'),
     opponent: $('opponentSelect'),
     opponentField: $('opponentField'),
+    menuBtn: $('menuBtn'),
+    closeMenuBtn: $('closeMenuBtn'),
+    sidebar: $('sidebar'),
+    sidebarBackdrop: $('sidebarBackdrop'),
     hostBtn: $('hostBtn'),
     joinBtn: $('joinBtn'),
     joinCode: $('joinCodeInput'),
@@ -77,13 +81,24 @@
     });
     el.newGame.addEventListener('click', () => {
       if (!session) newMatch();
+      closeMenu();
     });
     el.opponent.addEventListener('change', () => {
       if (!session) newMatch();
     });
     el.roster.addEventListener('click', (event) => {
       const card = event.target.closest('[data-unit]');
-      if (card && !isInputLocked()) select(card.dataset.unit);
+      if (card && !isInputLocked()) {
+        select(card.dataset.unit);
+        closeMenu(); // back to the board to see the selection (a no-op on desktop, where nothing was hidden)
+      }
+    });
+
+    el.menuBtn.addEventListener('click', openMenu);
+    el.closeMenuBtn.addEventListener('click', closeMenu);
+    el.sidebarBackdrop.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
     });
 
     el.hostBtn.addEventListener('click', () => startHost(null));
@@ -136,6 +151,19 @@
     events = [];
     message = 'Player 1 to move. Select a unit to begin.';
     render();
+  }
+
+  // The sidebar (Match setup, Online play, Roster, Rules) becomes a slide-in menu below 1024px
+  // wide; these are no-ops above that width, where it's CSS-forced to stay open inline.
+  function openMenu() {
+    el.sidebar.classList.add('open');
+    el.sidebarBackdrop.hidden = false;
+    el.menuBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    el.sidebar.classList.remove('open');
+    el.sidebarBackdrop.hidden = true;
+    el.menuBtn.setAttribute('aria-expanded', 'false');
   }
 
   const isBotTurn = () => Boolean(bot) && !state.winner && state.currentPlayer === 'p2';

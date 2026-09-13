@@ -46,18 +46,49 @@ button, select, input, textarea {
   box-shadow: 0 12px 28px var(--shadow);
 }
 
-.topbar-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px; }
-.turn-actions { display: flex; gap: 8px; }
+.topbar-title { min-width: 0; flex: 1 1 auto; }
+.turn-actions { display: flex; gap: 8px; flex: 0 0 auto; }
 .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
 .eyebrow { margin: 0; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--primary); }
 h1 { margin: 6px 0 0; font-size: clamp(1.7rem, 3vw, 3rem); }
 h2 { margin: 0 0 12px; font-size: 1rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted); }
 h2.spaced, .field.spaced { margin-top: 18px; }
 
+/* A square icon-only button (the mobile menu toggle and its close button): a larger, thumb-sized
+   tap target than a normal button. */
+.icon-btn {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.menu-btn { display: none; } /* shown only where the sidebar becomes an off-canvas menu; see below */
+
+/* A persistent strip for whose turn it is and both sides' scores -- visible at every width so a
+   player never has to open a menu to see the game state. */
+.hud-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 10px 24px var(--shadow);
+}
+.hud-bar .turn-banner { flex: 0 0 auto; margin-bottom: 0; }
+.hud-bar .scoreboard { flex: 1 1 320px; }
+
 .layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 24px; margin-top: 22px; align-items: start; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 10px 24px var(--shadow); }
 .sidebar { display: flex; flex-direction: column; gap: 18px; }
 .sidebar .panel { padding: 16px; }
+.sidebar-head { display: none; } /* only relevant once the sidebar becomes a closeable drawer */
+.sidebar-backdrop { display: none; }
 .muted { color: var(--muted); }
 .tips { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.55; }
 
@@ -125,7 +156,7 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 .turn-banner.p2 { background: rgba(255, 124, 165, 0.28); }
 .turn-banner.winner { background: linear-gradient(135deg, #ffd166, #f0ad4b); color: #1a1200; }
 
-.stat-list, .unit-list { display: flex; flex-direction: column; gap: 8px; }
+.unit-list { display: flex; flex-direction: column; gap: 8px; }
 
 .status-message,
 .unit-card {
@@ -136,6 +167,9 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 }
 
 .status-message { line-height: 1.45; }
+/* Sits directly under the board so feedback ("3 targets in range", an error) stays next to the
+   action instead of living in a separate scrolled-away panel. */
+.status-strip { flex: 0 0 auto; margin-top: 14px; }
 .unit-card { display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; }
 .unit-card.selected { border-color: var(--primary); }
 .unit-card .info { display: flex; flex-direction: column; gap: 2px; }
@@ -190,8 +224,8 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 
 /* Board */
 
-.board-panel { position: relative; padding: 20px; min-width: 0; }
-.board { position: relative; width: 100%; max-width: 760px; aspect-ratio: 1; margin: 0 auto; }
+.board-panel { position: relative; padding: 20px; min-width: 0; display: flex; flex-direction: column; }
+.board { position: relative; width: 100%; max-width: 760px; aspect-ratio: 1; margin: 0 auto; flex: 0 0 auto; }
 
 .board-banner {
   position: absolute;
@@ -353,20 +387,86 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 .data-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
 
 @media (max-width: 1024px) {
-  .layout, .lab-layout { grid-template-columns: 1fr; }
-  /* The board is what a visitor came to look at; put it before the sidebar once they stack.
-     (Visual order only -- keyboard/reader order still follows the markup.) */
-  .board-panel { order: -1; }
+  .lab-layout { grid-template-columns: 1fr; }
+
+  /* Below this width the game becomes a fixed, non-scrolling app screen: the board, HUD and
+     action bar always fit the viewport, and everything else (setup, online play, roster, rules)
+     moves into a menu drawer opened from the hamburger button. A menu or chat log can still
+     scroll within itself -- only the main game screen never needs to. */
+  html, body { height: 100%; overflow: hidden; }
+
+  .page-shell {
+    height: 100dvh;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 12px;
+  }
+
+  .topbar, .hud-bar { flex: 0 0 auto; margin-top: 0; }
+  .topbar + .hud-bar { margin-top: 10px; }
+
+  .layout {
+    flex: 1 1 auto;
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr);
+    margin-top: 10px;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .board-panel { min-height: 0; padding: 12px; }
+  .board { flex: 1 1 auto; min-height: 0; width: auto; height: auto; max-width: 100%; max-height: 100%; }
+  .status-strip, .board-legend { flex: 0 0 auto; }
+  .status-strip { margin-top: 8px; max-height: 3.4em; overflow-y: auto; }
+  .board-legend { margin-top: 8px; }
+
+  .menu-btn { display: inline-flex; }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    width: min(88vw, 360px);
+    margin: 0;
+    padding: 16px;
+    border-radius: 0 18px 18px 0;
+    overflow-y: auto;
+    transform: translateX(-105%);
+    transition: transform 0.25s ease;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-head { display: flex; align-items: center; justify-content: space-between; }
+  .sidebar-head h2 { margin: 0; }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 45;
+    background: rgba(2, 6, 16, 0.6);
+  }
+  .sidebar-backdrop[hidden] { display: none; }
+
+  /* A slimmer scoreboard: secondary stats and the ship-icon row only clutter the persistent HUD. */
+  .hud-bar .side-card { padding: 8px 10px; gap: 4px; }
+  .hud-bar .stat-ships, .hud-bar .stat-stars, .hud-bar .mini-row { display: none; }
+}
+
+@media (min-width: 1025px) {
+  .menu-btn, .sidebar-head, .sidebar-backdrop { display: none; }
 }
 
 @media (max-width: 720px) {
-  .topbar { padding: 12px 14px; gap: 10px; }
-  h1 { font-size: 1.4rem; }
-  .eyebrow { font-size: 0.68rem; }
-  .nav-links .button-link { padding: 4px 10px; font-size: 0.78rem; }
+  .topbar { padding: 10px 12px; gap: 10px; }
+  h1 { font-size: 1.3rem; }
+  .eyebrow { font-size: 0.66rem; }
 
   /* Fire Doomstar and End Turn move to a thumb-reachable bar fixed along the bottom of the
-     screen; the page gets matching bottom padding so it never covers content. */
+     screen; the page reserves matching space so it never covers content. */
   .turn-actions {
     position: fixed;
     left: 0;
@@ -379,11 +479,14 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
     border-top: 1px solid var(--line);
     box-shadow: 0 -8px 24px var(--shadow);
   }
-  .turn-actions button { flex: 1; }
-  body { padding-bottom: 68px; }
+  .turn-actions button { flex: 1; min-height: 46px; }
+  .page-shell { padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)); }
+
+  .hud-bar { padding: 8px 12px; gap: 8px; flex-direction: column; align-items: stretch; }
+  .hud-bar .turn-banner { font-size: 0.82rem; padding: 6px 10px; min-width: 0; width: 100%; white-space: normal; }
 }
 
 @media (max-width: 520px) {
-  .page-shell { padding: 12px 16px; }
   .field-row, .scoreboard { grid-template-columns: 1fr; }
+  .hud-bar .scoreboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
