@@ -21,30 +21,31 @@
   const PLAYER_NAMES = { p1: 'Player 1', p2: 'Player 2' };
 
   // Distances are in fine tiles (3 fine tiles = 1 tile of the original 15x15 prototype).
-  // `radius` is the ship's footprint and `splash` the Nova blast radius.
+  // `radius` is the ship's footprint and `splash` the Nova blast radius. There is no armor: every hit
+  // (and every blast) deals the attacker's full `damage`.
   const UNIT_TYPES = {
     scout: {
-      label: 'Scout', move: 9, range: 3, damage: 1, hp: 2, armor: 0, radius: 0.9,
+      label: 'Scout', move: 9, range: 3, damage: 2, hp: 4, radius: 0.9,
       ability: 'Fast raider that harasses from short range and contests enemy stars.',
     },
     guard: {
-      label: 'Guard', move: 4.5, range: 1.5, damage: 2, hp: 3, armor: 1, radius: 1.4,
-      ability: 'Armored frontline defender with extra health.',
+      label: 'Guard', move: 4.5, range: 1.5, damage: 4, hp: 9, radius: 1.4,
+      ability: 'Tough frontline brawler with the most hit points.',
     },
     lancer: {
-      label: 'Lancer', move: 6, range: 5, damage: 2, hp: 2, armor: 0, radius: 1.1,
+      label: 'Lancer', move: 6, range: 5, damage: 4, hp: 4, radius: 1.1,
       ability: 'Mid-range skirmisher that strikes from a distance.',
     },
     prism: {
-      label: 'Prism', move: 2.5, range: 8, damage: 2, hp: 2, armor: 0, radius: 1.2,
-      ability: 'Slow beam artillery with the longest range. Ignores armor.',
+      label: 'Prism', move: 4, range: 8, damage: 5, hp: 4, radius: 1.2,
+      ability: 'Beam artillery with the heaviest hit.',
     },
     nova: {
-      label: 'Nova', move: 3.5, range: 7, damage: 1, hp: 2, armor: 0, radius: 1.2, splash: 3.5,
-      ability: 'Slow splash artillery: its blast also hits every enemy close to the target.',
+      label: 'Nova', move: 7, range: 10, damage: 1, hp: 4, radius: 1.2, splash: 3.5,
+      ability: 'Fast, long-range splash harasser: a weak blast that hits every enemy close to the target.',
     },
     command: {
-      label: 'Command', move: 0, range: 1.5, damage: 1, hp: 5, armor: 1, radius: 2,
+      label: 'Command', move: 0, range: 1.5, damage: 2, hp: 15, radius: 2,
       ability: 'Your command star. It cannot move. Lose it and you lose the battle.',
     },
   };
@@ -71,12 +72,9 @@
       size: 33,
       scale: 3,
       meleeReach: 1.5,
-      // Walls split the flank stars from the center; asteroids break up the approaches.
+      // Walls split the flank stars from the center. No asteroids: on a board this small they only cause congestion.
       walls: [{ rect: [8, 13, 2, 7] }, { rect: [23, 13, 2, 7] }],
-      asteroids: [
-        { circle: [16, 10, 1.5] }, { circle: [16, 22, 1.5] },
-        { circle: [8, 8, 1.5] }, { circle: [24, 8, 1.5] }, { circle: [8, 24, 1.5] }, { circle: [24, 24, 1.5] },
-      ],
+      asteroids: [],
       // Charging stars sit on the midline, equally far from both armies.
       stars: [{ x: 4, y: 16, r: 2 }, { x: 28, y: 16, r: 2 }],
       doomstar: { x: 16, y: 16, r: 3 },
@@ -90,9 +88,10 @@
     activations: 2, // ships that may be ordered each turn; 0 = every ship
     firstTurnOrders: 0, // ships Player 1 may order on the opening turn (offsets first-move advantage); 0 = normal
     crew: ['guard', 'lancer', 'prism', 'nova'], // ship types that charge stars and fire the Doomstar
-    contestedStars: true, // an enemy ship at close range stops a star from charging and a gunner from firing
-    doomstarCharge: 4, // charge needed to fire
-    doomstarDamage: 2, // damage to the enemy Command (ignores armor)
+    contestedStars: true, // an enemy ship at close range stops a star from charging
+    contestedFiring: false, // true: an enemy ship at close range also stops a gunner from firing
+    doomstarCharge: 3, // charge needed to fire
+    doomstarDamage: 5, // damage to the enemy Command
     doomstarNeedsCrew: true, // false: the Doomstar fires by itself at the end of a turn with full charge
     turnLimit: 120, // player-turns before the match is called a draw
     unitOverrides: {}, // e.g. { scout: { range: 1.5 } }
@@ -151,7 +150,6 @@
       move: stats.move,
       range: stats.range,
       damage: stats.damage,
-      armor: stats.armor,
       radius: stats.radius,
       splash: stats.splash || 0,
       moved: false,
@@ -392,16 +390,15 @@
 
   const canCrew = (state, unit) => state.rules.crew.includes(unit.type);
 
-  // An enemy ship within close range stops a ship from holding a star or firing the Doomstar.
+  // Is an enemy ship within close range? Contested ships can't hold stars (contestedStars) or fire (contestedFiring).
   function isContested(state, unit) {
-    return state.rules.contestedStars
-      && state.units.some((e) => e.player !== unit.player && gap(e, e.x, e.y, unit) <= state.meleeReach + EPSILON);
+    return state.units.some((e) => e.player !== unit.player && gap(e, e.x, e.y, unit) <= state.meleeReach + EPSILON);
   }
 
   // The crew ship that holds a star for charging, if any.
   function starHolder(state, star, player = null) {
     return state.units.find((u) => (!player || u.player === player) && canCrew(state, u)
-      && inZone(u, star) && !isContested(state, u)) || null;
+      && inZone(u, star) && !(state.rules.contestedStars && isContested(state, u))) || null;
   }
 
   // Stars that would charge the Doomstar for `player` right now.
@@ -474,12 +471,6 @@
       && canFireAt(state, attacker, fx, fy, target.x, target.y, target.radius);
   }
 
-  // Armor reduces damage (minimum 1); Prism beams ignore it.
-  function damageAgainst(attacker, target) {
-    if (attacker.type === 'prism') return attacker.damage;
-    return Math.max(1, attacker.damage - target.armor);
-  }
-
   // How many ships the side to move may order this turn; 0 = no limit.
   function orderLimit(state) {
     const { activations, firstTurnOrders } = state.rules;
@@ -509,11 +500,16 @@
 
   const doomstarReady = (state, player) => state.charge[player] >= state.rules.doomstarCharge;
 
-  // A crew ship inside the Doomstar zone, not contested, may spend its attack to fire once charge is full.
+  // A crew ship inside the Doomstar zone (and not contested, when contestedFiring is on).
+  function isGunner(state, unit) {
+    return canCrew(state, unit) && inZone(unit, state.doomstar)
+      && !(state.rules.contestedFiring && isContested(state, unit));
+  }
+
+  // A gunner may spend its attack to fire once its side's charge is full.
   function canFireDoomstar(state, unit) {
     return Boolean(unit) && state.rules.doomstarNeedsCrew && !unit.attacked && canActivate(state, unit)
-      && canCrew(state, unit) && inZone(unit, state.doomstar) && doomstarReady(state, unit.player)
-      && !isContested(state, unit);
+      && doomstarReady(state, unit.player) && isGunner(state, unit);
   }
 
   // ---------------------------------------------------------------------------
@@ -563,7 +559,7 @@
   }
 
   function attack(state, unit, target, events) {
-    const damage = damageAgainst(unit, target);
+    const { damage } = unit;
     const dealt = Math.min(damage, target.hp);
     target.hp -= damage;
     unit.attacked = true;
@@ -581,7 +577,7 @@
       for (const other of state.units) {
         if (other === target || other.player === unit.player || other.hp <= 0) continue;
         if (distance(target.x, target.y, other.x, other.y) - other.radius > unit.splash + EPSILON) continue;
-        const blast = damageAgainst(unit, other);
+        const blast = unit.damage;
         const blastDealt = Math.min(blast, other.hp);
         other.hp -= blast;
         events.push({
@@ -723,13 +719,13 @@
     clearLine,
     canFireAt,
     canAttackFrom,
-    damageAgainst,
     canActivate,
     orderLimit,
     ordersLeft,
     legalMoves,
     legalTargets,
     doomstarReady,
+    isGunner,
     canFireDoomstar,
     describeEvent,
   };

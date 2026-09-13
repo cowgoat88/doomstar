@@ -30,7 +30,8 @@
     lancer: '<path d="M1 0 L-0.15 0.45 L-0.95 0.2 L-0.95 -0.2 L-0.15 -0.45 Z"/><path class="detail" d="M0.85 0 L-0.7 0"/>',
     prism: '<path d="M1 0 L0 0.64 L-1 0 L0 -0.64 Z"/><path class="detail" d="M1 0 L-1 0 M0 0.64 L0 -0.64"/>',
     nova: '<path d="M0.5 -0.3 L1 -0.17 L1 0.17 L0.5 0.3 Z"/><circle r="0.74"/><circle class="detail" r="0.36"/>',
-    command: `<path d="${starPath(5, 1, 0.45)}"/>`,
+    // Command star: a plain sphere with an equator line.
+    command: '<circle r="1"/><ellipse class="detail" rx="0.38" ry="1"/>',
   };
 
   const px = (value) => (value + 0.5).toFixed(2);
@@ -317,10 +318,15 @@
       rules.doomstarNeedsCrew
         ? `Fire: at ${rules.doomstarCharge} charge, one of your ${crew} inside the Doomstar can fire instead of attacking: ${rules.doomstarDamage} damage to the enemy Command.`
         : `Fire: at ${rules.doomstarCharge} charge the Doomstar fires by itself: ${rules.doomstarDamage} damage to the enemy Command.`,
-      rules.contestedStars
-        ? 'Contest: an enemy ship at close range, Scouts included, stops a star from charging and a gunner from firing.'
-        : 'Contest: off. Enemy ships nearby do not stop charging or firing.',
+      contestText(rules),
     ];
+  }
+
+  function contestText(rules) {
+    const stops = [rules.contestedStars && 'a star from charging', rules.contestedFiring && 'a gunner from firing'].filter(Boolean);
+    if (!stops.length) return 'Contest: off. Enemy ships nearby never stop charging or firing.';
+    const firing = rules.contestedFiring ? '' : ' A gunner can fire even with enemies nearby.';
+    return `Contest: an enemy ship at close range, Scouts included, stops ${stops.join(' and ')}.${firing}`;
   }
 
   function describeRules(rules) {
@@ -333,7 +339,7 @@
     }
     lines.push('Ships move anywhere inside their green area, steering around walls, asteroids and enemy ships. Allies can be passed.');
     lines.push('A target is in range when its hull touches the red area. Walls block shots beyond close range; asteroids do not.');
-    lines.push('Armor reduces damage taken (minimum 1). Prism beams ignore armor. Nova blasts also hit enemies close to the target.');
+    lines.push('Every hit deals the attacker\'s full damage. Nova blasts also hit every enemy close to the target.');
     lines.push(...doomstarSteps(rules));
     lines.push('Destroy the enemy Command to win.');
     lines.push(`After ${Math.ceil(rules.turnLimit / 2)} rounds the match ends in a draw.`);

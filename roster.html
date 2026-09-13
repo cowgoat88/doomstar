@@ -64,7 +64,7 @@
         document.getElementById('howto').innerHTML = Board.doomstarSteps(rules).map((step) => `<li>${step}</li>`).join('');
         document.getElementById('cards').innerHTML = ORDER.map((type) => {
           const unit = D.UNIT_TYPES[type];
-          const stats = [['Move', unit.move], ['Range', unit.range], ['HP', unit.hp], ['Damage', unit.damage], ['Armor', unit.armor], ['Size', unit.radius]];
+          const stats = [['Move', unit.move], ['Range', unit.range], ['HP', unit.hp], ['Damage', unit.damage], ['Size', unit.radius]];
           if (unit.splash) stats.push(['Blast', unit.splash]);
           let role = '';
           if (type !== 'command') {

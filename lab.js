@@ -41,16 +41,17 @@
 
   // Rule variants, each compared against the balanced mirror.
   const VARIANTS = [
-    { name: 'charge 3', rules: withRules({ doomstarCharge: 3 }) },
+    { name: 'charge 4 (Round 6)', rules: withRules({ doomstarCharge: 4 }) },
     { name: 'charge 6', rules: withRules({ doomstarCharge: 6 }) },
-    { name: 'Doomstar damage 3', rules: withRules({ doomstarDamage: 3 }) },
-    { name: 'fires without crew (old rule)', rules: withRules({ doomstarNeedsCrew: false }) },
-    { name: 'Scouts crew too', rules: withRules({ crew: ['scout', 'guard', 'lancer', 'prism', 'nova'] }) },
+    { name: 'Doomstar damage 4', rules: withRules({ doomstarDamage: 4 }) },
+    { name: 'Doomstar damage 8', rules: withRules({ doomstarDamage: 8 }) },
+    { name: 'contested gunners cannot fire (session 3)', rules: withRules({ contestedFiring: true }) },
+    { name: 'fires without crew', rules: withRules({ doomstarNeedsCrew: false }) },
     { name: 'stars not contested', rules: withRules({ contestedStars: false }) },
     { name: 'P1 opens with 1 order', rules: withRules({ firstTurnOrders: 1 }) },
     { name: '3 orders per turn', rules: withRules({ activations: 3 }) },
-    { name: 'Scout range 1.5 (old)', rules: withRules({ unitOverrides: { scout: { range: 1.5 } } }) },
-    { name: 'Nova 4.5 / Prism 3 move (old)', rules: withRules({ unitOverrides: { nova: { move: 4.5 }, prism: { move: 3 } } }) },
+    { name: 'Nova move 5 / range 7 / damage 2 (Round 6)', rules: withRules({ unitOverrides: { nova: { move: 5, range: 7, damage: 2 } } }) },
+    { name: 'Command HP 10', rules: withRules({ unitOverrides: { command: { hp: 10 } } }) },
   ];
 
   const SUITES = {

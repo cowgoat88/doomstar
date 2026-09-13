@@ -7,23 +7,23 @@ from pathlib import Path
 
 DOOMSTAR = [
     "Charge: at the end of your turn, each star held by a Guard, Lancer, Prism or Nova adds 1 charge.",
-    "Fire: at 4 charge, one of those ships inside the Doomstar fires instead of attacking: 2 damage to the enemy Command.",
-    "Contest: an enemy ship at close range, Scouts included, stops a star from charging and a gunner from firing.",
+    "Fire: at 3 charge, one of those ships inside the Doomstar fires instead of attacking: 5 damage to the enemy Command.",
+    "Contest: an enemy ship at close range, Scouts included, stops a star from charging. Gunners can still fire.",
 ]
 
 UNITS = [
-    ("Command", "Move 0 | Range 1.5 | HP 5 | Damage 1 | Armor 1 | Size 2",
+    ("Command", "Move 0 | Range 1.5 | HP 15 | Damage 2 | Size 2",
      "Your command star. It cannot move. Lose it and you lose the battle."),
-    ("Guard", "Move 4.5 | Range 1.5 | HP 3 | Damage 2 | Armor 1 | Size 1.4",
-     "Armored frontline defender with extra health. Doomstar crew."),
-    ("Scout", "Move 9 | Range 3 | HP 2 | Damage 1 | Armor 0 | Size 0.9",
+    ("Guard", "Move 4.5 | Range 1.5 | HP 9 | Damage 4 | Size 1.4",
+     "Tough frontline brawler with the most hit points. Doomstar crew."),
+    ("Scout", "Move 9 | Range 3 | HP 4 | Damage 2 | Size 0.9",
      "Fast raider that harasses from short range and contests enemy stars. Cannot charge or fire."),
-    ("Lancer", "Move 6 | Range 5 | HP 2 | Damage 2 | Armor 0 | Size 1.1",
+    ("Lancer", "Move 6 | Range 5 | HP 4 | Damage 4 | Size 1.1",
      "Mid-range skirmisher that strikes from a distance. Doomstar crew."),
-    ("Prism", "Move 2.5 | Range 8 | HP 2 | Damage 2 | Armor 0 | Size 1.2",
-     "Slow beam artillery with the longest range. Ignores armor. Doomstar crew."),
-    ("Nova", "Move 3.5 | Range 7 | HP 2 | Damage 1 | Blast 3.5 | Size 1.2",
-     "Slow splash artillery: its blast also hits every enemy close to the target. Doomstar crew."),
+    ("Prism", "Move 4 | Range 8 | HP 4 | Damage 5 | Size 1.2",
+     "Beam artillery with the heaviest hit. Doomstar crew."),
+    ("Nova", "Move 7 | Range 10 | HP 4 | Damage 1 | Blast 3.5 | Size 1.2",
+     "Fast, long-range splash harasser: a weak blast that hits every enemy close to the target. Doomstar crew."),
 ]
 
 content_lines = [

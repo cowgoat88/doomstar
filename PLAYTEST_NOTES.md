@@ -91,9 +91,80 @@ What this shows:
 ### Verdict
 The crew rules fixed the Round 4 problems: no first-move edge, no dominant play style, and every ship matters. The open problem is stalling. Under the crew rule a third of bot games run out the clock, and the rest run long. Before changing the rules, play a few human games to see whether people push gunners into the center better than the bot does. If they stall too, test these as rule toggles, in order: a larger Doomstar zone, firing that ignores contesting, and a draw breaker. Also consider giving the Nova and Prism back some speed.
 
+## Round 6: no armor, faster artillery, open map
+Changes after human playtests: no armor (HP and damage rebalanced), Nova move 5, Prism move 4, gunners fire even when contested, and no asteroids on the Proving Ground. Same bot as Round 5, 200 games per experiment.
+
+### Headline numbers
+| Balanced mirror | Round 5 | Round 6 |
+| --- | --- | --- |
+| Player 1 / Player 2 / draw | 31.5 / 33.5 / 35 | 45.5 / 47 / 7.5 |
+| Median rounds | 28 | 17 |
+| First kill (round) | 4.5 | 3.5 |
+| Doomstar shots per game | 1.2 | 3.0 |
+| How games end | Command 39%, draw 35%, Doomstar 26% | Command 58%, Doomstar 34.5%, draw 7.5% |
+
+What this shows:
+- **The stalls are fixed.** Draws fell from 35% to 7.5%, and the median game dropped from 28 to 17 rounds, about 34 orders per player. At 10-20 seconds per order that is roughly 11-23 minutes, close to the 10-20 minute target.
+- **Still no first-move edge:** 45.5% vs 47%.
+- **Firing while contested is not what fixed it.** Blocking contested gunners again (the Round 5 rule) gives 5% draws and 17 rounds, the same as the new default. The fix came from the other changes together. Only the artillery speed was tested on its own: with the Round 5 speeds, draws rise to 12.5%.
+- **Most games are still won by attacking the Command directly (58%), not with the Doomstar (34.5%).** The design goal is a fight over the Doomstar with only a small chance to raid an undefended Command, so this is the main open question (see the variants).
+
+### Play styles
+| Matchup (seats alternate) | Result |
+| --- | --- |
+| Balanced vs Rusher | Balanced 54.5%, Rusher 42.5%, draw 3% |
+| Balanced vs Turtle | Balanced 50.5%, Turtle 47%, draw 2.5% |
+| Balanced vs Star Hunter | Balanced 65.5%, Star Hunter 32%, draw 2.5% |
+| Rusher vs Turtle | Turtle 50.5%, Rusher 44%, draw 5.5% |
+| Rusher vs Star Hunter | Star Hunter 63.5%, Rusher 35%, draw 1.5% |
+| Turtle vs Star Hunter | Turtle 59.5%, Star Hunter 36.5%, draw 4% |
+
+No style dominates; Balanced and Turtle are close to even. Mirror-match draws fell too: Rusher 6.5% (was 68%), Turtle 9%, Star Hunter 4.5%.
+
+### Ship value
+Same method as Round 5 (baseline: Player 1 45.5%, Player 2 47%).
+
+| Ship removed | From Player 1: P1 / P2 wins | From Player 2: P1 / P2 wins | Value |
+| --- | --- | --- | --- |
+| Lancer | 22.5 / 72.5 | 74.5 / 21.5 | 52 |
+| Prism | 28 / 67.5 | 65 / 31 | 37 |
+| Guard | 30.5 / 61 | 60.5 / 33 | 29 |
+| Nova | 40 / 55.5 | 49 / 44 | 10 |
+| Scout | 45 / 48 | 45.5 / 47.5 | about 0 |
+
+- **The faster Prism now pulls its weight** as the second most valuable ship.
+- **The Nova is still weak** despite the extra speed. Its 2 damage needs 2 hits to destroy a light ship and 5 for a Guard.
+- **Scouts no longer change results** in bot games. They can't charge, their 2 damage needs 8 hits to destroy a Command, and armies meet by round 3-4, so their speed buys little. Watch them in human games; a possible lever is Scout damage 3.
+
+### Rule variants
+| Change (balanced mirror) | P1 / P2 / draw % | Median rounds | Doomstar shots | How games end |
+| --- | --- | --- | --- | --- |
+| **Baseline** | 45.5 / 47 / 7.5 | 17 | 3.0 | Command 58%, Doomstar 34.5%, draw 7.5% |
+| Charge 3 | 51 / 45 / 4 | 15 | 3.4 | Doomstar 60.5%, Command 35.5%, draw 4% |
+| Charge 6 | 41 / 50.5 / 8.5 | 20 | 2.1 | Command 76%, Doomstar 15.5%, draw 8.5% |
+| Doomstar damage 4 | 48.5 / 43 / 8.5 | 19 | 3.0 | Command 73%, Doomstar 18.5%, draw 8.5% |
+| Doomstar damage 8 | 51.5 / 47 / 1.5 | 13 | 2.4 | Doomstar 85.5%, Command 13%, draw 1.5% |
+| Command HP 10 | 52.5 / 45 / 2.5 | 12 | 2.3 | Doomstar 81.5%, Command 16%, draw 2.5% |
+| Contested gunners cannot fire (Round 5 rule) | 50 / 45 / 5 | 17 | 2.7 | Command 61%, Doomstar 34%, draw 5% |
+| Fires without crew | 50.5 / 49.5 / 0 | 13 | 3.7 | Doomstar 85.5%, Command 14.5% |
+| Stars not contested | 52 / 43.5 / 4.5 | 17 | 2.9 | Command 60%, Doomstar 35.5%, draw 4.5% |
+| Player 1 opens with 1 order | 55.5 / 40 / 4.5 | 17 | 2.9 | Command 56.5%, Doomstar 39%, draw 4.5% |
+| 3 orders per turn | 41.5 / 48 / 10.5 | 15 | 2.2 | Command 71.5%, draw 10.5%, Doomstar 18% |
+| Nova 3.5 / Prism 2.5 move (Round 5) | 42.5 / 45 / 12.5 | 19 | 3.0 | Command 44%, Doomstar 43.5%, draw 12.5% |
+
+What this shows:
+- **A two-shot Doomstar kill makes the Doomstar the main way to win.** Doomstar damage 8, or Command HP 10 with the current damage 5, ends 81-86% of games with the Doomstar in 12-13 rounds, with even seats and almost no draws. Games get shorter, about 8-16 minutes by the estimate above.
+- **Charge 3 is a milder step:** the Doomstar ends 60.5% of games, in 15 rounds.
+- **Avoid charge 6, Doomstar damage 4 and 3 orders per turn.** Each pushes games back toward Command kills and more draws.
+- **"Player 1 opens with 1 order" gave Player 1 more wins (55.5/40)**, the opposite of its purpose. Treat it as a bot quirk, not a reason to adopt it; the seats are already even.
+
+### Verdict
+The playtest changes fixed the stalling: 7.5% draws, 17-round games, even seats and no dominant play style. Two questions for the owner:
+1. **How central should the Doomstar be?** Most wins are still direct Command kills. If the Doomstar should be the main path, the strongest candidate is a two-shot kill (Doomstar damage 8, or Command HP 10). Charge 3 is a smaller step.
+2. **Scouts and Novas** barely affect bot results. Check them in human play before tuning.
+
 ## Watch these in the AI Arena
 Open from disk or via `python -m http.server 8000`:
-- `arena.html?p1=balanced&p2=balanced&seed=4&autoplay=1`: Player 2 wins with the Doomstar in round 21.
-- `arena.html?p1=balanced&p2=balanced&seed=3&autoplay=1`: an early brawl that ends in a stand-off draw at round 60.
-- `arena.html?p1=balanced&p2=balanced&seed=2&autoplay=1`: crew rule; Player 2 fires once and wins by destroying the Command in round 40.
-- `arena.html?p1=balanced&p2=balanced&seed=2&autoplay=1&rules={"doomstarNeedsCrew":false}`: the same seed with automatic firing; three Doomstar hits end it in round 19.
+- `arena.html?p1=balanced&p2=balanced&seed=8&autoplay=1`: Player 2 wins with the Doomstar in round 12.
+- `arena.html?p1=balanced&p2=balanced&seed=1&autoplay=1`: Player 2 wins by destroying the Command directly in round 19.
+- `arena.html?p1=balanced&p2=balanced&seed=1&autoplay=1&rules={"doomstarDamage":8}`: the same seed with a two-shot Doomstar; Player 2 wins with the Doomstar in round 11.

@@ -2,7 +2,7 @@
   "suite": "doomstar",
   "games": 200,
   "seed": 1,
-  "elapsedSeconds": 472,
+  "elapsedSeconds": 522,
   "results": [
     {
       "index": 0,
@@ -13,75 +13,75 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 31.5,
-      "p2Win": 33.5,
-      "draw": 35,
-      "p1WinMargin": 6.4,
-      "botAWin": 31.5,
-      "botBWin": 33.5,
+      "p1Win": 45.5,
+      "p2Win": 47,
+      "draw": 7.5,
+      "p1WinMargin": 6.8,
+      "botAWin": 45.5,
+      "botBWin": 47,
       "reasons": {
-        "command": 39,
-        "time": 35,
-        "doomstar": 26
+        "command": 58,
+        "doomstar": 34.5,
+        "time": 7.5
       },
-      "roundsAvg": 37.7,
-      "roundsMedian": 28,
-      "roundsP10": 19,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.5,
-      "attacksPerGame": 24.9,
-      "movesPerGame": 85.3,
-      "actionsPerTurn": 1.46,
-      "doomstarShotsPerGame": 1.2,
-      "survivorsPerGame": 4.4,
+      "roundsAvg": 20.7,
+      "roundsMedian": 17,
+      "roundsP10": 14,
+      "roundsP90": 25,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 23.7,
+      "movesPerGame": 64.2,
+      "actionsPerTurn": 2.13,
+      "doomstarShotsPerGame": 3,
+      "survivorsPerGame": 4.5,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.02,
-          "killsPerGame": 1.56,
-          "damagePerUnit": 1.51,
-          "killsPerUnit": 0.39,
-          "lossRate": 93
+          "damagePerGame": 9.23,
+          "killsPerGame": 0.93,
+          "damagePerUnit": 2.31,
+          "killsPerUnit": 0.23,
+          "lossRate": 89
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.57,
-          "killsPerGame": 2.66,
-          "damagePerUnit": 2.14,
-          "killsPerUnit": 0.67,
-          "lossRate": 93.6
+          "damagePerGame": 19.77,
+          "killsPerGame": 3.33,
+          "damagePerUnit": 4.94,
+          "killsPerUnit": 0.83,
+          "lossRate": 77.8
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 10.64,
-          "killsPerGame": 5.22,
-          "damagePerUnit": 2.66,
-          "killsPerUnit": 1.31,
-          "lossRate": 66.5
+          "damagePerGame": 25.15,
+          "killsPerGame": 4.49,
+          "damagePerUnit": 6.29,
+          "killsPerUnit": 1.12,
+          "lossRate": 81.9
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.84,
-          "killsPerGame": 1.56,
-          "damagePerUnit": 1.42,
-          "killsPerUnit": 0.78,
-          "lossRate": 22.5
+          "damagePerGame": 12.35,
+          "killsPerGame": 2.4,
+          "damagePerUnit": 6.17,
+          "killsPerUnit": 1.2,
+          "lossRate": 26.8
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.34,
-          "killsPerGame": 0.96,
-          "damagePerUnit": 1.17,
+          "damagePerGame": 6.42,
+          "killsPerGame": 0.97,
+          "damagePerUnit": 3.21,
           "killsPerUnit": 0.48,
-          "lossRate": 49.3
+          "lossRate": 52.5
         },
         "command": {
           "fieldedPerGame": 2,
           "damagePerGame": 0.01,
           "killsPerGame": 0.01,
-          "damagePerUnit": 0,
+          "damagePerUnit": 0.01,
           "killsPerUnit": 0,
-          "lossRate": 19.5
+          "lossRate": 29
         }
       },
       "msPerGame": 631
@@ -95,78 +95,78 @@
       "p2": "rusher",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 24,
-      "p2Win": 8,
-      "draw": 68,
-      "p1WinMargin": 5.9,
-      "botAWin": 24,
-      "botBWin": 8,
+      "p1Win": 56,
+      "p2Win": 37.5,
+      "draw": 6.5,
+      "p1WinMargin": 6.8,
+      "botAWin": 56,
+      "botBWin": 37.5,
       "reasons": {
-        "command": 25,
-        "time": 68,
-        "doomstar": 7
+        "doomstar": 13,
+        "time": 6.5,
+        "command": 80.5
       },
-      "roundsAvg": 48.3,
-      "roundsMedian": 61,
-      "roundsP10": 18,
-      "roundsP90": 61,
+      "roundsAvg": 20.5,
+      "roundsMedian": 17,
+      "roundsP10": 15,
+      "roundsP90": 24,
       "firstKillRoundAvg": 3,
-      "attacksPerGame": 26.7,
-      "movesPerGame": 68.2,
-      "actionsPerTurn": 0.98,
-      "doomstarShotsPerGame": 0.4,
-      "survivorsPerGame": 3.5,
+      "attacksPerGame": 28.9,
+      "movesPerGame": 59.9,
+      "actionsPerTurn": 2.16,
+      "doomstarShotsPerGame": 1,
+      "survivorsPerGame": 3,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.94,
-          "killsPerGame": 0.79,
-          "damagePerUnit": 1.49,
-          "killsPerUnit": 0.2,
-          "lossRate": 100
+          "damagePerGame": 12.24,
+          "killsPerGame": 0.39,
+          "damagePerUnit": 3.06,
+          "killsPerUnit": 0.1,
+          "lossRate": 99.6
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.07,
-          "killsPerGame": 3.15,
-          "damagePerUnit": 2.02,
-          "killsPerUnit": 0.79,
-          "lossRate": 97.1
+          "damagePerGame": 18.38,
+          "killsPerGame": 3.23,
+          "damagePerUnit": 4.6,
+          "killsPerUnit": 0.81,
+          "lossRate": 81.5
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 10.14,
-          "killsPerGame": 5.16,
-          "damagePerUnit": 2.53,
-          "killsPerUnit": 1.29,
-          "lossRate": 83.3
+          "damagePerGame": 25.03,
+          "killsPerGame": 5.91,
+          "damagePerUnit": 6.26,
+          "killsPerUnit": 1.48,
+          "lossRate": 76.8
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.79,
-          "killsPerGame": 1.66,
-          "damagePerUnit": 1.4,
-          "killsPerUnit": 0.83,
-          "lossRate": 11.5
+          "damagePerGame": 18.93,
+          "killsPerGame": 3.11,
+          "damagePerUnit": 9.47,
+          "killsPerUnit": 1.55,
+          "lossRate": 54.5
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 4.27,
-          "killsPerGame": 2.02,
-          "damagePerUnit": 2.13,
-          "killsPerUnit": 1.01,
-          "lossRate": 53.8
+          "damagePerGame": 10.58,
+          "killsPerGame": 1.12,
+          "damagePerUnit": 5.29,
+          "killsPerUnit": 0.56,
+          "lossRate": 81
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.01,
-          "killsPerGame": 0.01,
-          "damagePerUnit": 0.01,
-          "killsPerUnit": 0,
-          "lossRate": 12.5
+          "damagePerGame": 0.81,
+          "killsPerGame": 0.09,
+          "damagePerUnit": 0.4,
+          "killsPerUnit": 0.04,
+          "lossRate": 40.3
         }
       },
-      "msPerGame": 470
+      "msPerGame": 571
     },
     {
       "index": 2,
@@ -177,67 +177,67 @@
       "p2": "turtle",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 23,
-      "p2Win": 30,
-      "draw": 47,
-      "p1WinMargin": 5.8,
-      "botAWin": 23,
-      "botBWin": 30,
+      "p1Win": 50.5,
+      "p2Win": 40.5,
+      "draw": 9,
+      "p1WinMargin": 6.9,
+      "botAWin": 50.5,
+      "botBWin": 40.5,
       "reasons": {
-        "time": 47,
-        "doomstar": 38,
-        "command": 15
+        "doomstar": 46,
+        "command": 45,
+        "time": 9
       },
-      "roundsAvg": 45.1,
-      "roundsMedian": 55,
+      "roundsAvg": 33,
+      "roundsMedian": 30,
       "roundsP10": 20,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 7.7,
-      "attacksPerGame": 14.6,
-      "movesPerGame": 143.6,
-      "actionsPerTurn": 1.76,
-      "doomstarShotsPerGame": 1.6,
-      "survivorsPerGame": 8.9,
+      "roundsP90": 58,
+      "firstKillRoundAvg": 10.3,
+      "attacksPerGame": 17.5,
+      "movesPerGame": 115.5,
+      "actionsPerTurn": 2.02,
+      "doomstarShotsPerGame": 2.4,
+      "survivorsPerGame": 6.6,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 4.78,
-          "killsPerGame": 0.99,
-          "damagePerUnit": 1.2,
-          "killsPerUnit": 0.25,
-          "lossRate": 84.3
+          "damagePerGame": 9.01,
+          "killsPerGame": 0.86,
+          "damagePerUnit": 2.25,
+          "killsPerUnit": 0.21,
+          "lossRate": 87.1
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 3.29,
-          "killsPerGame": 1.75,
-          "damagePerUnit": 0.82,
-          "killsPerUnit": 0.44,
-          "lossRate": 26.8
+          "damagePerGame": 8.52,
+          "killsPerGame": 2.01,
+          "damagePerUnit": 2.13,
+          "killsPerUnit": 0.5,
+          "lossRate": 24.3
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 7.72,
-          "killsPerGame": 3.26,
-          "damagePerUnit": 1.93,
-          "killsPerUnit": 0.81,
-          "lossRate": 46.3
+          "damagePerGame": 21.4,
+          "killsPerGame": 4.52,
+          "damagePerUnit": 5.35,
+          "killsPerUnit": 1.13,
+          "lossRate": 58.1
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 1.81,
-          "killsPerGame": 0.91,
-          "damagePerUnit": 0.9,
-          "killsPerUnit": 0.45,
-          "lossRate": 12.3
+          "damagePerGame": 11.01,
+          "killsPerGame": 1.9,
+          "damagePerUnit": 5.5,
+          "killsPerUnit": 0.95,
+          "lossRate": 54.5
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 1.3,
-          "killsPerGame": 0.4,
-          "damagePerUnit": 0.65,
-          "killsPerUnit": 0.2,
-          "lossRate": 30.3
+          "damagePerGame": 6.75,
+          "killsPerGame": 0.53,
+          "damagePerUnit": 3.38,
+          "killsPerUnit": 0.27,
+          "lossRate": 74.5
         },
         "command": {
           "fieldedPerGame": 2,
@@ -245,10 +245,10 @@
           "killsPerGame": 0,
           "damagePerUnit": 0,
           "killsPerUnit": 0,
-          "lossRate": 7.5
+          "lossRate": 22.5
         }
       },
-      "msPerGame": 1081
+      "msPerGame": 1241
     },
     {
       "index": 3,
@@ -259,78 +259,78 @@
       "p2": "hunter",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 22.5,
-      "p2Win": 32,
-      "draw": 45.5,
-      "p1WinMargin": 5.8,
-      "botAWin": 22.5,
-      "botBWin": 32,
+      "p1Win": 37.5,
+      "p2Win": 58,
+      "draw": 4.5,
+      "p1WinMargin": 6.7,
+      "botAWin": 37.5,
+      "botBWin": 58,
       "reasons": {
-        "time": 45.5,
-        "command": 41.5,
-        "doomstar": 13
+        "command": 66.5,
+        "doomstar": 29,
+        "time": 4.5
       },
-      "roundsAvg": 45.9,
-      "roundsMedian": 54,
-      "roundsP10": 23,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.1,
-      "attacksPerGame": 25,
-      "movesPerGame": 122.2,
-      "actionsPerTurn": 1.61,
-      "doomstarShotsPerGame": 0.4,
-      "survivorsPerGame": 5.1,
+      "roundsAvg": 20.9,
+      "roundsMedian": 19,
+      "roundsP10": 15,
+      "roundsP90": 24,
+      "firstKillRoundAvg": 3,
+      "attacksPerGame": 24.4,
+      "movesPerGame": 64.8,
+      "actionsPerTurn": 2.13,
+      "doomstarShotsPerGame": 2.7,
+      "survivorsPerGame": 3.7,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.28,
-          "killsPerGame": 0.95,
-          "damagePerUnit": 1.32,
-          "killsPerUnit": 0.24,
-          "lossRate": 84.4
+          "damagePerGame": 10.48,
+          "killsPerGame": 1.24,
+          "damagePerUnit": 2.62,
+          "killsPerUnit": 0.31,
+          "lossRate": 91.4
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 10.03,
-          "killsPerGame": 2.02,
-          "damagePerUnit": 2.51,
-          "killsPerUnit": 0.5,
-          "lossRate": 100
+          "damagePerGame": 19.53,
+          "killsPerGame": 4.97,
+          "damagePerUnit": 4.88,
+          "killsPerUnit": 1.24,
+          "lossRate": 77.9
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 11.49,
-          "killsPerGame": 6.78,
-          "damagePerUnit": 2.87,
-          "killsPerUnit": 1.7,
-          "lossRate": 39.4
+          "damagePerGame": 24.83,
+          "killsPerGame": 3.6,
+          "damagePerUnit": 6.21,
+          "killsPerUnit": 0.9,
+          "lossRate": 93.3
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.45,
-          "killsPerGame": 1.35,
-          "damagePerUnit": 1.23,
-          "killsPerUnit": 0.67,
-          "lossRate": 38.5
+          "damagePerGame": 15.81,
+          "killsPerGame": 2.6,
+          "damagePerUnit": 7.91,
+          "killsPerUnit": 1.3,
+          "lossRate": 24
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 1.08,
-          "killsPerGame": 0.26,
-          "damagePerUnit": 0.54,
-          "killsPerUnit": 0.13,
-          "lossRate": 61.3
+          "damagePerGame": 5.32,
+          "killsPerGame": 0.51,
+          "damagePerUnit": 2.66,
+          "killsPerUnit": 0.25,
+          "lossRate": 64
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.01,
+          "damagePerGame": 0.03,
           "killsPerGame": 0.01,
-          "damagePerUnit": 0.01,
+          "damagePerUnit": 0.02,
           "killsPerUnit": 0.01,
-          "lossRate": 20.8
+          "lossRate": 33.3
         }
       },
-      "msPerGame": 933
+      "msPerGame": 555
     },
     {
       "index": 4,
@@ -341,78 +341,78 @@
       "p2": "rusher",
       "swapSeats": true,
       "games": 200,
-      "p1Win": 24.5,
-      "p2Win": 32,
-      "draw": 43.5,
-      "p1WinMargin": 5.9,
-      "botAWin": 44,
-      "botBWin": 12.5,
+      "p1Win": 61,
+      "p2Win": 36,
+      "draw": 3,
+      "p1WinMargin": 6.7,
+      "botAWin": 54.5,
+      "botBWin": 42.5,
       "reasons": {
-        "doomstar": 19.5,
-        "time": 43.5,
-        "command": 37
+        "command": 58,
+        "doomstar": 39,
+        "time": 3
       },
-      "roundsAvg": 39.8,
-      "roundsMedian": 30,
-      "roundsP10": 18,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 3.4,
-      "attacksPerGame": 25.7,
-      "movesPerGame": 77.5,
-      "actionsPerTurn": 1.3,
-      "doomstarShotsPerGame": 1,
-      "survivorsPerGame": 4.1,
+      "roundsAvg": 17.5,
+      "roundsMedian": 17,
+      "roundsP10": 11,
+      "roundsP90": 21,
+      "firstKillRoundAvg": 3.6,
+      "attacksPerGame": 22.7,
+      "movesPerGame": 59.4,
+      "actionsPerTurn": 2.34,
+      "doomstarShotsPerGame": 2.3,
+      "survivorsPerGame": 5.3,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.98,
-          "killsPerGame": 1.15,
-          "damagePerUnit": 1.49,
-          "killsPerUnit": 0.29,
-          "lossRate": 94.6
+          "damagePerGame": 8.7,
+          "killsPerGame": 0.61,
+          "damagePerUnit": 2.17,
+          "killsPerUnit": 0.15,
+          "lossRate": 86.1
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.62,
-          "killsPerGame": 3.1,
-          "damagePerUnit": 2.15,
-          "killsPerUnit": 0.78,
-          "lossRate": 95.8
+          "damagePerGame": 18.89,
+          "killsPerGame": 3.28,
+          "damagePerUnit": 4.72,
+          "killsPerUnit": 0.82,
+          "lossRate": 73.9
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 9.82,
-          "killsPerGame": 5.01,
-          "damagePerUnit": 2.46,
-          "killsPerUnit": 1.25,
-          "lossRate": 74.8
+          "damagePerGame": 21.95,
+          "killsPerGame": 3.83,
+          "damagePerUnit": 5.49,
+          "killsPerUnit": 0.96,
+          "lossRate": 59.5
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.95,
-          "killsPerGame": 1.64,
-          "damagePerUnit": 1.47,
-          "killsPerUnit": 0.82,
-          "lossRate": 16.3
+          "damagePerGame": 14.75,
+          "killsPerGame": 2.7,
+          "damagePerUnit": 7.38,
+          "killsPerUnit": 1.35,
+          "lossRate": 37.3
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.3,
-          "killsPerGame": 1.41,
-          "damagePerUnit": 1.65,
-          "killsPerUnit": 0.71,
-          "lossRate": 50.8
+          "damagePerGame": 7.27,
+          "killsPerGame": 0.87,
+          "damagePerUnit": 3.63,
+          "killsPerUnit": 0.44,
+          "lossRate": 59.5
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.02,
+          "damagePerGame": 0.17,
           "killsPerGame": 0.02,
-          "damagePerUnit": 0.01,
+          "damagePerUnit": 0.08,
           "killsPerUnit": 0.01,
-          "lossRate": 18.5
+          "lossRate": 29
         }
       },
-      "msPerGame": 546
+      "msPerGame": 618
     },
     {
       "index": 5,
@@ -423,78 +423,78 @@
       "p2": "turtle",
       "swapSeats": true,
       "games": 200,
-      "p1Win": 25.5,
-      "p2Win": 42,
-      "draw": 32.5,
-      "p1WinMargin": 6,
-      "botAWin": 43,
-      "botBWin": 24.5,
+      "p1Win": 54.5,
+      "p2Win": 43,
+      "draw": 2.5,
+      "p1WinMargin": 6.8,
+      "botAWin": 50.5,
+      "botBWin": 47,
       "reasons": {
-        "doomstar": 29,
-        "time": 32.5,
-        "command": 38.5
+        "command": 52.5,
+        "doomstar": 45,
+        "time": 2.5
       },
-      "roundsAvg": 38.1,
-      "roundsMedian": 32,
-      "roundsP10": 18,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.5,
-      "attacksPerGame": 21.2,
-      "movesPerGame": 102.1,
-      "actionsPerTurn": 1.62,
-      "doomstarShotsPerGame": 1.4,
+      "roundsAvg": 20.2,
+      "roundsMedian": 19,
+      "roundsP10": 14,
+      "roundsP90": 27,
+      "firstKillRoundAvg": 4.2,
+      "attacksPerGame": 20.2,
+      "movesPerGame": 68.4,
+      "actionsPerTurn": 2.19,
+      "doomstarShotsPerGame": 2.6,
       "survivorsPerGame": 6,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.08,
-          "killsPerGame": 1.5,
-          "damagePerUnit": 1.52,
-          "killsPerUnit": 0.38,
-          "lossRate": 89.6
+          "damagePerGame": 9.41,
+          "killsPerGame": 0.85,
+          "damagePerUnit": 2.35,
+          "killsPerUnit": 0.21,
+          "lossRate": 85.3
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.58,
-          "killsPerGame": 3.15,
-          "damagePerUnit": 1.64,
-          "killsPerUnit": 0.79,
-          "lossRate": 65.9
+          "damagePerGame": 12.54,
+          "killsPerGame": 2.79,
+          "damagePerUnit": 3.14,
+          "killsPerUnit": 0.7,
+          "lossRate": 50.8
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 7.87,
-          "killsPerGame": 3.41,
-          "damagePerUnit": 1.97,
-          "killsPerUnit": 0.85,
-          "lossRate": 62.9
+          "damagePerGame": 23.33,
+          "killsPerGame": 4.25,
+          "damagePerUnit": 5.83,
+          "killsPerUnit": 1.06,
+          "lossRate": 68.5
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.85,
-          "killsPerGame": 1.34,
-          "damagePerUnit": 1.43,
-          "killsPerUnit": 0.67,
-          "lossRate": 20
+          "damagePerGame": 11.56,
+          "killsPerGame": 1.91,
+          "damagePerUnit": 5.78,
+          "killsPerUnit": 0.96,
+          "lossRate": 35
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.2,
-          "killsPerGame": 0.98,
-          "damagePerUnit": 1.6,
-          "killsPerUnit": 0.49,
-          "lossRate": 43.5
+          "damagePerGame": 6.98,
+          "killsPerGame": 0.71,
+          "damagePerUnit": 3.49,
+          "killsPerUnit": 0.35,
+          "lossRate": 55.3
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.02,
-          "killsPerGame": 0.02,
-          "damagePerUnit": 0.01,
+          "damagePerGame": 0.04,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.02,
           "killsPerUnit": 0.01,
-          "lossRate": 19.3
+          "lossRate": 26.3
         }
       },
-      "msPerGame": 706
+      "msPerGame": 691
     },
     {
       "index": 6,
@@ -505,78 +505,78 @@
       "p2": "hunter",
       "swapSeats": true,
       "games": 200,
-      "p1Win": 29.5,
-      "p2Win": 44,
-      "draw": 26.5,
-      "p1WinMargin": 6.3,
-      "botAWin": 43.5,
-      "botBWin": 30,
+      "p1Win": 39,
+      "p2Win": 58.5,
+      "draw": 2.5,
+      "p1WinMargin": 6.7,
+      "botAWin": 65.5,
+      "botBWin": 32,
       "reasons": {
-        "command": 39.5,
-        "time": 26.5,
-        "doomstar": 34
+        "command": 59,
+        "doomstar": 38.5,
+        "time": 2.5
       },
-      "roundsAvg": 34.3,
-      "roundsMedian": 26,
-      "roundsP10": 17,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.3,
-      "attacksPerGame": 23.9,
-      "movesPerGame": 89.1,
-      "actionsPerTurn": 1.64,
-      "doomstarShotsPerGame": 1.6,
-      "survivorsPerGame": 4.9,
+      "roundsAvg": 18.6,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 24,
+      "firstKillRoundAvg": 3.3,
+      "attacksPerGame": 23.1,
+      "movesPerGame": 61.8,
+      "actionsPerTurn": 2.28,
+      "doomstarShotsPerGame": 2.9,
+      "survivorsPerGame": 4.6,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.7,
-          "killsPerGame": 1.94,
-          "damagePerUnit": 1.43,
-          "killsPerUnit": 0.48,
-          "lossRate": 90.1
+          "damagePerGame": 9.36,
+          "killsPerGame": 0.96,
+          "damagePerUnit": 2.34,
+          "killsPerUnit": 0.24,
+          "lossRate": 88.9
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.68,
-          "killsPerGame": 2.02,
-          "damagePerUnit": 2.17,
-          "killsPerUnit": 0.51,
-          "lossRate": 94.9
+          "damagePerGame": 18.06,
+          "killsPerGame": 3.97,
+          "damagePerUnit": 4.51,
+          "killsPerUnit": 0.99,
+          "lossRate": 69.1
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 10.23,
-          "killsPerGame": 5.26,
-          "damagePerUnit": 2.56,
-          "killsPerUnit": 1.31,
-          "lossRate": 57.4
+          "damagePerGame": 25.89,
+          "killsPerGame": 3.99,
+          "damagePerUnit": 6.47,
+          "killsPerUnit": 1,
+          "lossRate": 85.1
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.42,
-          "killsPerGame": 1.37,
-          "damagePerUnit": 1.21,
-          "killsPerUnit": 0.69,
-          "lossRate": 19.3
+          "damagePerGame": 12.65,
+          "killsPerGame": 2.27,
+          "damagePerUnit": 6.33,
+          "killsPerUnit": 1.14,
+          "lossRate": 25.5
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.47,
-          "killsPerGame": 0.93,
-          "damagePerUnit": 1.24,
-          "killsPerUnit": 0.46,
-          "lossRate": 52
+          "damagePerGame": 6.09,
+          "killsPerGame": 0.79,
+          "damagePerUnit": 3.04,
+          "killsPerUnit": 0.4,
+          "lossRate": 58.3
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.02,
-          "killsPerGame": 0.01,
-          "damagePerUnit": 0.01,
+          "damagePerGame": 0.12,
+          "killsPerGame": 0.02,
+          "damagePerUnit": 0.06,
           "killsPerUnit": 0.01,
-          "lossRate": 19.8
+          "lossRate": 29.5
         }
       },
-      "msPerGame": 666
+      "msPerGame": 577
     },
     {
       "index": 7,
@@ -587,78 +587,78 @@
       "p2": "turtle",
       "swapSeats": true,
       "games": 200,
-      "p1Win": 26.5,
-      "p2Win": 40,
-      "draw": 33.5,
-      "p1WinMargin": 6.1,
-      "botAWin": 26,
-      "botBWin": 40.5,
+      "p1Win": 54,
+      "p2Win": 40.5,
+      "draw": 5.5,
+      "p1WinMargin": 6.8,
+      "botAWin": 44,
+      "botBWin": 50.5,
       "reasons": {
-        "command": 44,
-        "time": 33.5,
-        "doomstar": 22.5
+        "doomstar": 32,
+        "command": 62.5,
+        "time": 5.5
       },
-      "roundsAvg": 38.9,
-      "roundsMedian": 32,
-      "roundsP10": 20,
-      "roundsP90": 61,
+      "roundsAvg": 21.6,
+      "roundsMedian": 19,
+      "roundsP10": 15,
+      "roundsP90": 27,
       "firstKillRoundAvg": 4.1,
       "attacksPerGame": 22.9,
-      "movesPerGame": 100.8,
-      "actionsPerTurn": 1.59,
-      "doomstarShotsPerGame": 1.1,
-      "survivorsPerGame": 5.2,
+      "movesPerGame": 72.1,
+      "actionsPerTurn": 2.2,
+      "doomstarShotsPerGame": 1.9,
+      "survivorsPerGame": 5.3,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.95,
-          "killsPerGame": 1.27,
-          "damagePerUnit": 1.49,
-          "killsPerUnit": 0.32,
-          "lossRate": 93.6
+          "damagePerGame": 9.76,
+          "killsPerGame": 0.76,
+          "damagePerUnit": 2.44,
+          "killsPerUnit": 0.19,
+          "lossRate": 88.8
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.29,
-          "killsPerGame": 2.89,
-          "damagePerUnit": 1.57,
-          "killsPerUnit": 0.72,
-          "lossRate": 71.8
+          "damagePerGame": 17.49,
+          "killsPerGame": 3.5,
+          "damagePerUnit": 4.37,
+          "killsPerUnit": 0.87,
+          "lossRate": 61.1
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 9.73,
-          "killsPerGame": 4.2,
-          "damagePerUnit": 2.43,
-          "killsPerUnit": 1.05,
-          "lossRate": 69.6
+          "damagePerGame": 20.55,
+          "killsPerGame": 3.42,
+          "damagePerUnit": 5.14,
+          "killsPerUnit": 0.86,
+          "lossRate": 62.6
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.63,
-          "killsPerGame": 1.7,
-          "damagePerUnit": 1.81,
-          "killsPerUnit": 0.85,
-          "lossRate": 22.8
+          "damagePerGame": 16.27,
+          "killsPerGame": 2.78,
+          "damagePerUnit": 8.14,
+          "killsPerUnit": 1.39,
+          "lossRate": 43.3
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.74,
-          "killsPerGame": 1.24,
-          "damagePerUnit": 1.87,
-          "killsPerUnit": 0.62,
-          "lossRate": 49.8
+          "damagePerGame": 9.81,
+          "killsPerGame": 0.82,
+          "damagePerUnit": 4.9,
+          "killsPerUnit": 0.41,
+          "lossRate": 65.3
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.01,
-          "killsPerGame": 0.01,
-          "damagePerUnit": 0,
-          "killsPerUnit": 0,
-          "lossRate": 22
+          "damagePerGame": 0.07,
+          "killsPerGame": 0.02,
+          "damagePerUnit": 0.03,
+          "killsPerUnit": 0.01,
+          "lossRate": 31.3
         }
       },
-      "msPerGame": 668
+      "msPerGame": 722
     },
     {
       "index": 8,
@@ -669,78 +669,78 @@
       "p2": "hunter",
       "swapSeats": true,
       "games": 200,
-      "p1Win": 30.5,
-      "p2Win": 38.5,
-      "draw": 31,
-      "p1WinMargin": 6.3,
-      "botAWin": 20.5,
-      "botBWin": 48.5,
+      "p1Win": 57,
+      "p2Win": 41.5,
+      "draw": 1.5,
+      "p1WinMargin": 6.8,
+      "botAWin": 35,
+      "botBWin": 63.5,
       "reasons": {
-        "command": 41.5,
-        "time": 31,
-        "doomstar": 27.5
+        "command": 50.5,
+        "doomstar": 48,
+        "time": 1.5
       },
-      "roundsAvg": 36.4,
-      "roundsMedian": 28,
-      "roundsP10": 18,
-      "roundsP90": 61,
+      "roundsAvg": 16.2,
+      "roundsMedian": 16,
+      "roundsP10": 9,
+      "roundsP90": 21,
       "firstKillRoundAvg": 3.7,
-      "attacksPerGame": 25.3,
-      "movesPerGame": 89.1,
-      "actionsPerTurn": 1.57,
-      "doomstarShotsPerGame": 1.2,
-      "survivorsPerGame": 4.6,
+      "attacksPerGame": 19.8,
+      "movesPerGame": 56.9,
+      "actionsPerTurn": 2.36,
+      "doomstarShotsPerGame": 2.4,
+      "survivorsPerGame": 6.8,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.79,
-          "killsPerGame": 1.15,
-          "damagePerUnit": 1.45,
-          "killsPerUnit": 0.29,
-          "lossRate": 87
+          "damagePerGame": 7.18,
+          "killsPerGame": 0.4,
+          "damagePerUnit": 1.79,
+          "killsPerUnit": 0.1,
+          "lossRate": 73.6
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 7.75,
-          "killsPerGame": 2.25,
-          "damagePerUnit": 1.94,
-          "killsPerUnit": 0.56,
-          "lossRate": 96.4
+          "damagePerGame": 18.09,
+          "killsPerGame": 3.37,
+          "damagePerUnit": 4.52,
+          "killsPerUnit": 0.84,
+          "lossRate": 62
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 9.69,
-          "killsPerGame": 5.16,
-          "damagePerUnit": 2.42,
-          "killsPerUnit": 1.29,
-          "lossRate": 66.9
+          "damagePerGame": 17.16,
+          "killsPerGame": 2.51,
+          "damagePerUnit": 4.29,
+          "killsPerUnit": 0.63,
+          "lossRate": 55.6
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.52,
-          "killsPerGame": 1.95,
-          "damagePerUnit": 1.76,
-          "killsPerUnit": 0.97,
-          "lossRate": 19.3
+          "damagePerGame": 15.26,
+          "killsPerGame": 2.83,
+          "damagePerUnit": 7.63,
+          "killsPerUnit": 1.42,
+          "lossRate": 27.8
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.6,
-          "killsPerGame": 1.35,
-          "damagePerUnit": 1.8,
-          "killsPerUnit": 0.68,
-          "lossRate": 52.8
+          "damagePerGame": 6.73,
+          "killsPerGame": 0.61,
+          "damagePerUnit": 3.37,
+          "killsPerUnit": 0.3,
+          "lossRate": 50.8
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.02,
-          "killsPerGame": 0.02,
-          "damagePerUnit": 0.01,
+          "damagePerGame": 0.21,
+          "killsPerGame": 0.03,
+          "damagePerUnit": 0.11,
           "killsPerUnit": 0.01,
-          "lossRate": 20.8
+          "lossRate": 25.3
         }
       },
-      "msPerGame": 531
+      "msPerGame": 501
     },
     {
       "index": 9,
@@ -751,78 +751,78 @@
       "p2": "hunter",
       "swapSeats": true,
       "games": 200,
-      "p1Win": 27.5,
-      "p2Win": 37.5,
-      "draw": 35,
-      "p1WinMargin": 6.1,
-      "botAWin": 47.5,
-      "botBWin": 17.5,
+      "p1Win": 50.5,
+      "p2Win": 45.5,
+      "draw": 4,
+      "p1WinMargin": 6.9,
+      "botAWin": 59.5,
+      "botBWin": 36.5,
       "reasons": {
-        "command": 34,
-        "doomstar": 31,
-        "time": 35
+        "command": 55,
+        "doomstar": 41,
+        "time": 4
       },
-      "roundsAvg": 40.6,
-      "roundsMedian": 37,
-      "roundsP10": 21,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 5,
-      "attacksPerGame": 19.4,
-      "movesPerGame": 113.6,
-      "actionsPerTurn": 1.64,
-      "doomstarShotsPerGame": 1.7,
-      "survivorsPerGame": 6.4,
+      "roundsAvg": 20,
+      "roundsMedian": 18,
+      "roundsP10": 14,
+      "roundsP90": 27,
+      "firstKillRoundAvg": 3.6,
+      "attacksPerGame": 20.9,
+      "movesPerGame": 65,
+      "actionsPerTurn": 2.14,
+      "doomstarShotsPerGame": 2.7,
+      "survivorsPerGame": 5.7,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.11,
-          "killsPerGame": 1.66,
-          "damagePerUnit": 1.53,
-          "killsPerUnit": 0.42,
-          "lossRate": 90.5
+          "damagePerGame": 10.77,
+          "killsPerGame": 1.23,
+          "damagePerUnit": 2.69,
+          "killsPerUnit": 0.31,
+          "lossRate": 82.4
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 4.63,
-          "killsPerGame": 2.42,
-          "damagePerUnit": 1.16,
-          "killsPerUnit": 0.61,
-          "lossRate": 56.5
+          "damagePerGame": 11.89,
+          "killsPerGame": 3.41,
+          "damagePerUnit": 2.97,
+          "killsPerUnit": 0.85,
+          "lossRate": 51.8
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 7.42,
-          "killsPerGame": 3.44,
-          "damagePerUnit": 1.86,
-          "killsPerUnit": 0.86,
-          "lossRate": 56.3
+          "damagePerGame": 27.16,
+          "killsPerGame": 4.06,
+          "damagePerUnit": 6.79,
+          "killsPerUnit": 1.01,
+          "lossRate": 86.4
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.18,
-          "killsPerGame": 1.56,
-          "damagePerUnit": 1.59,
-          "killsPerUnit": 0.78,
-          "lossRate": 23.3
+          "damagePerGame": 9.61,
+          "killsPerGame": 1.58,
+          "damagePerUnit": 4.81,
+          "killsPerUnit": 0.79,
+          "lossRate": 24
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.3,
-          "killsPerGame": 0.89,
-          "damagePerUnit": 1.65,
-          "killsPerUnit": 0.44,
-          "lossRate": 51.8
+          "damagePerGame": 4.41,
+          "killsPerGame": 0.57,
+          "damagePerUnit": 2.21,
+          "killsPerUnit": 0.29,
+          "lossRate": 50.3
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.01,
+          "damagePerGame": 0.02,
           "killsPerGame": 0.01,
           "damagePerUnit": 0.01,
-          "killsPerUnit": 0.01,
-          "lossRate": 17
+          "killsPerUnit": 0,
+          "lossRate": 27.5
         }
       },
-      "msPerGame": 755
+      "msPerGame": 494
     },
     {
       "index": 10,
@@ -841,78 +841,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 25,
-      "p2Win": 42,
-      "draw": 33,
-      "p1WinMargin": 6,
-      "botAWin": 25,
-      "botBWin": 42,
+      "p1Win": 45,
+      "p2Win": 48,
+      "draw": 7,
+      "p1WinMargin": 6.8,
+      "botAWin": 45,
+      "botBWin": 48,
       "reasons": {
-        "time": 33,
-        "command": 42,
-        "doomstar": 25
+        "command": 57.5,
+        "doomstar": 35.5,
+        "time": 7
       },
-      "roundsAvg": 36.9,
-      "roundsMedian": 29,
-      "roundsP10": 17,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.7,
-      "attacksPerGame": 22.4,
-      "movesPerGame": 82.3,
-      "actionsPerTurn": 1.42,
-      "doomstarShotsPerGame": 1.3,
-      "survivorsPerGame": 4.7,
+      "roundsAvg": 20.7,
+      "roundsMedian": 17,
+      "roundsP10": 14,
+      "roundsP90": 23,
+      "firstKillRoundAvg": 3.6,
+      "attacksPerGame": 22.2,
+      "movesPerGame": 62.8,
+      "actionsPerTurn": 2.06,
+      "doomstarShotsPerGame": 2.9,
+      "survivorsPerGame": 4.4,
       "units": {
         "scout": {
           "fieldedPerGame": 3,
-          "damagePerGame": 4.15,
-          "killsPerGame": 1.26,
-          "damagePerUnit": 1.38,
-          "killsPerUnit": 0.42,
-          "lossRate": 86.2
+          "damagePerGame": 6.84,
+          "killsPerGame": 0.61,
+          "damagePerUnit": 2.28,
+          "killsPerUnit": 0.2,
+          "lossRate": 91.2
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.65,
-          "killsPerGame": 2.23,
-          "damagePerUnit": 2.16,
-          "killsPerUnit": 0.56,
-          "lossRate": 93.8
+          "damagePerGame": 19.69,
+          "killsPerGame": 3.2,
+          "damagePerUnit": 4.92,
+          "killsPerUnit": 0.8,
+          "lossRate": 75.6
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 9.39,
-          "killsPerGame": 4.78,
-          "damagePerUnit": 2.35,
-          "killsPerUnit": 1.2,
-          "lossRate": 63.9
+          "damagePerGame": 24.25,
+          "killsPerGame": 4.15,
+          "damagePerUnit": 6.06,
+          "killsPerUnit": 1.04,
+          "lossRate": 76.5
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.65,
-          "killsPerGame": 1.42,
-          "damagePerUnit": 1.32,
-          "killsPerUnit": 0.71,
-          "lossRate": 19.3
+          "damagePerGame": 11.56,
+          "killsPerGame": 2.38,
+          "damagePerUnit": 5.78,
+          "killsPerUnit": 1.19,
+          "lossRate": 26.8
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.69,
-          "killsPerGame": 1.01,
-          "damagePerUnit": 1.35,
-          "killsPerUnit": 0.51,
-          "lossRate": 51
+          "damagePerGame": 6.85,
+          "killsPerGame": 0.83,
+          "damagePerUnit": 3.42,
+          "killsPerUnit": 0.42,
+          "lossRate": 61.8
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.03,
+          "damagePerGame": 0.01,
           "killsPerGame": 0.01,
-          "damagePerUnit": 0.02,
-          "killsPerUnit": 0.01,
-          "lossRate": 21
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 28.8
         }
       },
-      "msPerGame": 502
+      "msPerGame": 489
     },
     {
       "index": 11,
@@ -931,78 +931,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 43,
-      "p2Win": 18,
-      "draw": 39,
+      "p1Win": 45.5,
+      "p2Win": 47.5,
+      "draw": 7,
       "p1WinMargin": 6.8,
-      "botAWin": 43,
-      "botBWin": 18,
+      "botAWin": 45.5,
+      "botBWin": 47.5,
       "reasons": {
-        "time": 39,
-        "command": 43,
-        "doomstar": 18
+        "doomstar": 35.5,
+        "command": 57.5,
+        "time": 7
       },
-      "roundsAvg": 39.7,
-      "roundsMedian": 32,
-      "roundsP10": 19,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.7,
-      "attacksPerGame": 22.5,
-      "movesPerGame": 85,
-      "actionsPerTurn": 1.35,
-      "doomstarShotsPerGame": 1,
-      "survivorsPerGame": 4.7,
+      "roundsAvg": 20.2,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 24,
+      "firstKillRoundAvg": 3.7,
+      "attacksPerGame": 21.5,
+      "movesPerGame": 63.2,
+      "actionsPerTurn": 2.1,
+      "doomstarShotsPerGame": 2.7,
+      "survivorsPerGame": 4.4,
       "units": {
         "scout": {
           "fieldedPerGame": 3,
-          "damagePerGame": 4,
-          "killsPerGame": 1.08,
-          "damagePerUnit": 1.33,
-          "killsPerUnit": 0.36,
-          "lossRate": 86
+          "damagePerGame": 6.57,
+          "killsPerGame": 0.53,
+          "damagePerUnit": 2.19,
+          "killsPerUnit": 0.18,
+          "lossRate": 89.7
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.45,
-          "killsPerGame": 2.31,
-          "damagePerUnit": 2.11,
-          "killsPerUnit": 0.58,
-          "lossRate": 94.9
+          "damagePerGame": 19.41,
+          "killsPerGame": 3.35,
+          "damagePerUnit": 4.85,
+          "killsPerUnit": 0.84,
+          "lossRate": 72.6
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 9.84,
-          "killsPerGame": 4.95,
-          "damagePerUnit": 2.46,
-          "killsPerUnit": 1.24,
-          "lossRate": 65.4
+          "damagePerGame": 23.73,
+          "killsPerGame": 4.09,
+          "damagePerUnit": 5.93,
+          "killsPerUnit": 1.02,
+          "lossRate": 78.3
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.78,
-          "killsPerGame": 1.4,
-          "damagePerUnit": 1.39,
-          "killsPerUnit": 0.7,
-          "lossRate": 19.8
+          "damagePerGame": 13.01,
+          "killsPerGame": 2.42,
+          "damagePerUnit": 6.51,
+          "killsPerUnit": 1.21,
+          "lossRate": 33.8
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.66,
-          "killsPerGame": 1.03,
-          "damagePerUnit": 1.33,
-          "killsPerUnit": 0.52,
-          "lossRate": 48
+          "damagePerGame": 6.12,
+          "killsPerGame": 0.76,
+          "damagePerUnit": 3.06,
+          "killsPerUnit": 0.38,
+          "lossRate": 58
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.02,
+          "damagePerGame": 0.05,
           "killsPerGame": 0.01,
-          "damagePerUnit": 0.01,
-          "killsPerUnit": 0.01,
-          "lossRate": 21.5
+          "damagePerUnit": 0.03,
+          "killsPerUnit": 0,
+          "lossRate": 28.8
         }
       },
-      "msPerGame": 514
+      "msPerGame": 494
     },
     {
       "index": 12,
@@ -1021,78 +1021,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 12.5,
-      "p2Win": 59,
-      "draw": 28.5,
-      "p1WinMargin": 4.6,
-      "botAWin": 12.5,
-      "botBWin": 59,
+      "p1Win": 30.5,
+      "p2Win": 61,
+      "draw": 8.5,
+      "p1WinMargin": 6.3,
+      "botAWin": 30.5,
+      "botBWin": 61,
       "reasons": {
-        "command": 42.5,
-        "time": 28.5,
-        "doomstar": 29
+        "doomstar": 24,
+        "command": 67.5,
+        "time": 8.5
       },
-      "roundsAvg": 33.6,
-      "roundsMedian": 23,
-      "roundsP10": 16,
-      "roundsP90": 61,
+      "roundsAvg": 20.6,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 27,
       "firstKillRoundAvg": 3.4,
-      "attacksPerGame": 21.8,
-      "movesPerGame": 77.4,
-      "actionsPerTurn": 1.48,
-      "doomstarShotsPerGame": 1.3,
-      "survivorsPerGame": 4.8,
+      "attacksPerGame": 21.3,
+      "movesPerGame": 60.5,
+      "actionsPerTurn": 1.99,
+      "doomstarShotsPerGame": 2.4,
+      "survivorsPerGame": 4.4,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.25,
-          "killsPerGame": 1.31,
-          "damagePerUnit": 1.56,
-          "killsPerUnit": 0.33,
-          "lossRate": 91.8
+          "damagePerGame": 9.36,
+          "killsPerGame": 0.81,
+          "damagePerUnit": 2.34,
+          "killsPerUnit": 0.2,
+          "lossRate": 88.5
         },
         "guard": {
           "fieldedPerGame": 3,
-          "damagePerGame": 6.62,
-          "killsPerGame": 2.89,
-          "damagePerUnit": 2.21,
-          "killsPerUnit": 0.96,
-          "lossRate": 85.2
+          "damagePerGame": 13.5,
+          "killsPerGame": 2.61,
+          "damagePerUnit": 4.5,
+          "killsPerUnit": 0.87,
+          "lossRate": 68.8
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.57,
-          "killsPerGame": 3.87,
-          "damagePerUnit": 2.14,
-          "killsPerUnit": 0.97,
-          "lossRate": 66.8
+          "damagePerGame": 26.1,
+          "killsPerGame": 4.85,
+          "damagePerUnit": 6.53,
+          "killsPerUnit": 1.21,
+          "lossRate": 77.5
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.83,
-          "killsPerGame": 1.54,
-          "damagePerUnit": 1.41,
-          "killsPerUnit": 0.77,
-          "lossRate": 19.3
+          "damagePerGame": 10.69,
+          "killsPerGame": 2.11,
+          "damagePerUnit": 5.35,
+          "killsPerUnit": 1.06,
+          "lossRate": 38
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.38,
-          "killsPerGame": 0.98,
-          "damagePerUnit": 1.19,
-          "killsPerUnit": 0.49,
-          "lossRate": 44
+          "damagePerGame": 6.05,
+          "killsPerGame": 0.89,
+          "damagePerUnit": 3.03,
+          "killsPerUnit": 0.44,
+          "lossRate": 56.3
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.03,
+          "damagePerGame": 0.05,
           "killsPerGame": 0.01,
-          "damagePerUnit": 0.01,
-          "killsPerUnit": 0.01,
-          "lossRate": 21.3
+          "damagePerUnit": 0.03,
+          "killsPerUnit": 0,
+          "lossRate": 33.8
         }
       },
-      "msPerGame": 512
+      "msPerGame": 503
     },
     {
       "index": 13,
@@ -1111,78 +1111,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 62.5,
-      "p2Win": 11.5,
-      "draw": 26,
+      "p1Win": 60.5,
+      "p2Win": 33,
+      "draw": 6.5,
       "p1WinMargin": 6.7,
-      "botAWin": 62.5,
-      "botBWin": 11.5,
+      "botAWin": 60.5,
+      "botBWin": 33,
       "reasons": {
-        "command": 53,
-        "doomstar": 21,
-        "time": 26
+        "doomstar": 24.5,
+        "command": 69,
+        "time": 6.5
       },
-      "roundsAvg": 34.6,
-      "roundsMedian": 27,
-      "roundsP10": 18,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.1,
-      "attacksPerGame": 23.1,
-      "movesPerGame": 78.6,
-      "actionsPerTurn": 1.47,
-      "doomstarShotsPerGame": 1,
+      "roundsAvg": 19.5,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 22,
+      "firstKillRoundAvg": 3.6,
+      "attacksPerGame": 21.7,
+      "movesPerGame": 59.8,
+      "actionsPerTurn": 2.09,
+      "doomstarShotsPerGame": 2.5,
       "survivorsPerGame": 4.3,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.53,
-          "killsPerGame": 1.62,
-          "damagePerUnit": 1.63,
-          "killsPerUnit": 0.4,
-          "lossRate": 90.8
+          "damagePerGame": 9.37,
+          "killsPerGame": 0.82,
+          "damagePerUnit": 2.34,
+          "killsPerUnit": 0.21,
+          "lossRate": 88.8
         },
         "guard": {
           "fieldedPerGame": 3,
-          "damagePerGame": 6.44,
-          "killsPerGame": 2.54,
-          "damagePerUnit": 2.15,
-          "killsPerUnit": 0.85,
-          "lossRate": 89.3
+          "damagePerGame": 13.38,
+          "killsPerGame": 2.47,
+          "damagePerUnit": 4.46,
+          "killsPerUnit": 0.82,
+          "lossRate": 71.3
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 9.58,
-          "killsPerGame": 4.3,
-          "damagePerUnit": 2.4,
-          "killsPerUnit": 1.07,
-          "lossRate": 70
+          "damagePerGame": 26.6,
+          "killsPerGame": 4.97,
+          "damagePerUnit": 6.65,
+          "killsPerUnit": 1.24,
+          "lossRate": 76.6
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.04,
-          "killsPerGame": 1.76,
-          "damagePerUnit": 1.52,
-          "killsPerUnit": 0.88,
-          "lossRate": 24.8
+          "damagePerGame": 10.97,
+          "killsPerGame": 2.16,
+          "damagePerUnit": 5.48,
+          "killsPerUnit": 1.08,
+          "lossRate": 40
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.61,
-          "killsPerGame": 1,
-          "damagePerUnit": 1.3,
+          "damagePerGame": 6.33,
+          "killsPerGame": 0.99,
+          "damagePerUnit": 3.16,
           "killsPerUnit": 0.5,
-          "lossRate": 53.5
+          "lossRate": 59.3
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.03,
-          "killsPerGame": 0.01,
+          "damagePerGame": 0.04,
+          "killsPerGame": 0.02,
           "damagePerUnit": 0.02,
           "killsPerUnit": 0.01,
-          "lossRate": 26.5
+          "lossRate": 34.5
         }
       },
-      "msPerGame": 489
+      "msPerGame": 493
     },
     {
       "index": 14,
@@ -1201,78 +1201,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 15.5,
-      "p2Win": 53,
-      "draw": 31.5,
-      "p1WinMargin": 5,
-      "botAWin": 15.5,
-      "botBWin": 53,
+      "p1Win": 22.5,
+      "p2Win": 72.5,
+      "draw": 5,
+      "p1WinMargin": 5.8,
+      "botAWin": 22.5,
+      "botBWin": 72.5,
       "reasons": {
-        "command": 47.5,
-        "time": 31.5,
-        "doomstar": 21
+        "command": 67,
+        "doomstar": 28,
+        "time": 5
       },
-      "roundsAvg": 35,
-      "roundsMedian": 25,
-      "roundsP10": 17,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.5,
-      "attacksPerGame": 23.7,
-      "movesPerGame": 79.7,
-      "actionsPerTurn": 1.48,
-      "doomstarShotsPerGame": 1.1,
+      "roundsAvg": 19.4,
+      "roundsMedian": 17,
+      "roundsP10": 12,
+      "roundsP90": 23,
+      "firstKillRoundAvg": 3.7,
+      "attacksPerGame": 23.2,
+      "movesPerGame": 61.8,
+      "actionsPerTurn": 2.2,
+      "doomstarShotsPerGame": 2.4,
       "survivorsPerGame": 4.6,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.11,
-          "killsPerGame": 1.61,
-          "damagePerUnit": 1.53,
-          "killsPerUnit": 0.4,
-          "lossRate": 88.4
+          "damagePerGame": 10.09,
+          "killsPerGame": 1.18,
+          "damagePerUnit": 2.52,
+          "killsPerUnit": 0.3,
+          "lossRate": 84.9
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.74,
-          "killsPerGame": 2.77,
-          "damagePerUnit": 2.19,
-          "killsPerUnit": 0.69,
-          "lossRate": 92.5
+          "damagePerGame": 20.58,
+          "killsPerGame": 3.35,
+          "damagePerUnit": 5.15,
+          "killsPerUnit": 0.84,
+          "lossRate": 72.8
         },
         "lancer": {
           "fieldedPerGame": 3,
-          "damagePerGame": 7.9,
-          "killsPerGame": 3.91,
-          "damagePerUnit": 2.63,
-          "killsPerUnit": 1.3,
-          "lossRate": 62.3
+          "damagePerGame": 20.33,
+          "killsPerGame": 3.47,
+          "damagePerUnit": 6.78,
+          "killsPerUnit": 1.16,
+          "lossRate": 74.8
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.6,
-          "killsPerGame": 1.46,
-          "damagePerUnit": 1.3,
-          "killsPerUnit": 0.73,
-          "lossRate": 19
+          "damagePerGame": 11.3,
+          "killsPerGame": 2.12,
+          "damagePerUnit": 5.65,
+          "killsPerUnit": 1.06,
+          "lossRate": 37.3
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.8,
-          "killsPerGame": 1.11,
-          "damagePerUnit": 1.4,
-          "killsPerUnit": 0.56,
-          "lossRate": 46
+          "damagePerGame": 7.21,
+          "killsPerGame": 0.94,
+          "damagePerUnit": 3.61,
+          "killsPerUnit": 0.47,
+          "lossRate": 54
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.04,
-          "killsPerGame": 0.03,
+          "damagePerGame": 0.03,
+          "killsPerGame": 0,
           "damagePerUnit": 0.02,
-          "killsPerUnit": 0.01,
-          "lossRate": 23.8
+          "killsPerUnit": 0,
+          "lossRate": 33.5
         }
       },
-      "msPerGame": 487
+      "msPerGame": 488
     },
     {
       "index": 15,
@@ -1291,78 +1291,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 50,
-      "p2Win": 13.5,
-      "draw": 36.5,
-      "p1WinMargin": 6.9,
-      "botAWin": 50,
-      "botBWin": 13.5,
+      "p1Win": 74.5,
+      "p2Win": 21.5,
+      "draw": 4,
+      "p1WinMargin": 6,
+      "botAWin": 74.5,
+      "botBWin": 21.5,
       "reasons": {
-        "command": 48.5,
-        "time": 36.5,
-        "doomstar": 15
+        "command": 59.5,
+        "doomstar": 36.5,
+        "time": 4
       },
-      "roundsAvg": 38.4,
-      "roundsMedian": 31,
-      "roundsP10": 18,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.7,
-      "attacksPerGame": 24.2,
-      "movesPerGame": 80.9,
-      "actionsPerTurn": 1.37,
-      "doomstarShotsPerGame": 0.8,
-      "survivorsPerGame": 4.3,
+      "roundsAvg": 18.5,
+      "roundsMedian": 17,
+      "roundsP10": 12,
+      "roundsP90": 22,
+      "firstKillRoundAvg": 3.9,
+      "attacksPerGame": 22,
+      "movesPerGame": 59.6,
+      "actionsPerTurn": 2.2,
+      "doomstarShotsPerGame": 2.8,
+      "survivorsPerGame": 5,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.11,
-          "killsPerGame": 1.72,
-          "damagePerUnit": 1.53,
-          "killsPerUnit": 0.43,
-          "lossRate": 90.3
+          "damagePerGame": 8.88,
+          "killsPerGame": 0.88,
+          "damagePerUnit": 2.22,
+          "killsPerUnit": 0.22,
+          "lossRate": 81.3
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.57,
-          "killsPerGame": 2.58,
-          "damagePerUnit": 2.14,
-          "killsPerUnit": 0.64,
-          "lossRate": 92.9
+          "damagePerGame": 19.52,
+          "killsPerGame": 3.02,
+          "damagePerUnit": 4.88,
+          "killsPerUnit": 0.75,
+          "lossRate": 71.8
         },
         "lancer": {
           "fieldedPerGame": 3,
-          "damagePerGame": 8.56,
-          "killsPerGame": 4.11,
-          "damagePerUnit": 2.85,
-          "killsPerUnit": 1.37,
-          "lossRate": 62.7
+          "damagePerGame": 20.03,
+          "killsPerGame": 3.69,
+          "damagePerUnit": 6.68,
+          "killsPerUnit": 1.23,
+          "lossRate": 69
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.95,
-          "killsPerGame": 1.68,
-          "damagePerUnit": 1.47,
-          "killsPerUnit": 0.84,
-          "lossRate": 19.3
+          "damagePerGame": 10.25,
+          "killsPerGame": 1.94,
+          "damagePerUnit": 5.12,
+          "killsPerUnit": 0.97,
+          "lossRate": 37
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.84,
-          "killsPerGame": 1.08,
-          "damagePerUnit": 1.42,
-          "killsPerUnit": 0.54,
-          "lossRate": 54
+          "damagePerGame": 7.96,
+          "killsPerGame": 1.05,
+          "damagePerUnit": 3.98,
+          "killsPerUnit": 0.52,
+          "lossRate": 52
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.02,
-          "killsPerGame": 0.01,
-          "damagePerUnit": 0.01,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
           "killsPerUnit": 0,
-          "lossRate": 24.3
+          "lossRate": 29.8
         }
       },
-      "msPerGame": 500
+      "msPerGame": 482
     },
     {
       "index": 16,
@@ -1381,78 +1381,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 23.5,
-      "p2Win": 51.5,
-      "draw": 25,
-      "p1WinMargin": 5.8,
-      "botAWin": 23.5,
-      "botBWin": 51.5,
+      "p1Win": 28,
+      "p2Win": 67.5,
+      "draw": 4.5,
+      "p1WinMargin": 6.2,
+      "botAWin": 28,
+      "botBWin": 67.5,
       "reasons": {
-        "doomstar": 19.5,
-        "time": 25,
-        "command": 55.5
+        "command": 55.5,
+        "doomstar": 40,
+        "time": 4.5
       },
-      "roundsAvg": 32.9,
-      "roundsMedian": 24,
-      "roundsP10": 17,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.6,
-      "attacksPerGame": 25.2,
-      "movesPerGame": 76.5,
-      "actionsPerTurn": 1.55,
-      "doomstarShotsPerGame": 0.9,
-      "survivorsPerGame": 4.1,
+      "roundsAvg": 18.4,
+      "roundsMedian": 16,
+      "roundsP10": 13,
+      "roundsP90": 21,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 22.8,
+      "movesPerGame": 59.7,
+      "actionsPerTurn": 2.24,
+      "doomstarShotsPerGame": 2.8,
+      "survivorsPerGame": 4.7,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.53,
-          "killsPerGame": 1.77,
-          "damagePerUnit": 1.63,
-          "killsPerUnit": 0.44,
-          "lossRate": 90.5
+          "damagePerGame": 10.09,
+          "killsPerGame": 1.04,
+          "damagePerUnit": 2.52,
+          "killsPerUnit": 0.26,
+          "lossRate": 86.5
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.59,
-          "killsPerGame": 2.64,
-          "damagePerUnit": 2.15,
-          "killsPerUnit": 0.66,
-          "lossRate": 90.5
+          "damagePerGame": 20.53,
+          "killsPerGame": 3.55,
+          "damagePerUnit": 5.13,
+          "killsPerUnit": 0.89,
+          "lossRate": 64
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 10.72,
-          "killsPerGame": 5.31,
-          "damagePerUnit": 2.68,
-          "killsPerUnit": 1.33,
-          "lossRate": 61.9
+          "damagePerGame": 24.97,
+          "killsPerGame": 4.29,
+          "damagePerUnit": 6.24,
+          "killsPerUnit": 1.07,
+          "lossRate": 74.9
         },
         "prism": {
           "fieldedPerGame": 1,
-          "damagePerGame": 1.2,
-          "killsPerGame": 0.68,
-          "damagePerUnit": 1.2,
-          "killsPerUnit": 0.68,
-          "lossRate": 20
+          "damagePerGame": 5.69,
+          "killsPerGame": 1.03,
+          "damagePerUnit": 5.69,
+          "killsPerUnit": 1.03,
+          "lossRate": 20.5
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.79,
-          "killsPerGame": 1.04,
-          "damagePerUnit": 1.39,
-          "killsPerUnit": 0.52,
-          "lossRate": 48
+          "damagePerGame": 6.8,
+          "killsPerGame": 0.95,
+          "damagePerUnit": 3.4,
+          "killsPerUnit": 0.48,
+          "lossRate": 54.5
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.01,
+          "damagePerGame": 0.09,
           "killsPerGame": 0.01,
-          "damagePerUnit": 0,
+          "damagePerUnit": 0.04,
           "killsPerUnit": 0,
           "lossRate": 27.8
         }
       },
-      "msPerGame": 462
+      "msPerGame": 458
     },
     {
       "index": 17,
@@ -1471,78 +1471,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 57.5,
-      "p2Win": 18.5,
-      "draw": 24,
-      "p1WinMargin": 6.8,
-      "botAWin": 57.5,
-      "botBWin": 18.5,
+      "p1Win": 65,
+      "p2Win": 31,
+      "draw": 4,
+      "p1WinMargin": 6.6,
+      "botAWin": 65,
+      "botBWin": 31,
       "reasons": {
+        "doomstar": 39,
         "command": 57,
-        "time": 24,
-        "doomstar": 19
+        "time": 4
       },
-      "roundsAvg": 31.4,
-      "roundsMedian": 23,
-      "roundsP10": 17,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.6,
-      "attacksPerGame": 24.9,
-      "movesPerGame": 76.6,
-      "actionsPerTurn": 1.61,
-      "doomstarShotsPerGame": 0.9,
-      "survivorsPerGame": 4.3,
+      "roundsAvg": 18.9,
+      "roundsMedian": 17,
+      "roundsP10": 14,
+      "roundsP90": 22,
+      "firstKillRoundAvg": 3.6,
+      "attacksPerGame": 23.2,
+      "movesPerGame": 60.3,
+      "actionsPerTurn": 2.21,
+      "doomstarShotsPerGame": 2.9,
+      "survivorsPerGame": 4.4,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.66,
-          "killsPerGame": 1.72,
-          "damagePerUnit": 1.66,
-          "killsPerUnit": 0.43,
-          "lossRate": 89.4
+          "damagePerGame": 9.84,
+          "killsPerGame": 1.06,
+          "damagePerUnit": 2.46,
+          "killsPerUnit": 0.26,
+          "lossRate": 87.6
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.55,
-          "killsPerGame": 2.71,
-          "damagePerUnit": 2.14,
-          "killsPerUnit": 0.68,
-          "lossRate": 90.9
+          "damagePerGame": 21.7,
+          "killsPerGame": 3.57,
+          "damagePerUnit": 5.42,
+          "killsPerUnit": 0.89,
+          "lossRate": 68.8
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 10.37,
-          "killsPerGame": 5.09,
-          "damagePerUnit": 2.59,
-          "killsPerUnit": 1.27,
-          "lossRate": 62.4
+          "damagePerGame": 24.76,
+          "killsPerGame": 4.26,
+          "damagePerUnit": 6.19,
+          "killsPerUnit": 1.06,
+          "lossRate": 75.8
         },
         "prism": {
           "fieldedPerGame": 1,
-          "damagePerGame": 1.25,
-          "killsPerGame": 0.7,
-          "damagePerUnit": 1.25,
-          "killsPerUnit": 0.7,
-          "lossRate": 17.5
+          "damagePerGame": 6.13,
+          "killsPerGame": 1.17,
+          "damagePerUnit": 6.13,
+          "killsPerUnit": 1.17,
+          "lossRate": 18.5
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.7,
+          "damagePerGame": 6.99,
           "killsPerGame": 1.1,
-          "damagePerUnit": 1.35,
+          "damagePerUnit": 3.5,
           "killsPerUnit": 0.55,
-          "lossRate": 43
+          "lossRate": 56
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.02,
-          "killsPerGame": 0.02,
-          "damagePerUnit": 0.01,
+          "damagePerGame": 0.06,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.03,
           "killsPerUnit": 0.01,
           "lossRate": 28.5
         }
       },
-      "msPerGame": 452
+      "msPerGame": 464
     },
     {
       "index": 18,
@@ -1561,78 +1561,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 24,
-      "p2Win": 41,
-      "draw": 35,
-      "p1WinMargin": 5.9,
-      "botAWin": 24,
-      "botBWin": 41,
+      "p1Win": 40,
+      "p2Win": 55.5,
+      "draw": 4.5,
+      "p1WinMargin": 6.7,
+      "botAWin": 40,
+      "botBWin": 55.5,
       "reasons": {
-        "time": 35,
-        "command": 46.5,
-        "doomstar": 18.5
+        "command": 59,
+        "doomstar": 36.5,
+        "time": 4.5
       },
-      "roundsAvg": 36.8,
-      "roundsMedian": 28,
-      "roundsP10": 17,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.5,
-      "attacksPerGame": 23.3,
-      "movesPerGame": 80.3,
-      "actionsPerTurn": 1.41,
-      "doomstarShotsPerGame": 1.1,
+      "roundsAvg": 19.2,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 22,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 21.7,
+      "movesPerGame": 60.5,
+      "actionsPerTurn": 2.14,
+      "doomstarShotsPerGame": 2.9,
       "survivorsPerGame": 4.4,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.68,
-          "killsPerGame": 1.26,
-          "damagePerUnit": 1.42,
-          "killsPerUnit": 0.32,
-          "lossRate": 90.5
+          "damagePerGame": 8.9,
+          "killsPerGame": 0.92,
+          "damagePerUnit": 2.22,
+          "killsPerUnit": 0.23,
+          "lossRate": 87.9
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.86,
-          "killsPerGame": 2.91,
-          "damagePerUnit": 2.22,
-          "killsPerUnit": 0.73,
-          "lossRate": 90
+          "damagePerGame": 19.37,
+          "killsPerGame": 3.32,
+          "damagePerUnit": 4.84,
+          "killsPerUnit": 0.83,
+          "lossRate": 73.3
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 9.74,
-          "killsPerGame": 4.83,
-          "damagePerUnit": 2.44,
-          "killsPerUnit": 1.21,
-          "lossRate": 63.3
+          "damagePerGame": 25.12,
+          "killsPerGame": 4.2,
+          "damagePerUnit": 6.28,
+          "killsPerUnit": 1.05,
+          "lossRate": 74.1
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.27,
-          "killsPerGame": 1.63,
-          "damagePerUnit": 1.64,
-          "killsPerUnit": 0.82,
-          "lossRate": 22
+          "damagePerGame": 13.55,
+          "killsPerGame": 2.38,
+          "damagePerUnit": 6.78,
+          "killsPerUnit": 1.19,
+          "lossRate": 35
         },
         "nova": {
           "fieldedPerGame": 1,
-          "damagePerGame": 1.05,
-          "killsPerGame": 0.42,
-          "damagePerUnit": 1.05,
-          "killsPerUnit": 0.42,
-          "lossRate": 40.5
+          "damagePerGame": 2.62,
+          "killsPerGame": 0.41,
+          "damagePerUnit": 2.62,
+          "killsPerUnit": 0.41,
+          "lossRate": 53.5
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.01,
+          "damagePerGame": 0.06,
           "killsPerGame": 0.01,
-          "damagePerUnit": 0.01,
+          "damagePerUnit": 0.03,
           "killsPerUnit": 0.01,
-          "lossRate": 23.3
+          "lossRate": 29.5
         }
       },
-      "msPerGame": 393
+      "msPerGame": 385
     },
     {
       "index": 19,
@@ -1651,78 +1651,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 36,
-      "p2Win": 23.5,
-      "draw": 40.5,
-      "p1WinMargin": 6.6,
-      "botAWin": 36,
-      "botBWin": 23.5,
+      "p1Win": 49,
+      "p2Win": 44,
+      "draw": 7,
+      "p1WinMargin": 6.9,
+      "botAWin": 49,
+      "botBWin": 44,
       "reasons": {
-        "time": 40.5,
-        "command": 40.5,
-        "doomstar": 19
+        "command": 63,
+        "doomstar": 30,
+        "time": 7
       },
-      "roundsAvg": 39.8,
-      "roundsMedian": 35,
-      "roundsP10": 18,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.6,
-      "attacksPerGame": 23.3,
-      "movesPerGame": 82.3,
-      "actionsPerTurn": 1.33,
-      "doomstarShotsPerGame": 1.1,
-      "survivorsPerGame": 4.4,
+      "roundsAvg": 20.7,
+      "roundsMedian": 18,
+      "roundsP10": 14,
+      "roundsP90": 24,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 22.3,
+      "movesPerGame": 62.2,
+      "actionsPerTurn": 2.05,
+      "doomstarShotsPerGame": 2.8,
+      "survivorsPerGame": 4.1,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.8,
-          "killsPerGame": 1.44,
-          "damagePerUnit": 1.45,
-          "killsPerUnit": 0.36,
-          "lossRate": 90.1
+          "damagePerGame": 9.59,
+          "killsPerGame": 1.05,
+          "damagePerUnit": 2.4,
+          "killsPerUnit": 0.26,
+          "lossRate": 89.4
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.9,
-          "killsPerGame": 2.76,
-          "damagePerUnit": 2.22,
-          "killsPerUnit": 0.69,
-          "lossRate": 92.5
+          "damagePerGame": 19.37,
+          "killsPerGame": 3.15,
+          "damagePerUnit": 4.84,
+          "killsPerUnit": 0.79,
+          "lossRate": 74.9
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 9.73,
-          "killsPerGame": 4.84,
-          "damagePerUnit": 2.43,
-          "killsPerUnit": 1.21,
-          "lossRate": 62.4
+          "damagePerGame": 25.46,
+          "killsPerGame": 4.45,
+          "damagePerUnit": 6.36,
+          "killsPerUnit": 1.11,
+          "lossRate": 76
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.94,
-          "killsPerGame": 1.56,
-          "damagePerUnit": 1.47,
-          "killsPerUnit": 0.78,
-          "lossRate": 21
+          "damagePerGame": 13.62,
+          "killsPerGame": 2.52,
+          "damagePerUnit": 6.81,
+          "killsPerUnit": 1.26,
+          "lossRate": 39.5
         },
         "nova": {
           "fieldedPerGame": 1,
-          "damagePerGame": 1.06,
-          "killsPerGame": 0.43,
-          "damagePerUnit": 1.06,
-          "killsPerUnit": 0.43,
-          "lossRate": 40
+          "damagePerGame": 2.82,
+          "killsPerGame": 0.42,
+          "damagePerUnit": 2.82,
+          "killsPerUnit": 0.42,
+          "lossRate": 54.5
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.01,
-          "killsPerGame": 0.01,
-          "damagePerUnit": 0.01,
+          "damagePerGame": 0.03,
+          "killsPerGame": 0,
+          "damagePerUnit": 0.02,
           "killsPerUnit": 0,
-          "lossRate": 20.3
+          "lossRate": 31.5
         }
       },
-      "msPerGame": 442
+      "msPerGame": 472
     },
     {
       "index": 20,
@@ -1736,78 +1736,78 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 33.5,
-      "p2Win": 32,
-      "draw": 34.5,
-      "p1WinMargin": 6.5,
-      "botAWin": 33.5,
-      "botBWin": 32,
+      "p1Win": 51,
+      "p2Win": 45,
+      "draw": 4,
+      "p1WinMargin": 6.9,
+      "botAWin": 51,
+      "botBWin": 45,
       "reasons": {
-        "doomstar": 23,
-        "command": 42.5,
-        "time": 34.5
+        "command": 35.5,
+        "doomstar": 60.5,
+        "time": 4
       },
-      "roundsAvg": 37.2,
-      "roundsMedian": 28,
-      "roundsP10": 17,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.5,
-      "attacksPerGame": 24.3,
-      "movesPerGame": 83.4,
-      "actionsPerTurn": 1.45,
-      "doomstarShotsPerGame": 1.2,
-      "survivorsPerGame": 4.8,
+      "roundsAvg": 17.4,
+      "roundsMedian": 15,
+      "roundsP10": 12,
+      "roundsP90": 21,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 21.1,
+      "movesPerGame": 57.9,
+      "actionsPerTurn": 2.28,
+      "doomstarShotsPerGame": 3.4,
+      "survivorsPerGame": 5.5,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.91,
-          "killsPerGame": 1.53,
-          "damagePerUnit": 1.48,
-          "killsPerUnit": 0.38,
-          "lossRate": 90.5
+          "damagePerGame": 8.69,
+          "killsPerGame": 0.89,
+          "damagePerUnit": 2.17,
+          "killsPerUnit": 0.22,
+          "lossRate": 87
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.57,
-          "killsPerGame": 2.69,
-          "damagePerUnit": 2.14,
-          "killsPerUnit": 0.67,
-          "lossRate": 93
+          "damagePerGame": 18.26,
+          "killsPerGame": 3.04,
+          "damagePerUnit": 4.56,
+          "killsPerUnit": 0.76,
+          "lossRate": 65.5
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 10.28,
-          "killsPerGame": 5,
-          "damagePerUnit": 2.57,
-          "killsPerUnit": 1.25,
-          "lossRate": 65.9
+          "damagePerGame": 24.33,
+          "killsPerGame": 4.31,
+          "damagePerUnit": 6.08,
+          "killsPerUnit": 1.08,
+          "lossRate": 75.6
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.51,
-          "killsPerGame": 1.38,
-          "damagePerUnit": 1.25,
-          "killsPerUnit": 0.69,
-          "lossRate": 20
+          "damagePerGame": 8.86,
+          "killsPerGame": 1.82,
+          "damagePerUnit": 4.43,
+          "killsPerUnit": 0.91,
+          "lossRate": 21.8
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.27,
-          "killsPerGame": 1.01,
-          "damagePerUnit": 1.13,
-          "killsPerUnit": 0.51,
-          "lossRate": 40
+          "damagePerGame": 5.21,
+          "killsPerGame": 0.77,
+          "damagePerUnit": 2.6,
+          "killsPerUnit": 0.38,
+          "lossRate": 45
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.01,
-          "killsPerGame": 0,
-          "damagePerUnit": 0,
+          "damagePerGame": 0.02,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
           "killsPerUnit": 0,
-          "lossRate": 21.3
+          "lossRate": 17.8
         }
       },
-      "msPerGame": 525
+      "msPerGame": 501
     },
     {
       "index": 21,
@@ -1821,152 +1821,237 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 27,
-      "p2Win": 27,
-      "draw": 46,
-      "p1WinMargin": 6.1,
-      "botAWin": 27,
-      "botBWin": 27,
+      "p1Win": 41,
+      "p2Win": 50.5,
+      "draw": 8.5,
+      "p1WinMargin": 6.8,
+      "botAWin": 41,
+      "botBWin": 50.5,
       "reasons": {
-        "command": 40.5,
-        "time": 46,
-        "doomstar": 13.5
+        "command": 76,
+        "time": 8.5,
+        "doomstar": 15.5
       },
-      "roundsAvg": 42.2,
-      "roundsMedian": 42,
-      "roundsP10": 20,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.5,
-      "attacksPerGame": 25.1,
-      "movesPerGame": 89.3,
-      "actionsPerTurn": 1.36,
-      "doomstarShotsPerGame": 0.8,
-      "survivorsPerGame": 4.4,
+      "roundsAvg": 23,
+      "roundsMedian": 20,
+      "roundsP10": 15,
+      "roundsP90": 31,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 25.8,
+      "movesPerGame": 69.2,
+      "actionsPerTurn": 2.07,
+      "doomstarShotsPerGame": 2.1,
+      "survivorsPerGame": 3.9,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.11,
-          "killsPerGame": 1.64,
-          "damagePerUnit": 1.53,
-          "killsPerUnit": 0.41,
-          "lossRate": 93.5
+          "damagePerGame": 10.44,
+          "killsPerGame": 1.08,
+          "damagePerUnit": 2.61,
+          "killsPerUnit": 0.27,
+          "lossRate": 91.1
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.53,
-          "killsPerGame": 2.62,
-          "damagePerUnit": 2.13,
-          "killsPerUnit": 0.66,
-          "lossRate": 92.9
+          "damagePerGame": 18.69,
+          "killsPerGame": 3.59,
+          "damagePerUnit": 4.67,
+          "killsPerUnit": 0.9,
+          "lossRate": 77.9
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 10.89,
-          "killsPerGame": 5.27,
-          "damagePerUnit": 2.72,
-          "killsPerUnit": 1.32,
-          "lossRate": 67.5
+          "damagePerGame": 27,
+          "killsPerGame": 4.57,
+          "damagePerUnit": 6.75,
+          "killsPerUnit": 1.14,
+          "lossRate": 83.6
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.82,
-          "killsPerGame": 1.56,
-          "damagePerUnit": 1.41,
-          "killsPerUnit": 0.78,
-          "lossRate": 21.5
+          "damagePerGame": 14.44,
+          "killsPerGame": 2.66,
+          "damagePerUnit": 7.22,
+          "killsPerUnit": 1.33,
+          "lossRate": 36.3
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.37,
-          "killsPerGame": 0.95,
-          "damagePerUnit": 1.18,
-          "killsPerUnit": 0.47,
-          "lossRate": 51.8
+          "damagePerGame": 7.9,
+          "killsPerGame": 1,
+          "damagePerUnit": 3.95,
+          "killsPerUnit": 0.5,
+          "lossRate": 65
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.01,
+          "damagePerGame": 0.05,
           "killsPerGame": 0,
-          "damagePerUnit": 0,
+          "damagePerUnit": 0.03,
           "killsPerUnit": 0,
-          "lossRate": 20.3
+          "lossRate": 38
         }
       },
-      "msPerGame": 530
+      "msPerGame": 544
     },
     {
       "index": 22,
-      "name": "Doomstar damage 3",
+      "name": "Doomstar damage 4",
       "rules": {
         "preset": "doomstar",
-        "doomstarDamage": 3
+        "doomstarDamage": 4
       },
       "rulesLabel": "Doomstar: charge at the stars, fire from the center",
       "p1": "balanced",
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 30.5,
-      "p2Win": 36,
-      "draw": 33.5,
-      "p1WinMargin": 6.3,
-      "botAWin": 30.5,
-      "botBWin": 36,
+      "p1Win": 48.5,
+      "p2Win": 43,
+      "draw": 8.5,
+      "p1WinMargin": 6.9,
+      "botAWin": 48.5,
+      "botBWin": 43,
       "reasons": {
-        "command": 28.5,
-        "time": 33.5,
-        "doomstar": 38
+        "command": 73,
+        "doomstar": 18.5,
+        "time": 8.5
       },
-      "roundsAvg": 36.1,
-      "roundsMedian": 27,
-      "roundsP10": 16,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.5,
-      "attacksPerGame": 23.7,
-      "movesPerGame": 82,
-      "actionsPerTurn": 1.46,
-      "doomstarShotsPerGame": 1,
-      "survivorsPerGame": 5.1,
+      "roundsAvg": 22.3,
+      "roundsMedian": 19,
+      "roundsP10": 15,
+      "roundsP90": 29,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 25.1,
+      "movesPerGame": 67.7,
+      "actionsPerTurn": 2.08,
+      "doomstarShotsPerGame": 3,
+      "survivorsPerGame": 3.9,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.99,
-          "killsPerGame": 1.59,
-          "damagePerUnit": 1.5,
-          "killsPerUnit": 0.4,
-          "lossRate": 91.5
+          "damagePerGame": 9.77,
+          "killsPerGame": 1.01,
+          "damagePerUnit": 2.44,
+          "killsPerUnit": 0.25,
+          "lossRate": 89.5
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.43,
-          "killsPerGame": 2.59,
-          "damagePerUnit": 2.11,
-          "killsPerUnit": 0.65,
-          "lossRate": 92
+          "damagePerGame": 20.33,
+          "killsPerGame": 3.46,
+          "damagePerUnit": 5.08,
+          "killsPerUnit": 0.87,
+          "lossRate": 82.5
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 9.85,
-          "killsPerGame": 4.81,
-          "damagePerUnit": 2.46,
-          "killsPerUnit": 1.2,
-          "lossRate": 62.5
+          "damagePerGame": 26.18,
+          "killsPerGame": 4.64,
+          "damagePerUnit": 6.54,
+          "killsPerUnit": 1.16,
+          "lossRate": 82.9
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.48,
-          "killsPerGame": 1.35,
-          "damagePerUnit": 1.24,
-          "killsPerUnit": 0.68,
-          "lossRate": 15.3
+          "damagePerGame": 13.66,
+          "killsPerGame": 2.63,
+          "damagePerUnit": 6.83,
+          "killsPerUnit": 1.31,
+          "lossRate": 33.3
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.09,
-          "killsPerGame": 0.88,
-          "damagePerUnit": 1.05,
-          "killsPerUnit": 0.44,
-          "lossRate": 39
+          "damagePerGame": 7.04,
+          "killsPerGame": 1.05,
+          "damagePerUnit": 3.52,
+          "killsPerUnit": 0.52,
+          "lossRate": 60
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.03,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.02,
+          "killsPerUnit": 0,
+          "lossRate": 36.5
+        }
+      },
+      "msPerGame": 547
+    },
+    {
+      "index": 23,
+      "name": "Doomstar damage 8",
+      "rules": {
+        "preset": "doomstar",
+        "doomstarDamage": 8
+      },
+      "rulesLabel": "Doomstar: charge at the stars, fire from the center",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 200,
+      "p1Win": 51.5,
+      "p2Win": 47,
+      "draw": 1.5,
+      "p1WinMargin": 6.9,
+      "botAWin": 51.5,
+      "botBWin": 47,
+      "reasons": {
+        "doomstar": 85.5,
+        "command": 13,
+        "time": 1.5
+      },
+      "roundsAvg": 14,
+      "roundsMedian": 13,
+      "roundsP10": 10,
+      "roundsP90": 19,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 17.9,
+      "movesPerGame": 49.9,
+      "actionsPerTurn": 2.42,
+      "doomstarShotsPerGame": 2.4,
+      "survivorsPerGame": 7.5,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 8.02,
+          "killsPerGame": 0.71,
+          "damagePerUnit": 2.01,
+          "killsPerUnit": 0.18,
+          "lossRate": 80.3
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 15.9,
+          "killsPerGame": 2.47,
+          "damagePerUnit": 3.98,
+          "killsPerUnit": 0.62,
+          "lossRate": 48.6
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 21.67,
+          "killsPerGame": 3.91,
+          "damagePerUnit": 5.42,
+          "killsPerUnit": 0.98,
+          "lossRate": 68.6
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 6.03,
+          "killsPerGame": 1.09,
+          "damagePerUnit": 3.01,
+          "killsPerUnit": 0.54,
+          "lossRate": 10
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.85,
+          "killsPerGame": 0.51,
+          "damagePerUnit": 1.92,
+          "killsPerUnit": 0.25,
+          "lossRate": 22.3
         },
         "command": {
           "fieldedPerGame": 2,
@@ -1974,14 +2059,99 @@
           "killsPerGame": 0,
           "damagePerUnit": 0,
           "killsPerUnit": 0,
-          "lossRate": 14.3
+          "lossRate": 6.5
         }
       },
-      "msPerGame": 515
+      "msPerGame": 448
     },
     {
-      "index": 23,
-      "name": "fires without crew (old rule)",
+      "index": 24,
+      "name": "contested gunners cannot fire (session 3)",
+      "rules": {
+        "preset": "doomstar",
+        "contestedFiring": true
+      },
+      "rulesLabel": "Doomstar: charge at the stars, fire from the center",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 200,
+      "p1Win": 50,
+      "p2Win": 45,
+      "draw": 5,
+      "p1WinMargin": 6.9,
+      "botAWin": 50,
+      "botBWin": 45,
+      "reasons": {
+        "command": 61,
+        "doomstar": 34,
+        "time": 5
+      },
+      "roundsAvg": 19.6,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 23,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 23.9,
+      "movesPerGame": 63.3,
+      "actionsPerTurn": 2.23,
+      "doomstarShotsPerGame": 2.7,
+      "survivorsPerGame": 4.4,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 9.12,
+          "killsPerGame": 0.88,
+          "damagePerUnit": 2.28,
+          "killsPerUnit": 0.22,
+          "lossRate": 88.5
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 20.98,
+          "killsPerGame": 3.61,
+          "damagePerUnit": 5.25,
+          "killsPerUnit": 0.9,
+          "lossRate": 78.3
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 25.78,
+          "killsPerGame": 4.57,
+          "damagePerUnit": 6.44,
+          "killsPerUnit": 1.14,
+          "lossRate": 78.3
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 11.5,
+          "killsPerGame": 2.26,
+          "damagePerUnit": 5.75,
+          "killsPerUnit": 1.13,
+          "lossRate": 33.3
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 6.45,
+          "killsPerGame": 0.94,
+          "damagePerUnit": 3.22,
+          "killsPerUnit": 0.47,
+          "lossRate": 59
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0.02,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.01,
+          "killsPerUnit": 0,
+          "lossRate": 30.5
+        }
+      },
+      "msPerGame": 461
+    },
+    {
+      "index": 25,
+      "name": "fires without crew",
       "rules": {
         "preset": "doomstar",
         "doomstarNeedsCrew": false
@@ -1991,158 +2161,66 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 45.5,
-      "p2Win": 46,
-      "draw": 8.5,
-      "p1WinMargin": 6.8,
-      "botAWin": 45.5,
-      "botBWin": 46,
+      "p1Win": 50.5,
+      "p2Win": 49.5,
+      "draw": 0,
+      "p1WinMargin": 6.9,
+      "botAWin": 50.5,
+      "botBWin": 49.5,
       "reasons": {
-        "doomstar": 75,
-        "command": 16.5,
-        "time": 8.5
+        "doomstar": 85.5,
+        "command": 14.5
       },
-      "roundsAvg": 23,
-      "roundsMedian": 19,
-      "roundsP10": 14,
-      "roundsP90": 44,
-      "firstKillRoundAvg": 4.5,
-      "attacksPerGame": 20.5,
-      "movesPerGame": 66.9,
-      "actionsPerTurn": 1.9,
-      "doomstarShotsPerGame": 2.5,
-      "survivorsPerGame": 6.8,
-      "units": {
-        "scout": {
-          "fieldedPerGame": 4,
-          "damagePerGame": 5.64,
-          "killsPerGame": 1.48,
-          "damagePerUnit": 1.41,
-          "killsPerUnit": 0.37,
-          "lossRate": 86.1
-        },
-        "guard": {
-          "fieldedPerGame": 4,
-          "damagePerGame": 7.8,
-          "killsPerGame": 2.35,
-          "damagePerUnit": 1.95,
-          "killsPerUnit": 0.59,
-          "lossRate": 81
-        },
-        "lancer": {
-          "fieldedPerGame": 4,
-          "damagePerGame": 8.07,
-          "killsPerGame": 4.05,
-          "damagePerUnit": 2.02,
-          "killsPerUnit": 1.01,
-          "lossRate": 48
-        },
-        "prism": {
-          "fieldedPerGame": 2,
-          "damagePerGame": 1.47,
-          "killsPerGame": 0.86,
-          "damagePerUnit": 0.74,
-          "killsPerUnit": 0.43,
-          "lossRate": 8
-        },
-        "nova": {
-          "fieldedPerGame": 2,
-          "damagePerGame": 1.33,
-          "killsPerGame": 0.6,
-          "damagePerUnit": 0.66,
-          "killsPerUnit": 0.3,
-          "lossRate": 20.5
-        },
-        "command": {
-          "fieldedPerGame": 2,
-          "damagePerGame": 0.01,
-          "killsPerGame": 0.01,
-          "damagePerUnit": 0,
-          "killsPerUnit": 0,
-          "lossRate": 8.3
-        }
-      },
-      "msPerGame": 437
-    },
-    {
-      "index": 24,
-      "name": "Scouts crew too",
-      "rules": {
-        "preset": "doomstar",
-        "crew": [
-          "scout",
-          "guard",
-          "lancer",
-          "prism",
-          "nova"
-        ]
-      },
-      "rulesLabel": "Doomstar: charge at the stars, fire from the center",
-      "p1": "balanced",
-      "p2": "balanced",
-      "swapSeats": false,
-      "games": 200,
-      "p1Win": 15,
-      "p2Win": 77.5,
-      "draw": 7.5,
-      "p1WinMargin": 4.9,
-      "botAWin": 15,
-      "botBWin": 77.5,
-      "reasons": {
-        "doomstar": 67,
-        "command": 25.5,
-        "time": 7.5
-      },
-      "roundsAvg": 17.8,
+      "roundsAvg": 13.5,
       "roundsMedian": 13,
       "roundsP10": 10,
-      "roundsP90": 29,
-      "firstKillRoundAvg": 2,
-      "attacksPerGame": 20.3,
-      "movesPerGame": 54.4,
-      "actionsPerTurn": 2.09,
-      "doomstarShotsPerGame": 3.8,
-      "survivorsPerGame": 7.4,
+      "roundsP90": 18,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 18.2,
+      "movesPerGame": 51.2,
+      "actionsPerTurn": 2.57,
+      "doomstarShotsPerGame": 3.7,
+      "survivorsPerGame": 7.2,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.07,
-          "killsPerGame": 2.11,
-          "damagePerUnit": 1.52,
-          "killsPerUnit": 0.53,
-          "lossRate": 78.5
+          "damagePerGame": 8.49,
+          "killsPerGame": 0.85,
+          "damagePerUnit": 2.12,
+          "killsPerUnit": 0.21,
+          "lossRate": 83.6
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.57,
-          "killsPerGame": 2.48,
-          "damagePerUnit": 2.14,
-          "killsPerUnit": 0.62,
-          "lossRate": 86
+          "damagePerGame": 11.95,
+          "killsPerGame": 2.4,
+          "damagePerUnit": 2.99,
+          "killsPerUnit": 0.6,
+          "lossRate": 45.1
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.67,
-          "killsPerGame": 3.19,
-          "damagePerUnit": 1.42,
-          "killsPerUnit": 0.8,
-          "lossRate": 40.6
+          "damagePerGame": 22.58,
+          "killsPerGame": 3.92,
+          "damagePerUnit": 5.64,
+          "killsPerUnit": 0.98,
+          "lossRate": 71
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.73,
-          "killsPerGame": 0.4,
-          "damagePerUnit": 0.37,
-          "killsPerUnit": 0.2,
-          "lossRate": 3.5
+          "damagePerGame": 5.51,
+          "killsPerGame": 1.09,
+          "damagePerUnit": 2.75,
+          "killsPerUnit": 0.55,
+          "lossRate": 10.3
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 1.62,
-          "killsPerGame": 0.67,
-          "damagePerUnit": 0.81,
-          "killsPerUnit": 0.33,
-          "lossRate": 15.5
+          "damagePerGame": 5.87,
+          "killsPerGame": 0.65,
+          "damagePerUnit": 2.94,
+          "killsPerUnit": 0.32,
+          "lossRate": 28.3
         },
         "command": {
           "fieldedPerGame": 2,
@@ -2150,13 +2228,13 @@
           "killsPerGame": 0,
           "damagePerUnit": 0,
           "killsPerUnit": 0,
-          "lossRate": 12.8
+          "lossRate": 7.3
         }
       },
-      "msPerGame": 284
+      "msPerGame": 424
     },
     {
-      "index": 25,
+      "index": 26,
       "name": "stars not contested",
       "rules": {
         "preset": "doomstar",
@@ -2167,81 +2245,81 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 30.5,
-      "p2Win": 35,
-      "draw": 34.5,
-      "p1WinMargin": 6.3,
-      "botAWin": 30.5,
-      "botBWin": 35,
+      "p1Win": 52,
+      "p2Win": 43.5,
+      "draw": 4.5,
+      "p1WinMargin": 6.9,
+      "botAWin": 52,
+      "botBWin": 43.5,
       "reasons": {
-        "command": 42.5,
-        "doomstar": 23,
-        "time": 34.5
+        "command": 60,
+        "doomstar": 35.5,
+        "time": 4.5
       },
-      "roundsAvg": 37.4,
-      "roundsMedian": 28,
-      "roundsP10": 17,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.5,
-      "attacksPerGame": 25,
-      "movesPerGame": 85,
-      "actionsPerTurn": 1.47,
-      "doomstarShotsPerGame": 1.2,
-      "survivorsPerGame": 4.5,
+      "roundsAvg": 20,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 24,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 23.5,
+      "movesPerGame": 63.3,
+      "actionsPerTurn": 2.17,
+      "doomstarShotsPerGame": 2.9,
+      "survivorsPerGame": 4.7,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.03,
-          "killsPerGame": 1.6,
-          "damagePerUnit": 1.51,
-          "killsPerUnit": 0.4,
-          "lossRate": 91.4
+          "damagePerGame": 9.23,
+          "killsPerGame": 1.06,
+          "damagePerUnit": 2.31,
+          "killsPerUnit": 0.26,
+          "lossRate": 87
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.51,
-          "killsPerGame": 2.58,
-          "damagePerUnit": 2.13,
-          "killsPerUnit": 0.65,
-          "lossRate": 93.8
+          "damagePerGame": 18.65,
+          "killsPerGame": 3,
+          "damagePerUnit": 4.66,
+          "killsPerUnit": 0.75,
+          "lossRate": 77.5
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 10.6,
-          "killsPerGame": 5.25,
-          "damagePerUnit": 2.65,
-          "killsPerUnit": 1.31,
-          "lossRate": 66.6
+          "damagePerGame": 26.19,
+          "killsPerGame": 4.61,
+          "damagePerUnit": 6.55,
+          "killsPerUnit": 1.15,
+          "lossRate": 80.1
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.79,
-          "killsPerGame": 1.52,
-          "damagePerUnit": 1.4,
-          "killsPerUnit": 0.76,
-          "lossRate": 24
+          "damagePerGame": 11.25,
+          "killsPerGame": 2.3,
+          "damagePerUnit": 5.63,
+          "killsPerUnit": 1.15,
+          "lossRate": 25.5
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.49,
-          "killsPerGame": 1,
-          "damagePerUnit": 1.24,
-          "killsPerUnit": 0.5,
-          "lossRate": 48.8
+          "damagePerGame": 6.42,
+          "killsPerGame": 0.98,
+          "damagePerUnit": 3.21,
+          "killsPerUnit": 0.49,
+          "lossRate": 52.8
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0,
-          "killsPerGame": 0,
-          "damagePerUnit": 0,
-          "killsPerUnit": 0,
-          "lossRate": 21.3
+          "damagePerGame": 0.06,
+          "killsPerGame": 0.01,
+          "damagePerUnit": 0.03,
+          "killsPerUnit": 0.01,
+          "lossRate": 30
         }
       },
-      "msPerGame": 408
+      "msPerGame": 357
     },
     {
-      "index": 26,
+      "index": 27,
       "name": "P1 opens with 1 order",
       "rules": {
         "preset": "doomstar",
@@ -2252,81 +2330,81 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 38.5,
-      "p2Win": 28.5,
-      "draw": 33,
-      "p1WinMargin": 6.7,
-      "botAWin": 38.5,
-      "botBWin": 28.5,
+      "p1Win": 55.5,
+      "p2Win": 40,
+      "draw": 4.5,
+      "p1WinMargin": 6.8,
+      "botAWin": 55.5,
+      "botBWin": 40,
       "reasons": {
-        "command": 41,
-        "doomstar": 26,
-        "time": 33
+        "doomstar": 39,
+        "command": 56.5,
+        "time": 4.5
       },
-      "roundsAvg": 37.4,
-      "roundsMedian": 30,
-      "roundsP10": 17,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.8,
-      "attacksPerGame": 24.6,
-      "movesPerGame": 83,
-      "actionsPerTurn": 1.44,
-      "doomstarShotsPerGame": 1.1,
-      "survivorsPerGame": 4.6,
+      "roundsAvg": 19.7,
+      "roundsMedian": 17,
+      "roundsP10": 13,
+      "roundsP90": 23,
+      "firstKillRoundAvg": 3.8,
+      "attacksPerGame": 23.4,
+      "movesPerGame": 62.9,
+      "actionsPerTurn": 2.19,
+      "doomstarShotsPerGame": 2.9,
+      "survivorsPerGame": 4.7,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.85,
-          "killsPerGame": 1.43,
-          "damagePerUnit": 1.46,
-          "killsPerUnit": 0.36,
-          "lossRate": 90.3
+          "damagePerGame": 9.44,
+          "killsPerGame": 0.97,
+          "damagePerUnit": 2.36,
+          "killsPerUnit": 0.24,
+          "lossRate": 89.4
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.73,
-          "killsPerGame": 2.74,
-          "damagePerUnit": 2.18,
-          "killsPerUnit": 0.69,
-          "lossRate": 92.5
+          "damagePerGame": 18.93,
+          "killsPerGame": 3.14,
+          "damagePerUnit": 4.73,
+          "killsPerUnit": 0.78,
+          "lossRate": 72.5
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 10.23,
-          "killsPerGame": 5.05,
-          "damagePerUnit": 2.56,
-          "killsPerUnit": 1.26,
-          "lossRate": 67.1
+          "damagePerGame": 26.11,
+          "killsPerGame": 4.56,
+          "damagePerUnit": 6.53,
+          "killsPerUnit": 1.14,
+          "lossRate": 79.8
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.76,
-          "killsPerGame": 1.54,
-          "damagePerUnit": 1.38,
-          "killsPerUnit": 0.77,
-          "lossRate": 19.3
+          "damagePerGame": 11.48,
+          "killsPerGame": 2.26,
+          "damagePerUnit": 5.74,
+          "killsPerUnit": 1.13,
+          "lossRate": 31.5
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 2.69,
-          "killsPerGame": 1.05,
-          "damagePerUnit": 1.35,
-          "killsPerUnit": 0.53,
-          "lossRate": 51
+          "damagePerGame": 6.14,
+          "killsPerGame": 0.97,
+          "damagePerUnit": 3.07,
+          "killsPerUnit": 0.48,
+          "lossRate": 51.5
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.02,
+          "damagePerGame": 0.06,
           "killsPerGame": 0.01,
-          "damagePerUnit": 0.01,
+          "damagePerUnit": 0.03,
           "killsPerUnit": 0.01,
-          "lossRate": 20.5
+          "lossRate": 28.3
         }
       },
-      "msPerGame": 376
+      "msPerGame": 477
     },
     {
-      "index": 27,
+      "index": 28,
       "name": "3 orders per turn",
       "rules": {
         "preset": "doomstar",
@@ -2337,179 +2415,90 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 42.5,
-      "p2Win": 26,
-      "draw": 31.5,
+      "p1Win": 41.5,
+      "p2Win": 48,
+      "draw": 10.5,
       "p1WinMargin": 6.8,
-      "botAWin": 42.5,
-      "botBWin": 26,
+      "botAWin": 41.5,
+      "botBWin": 48,
       "reasons": {
-        "time": 31.5,
-        "doomstar": 19.5,
-        "command": 49
+        "command": 71.5,
+        "time": 10.5,
+        "doomstar": 18
       },
-      "roundsAvg": 34.1,
-      "roundsMedian": 25,
-      "roundsP10": 15,
+      "roundsAvg": 19.8,
+      "roundsMedian": 15,
+      "roundsP10": 11,
       "roundsP90": 61,
-      "firstKillRoundAvg": 3.7,
-      "attacksPerGame": 25,
-      "movesPerGame": 93.1,
-      "actionsPerTurn": 1.73,
-      "doomstarShotsPerGame": 0.9,
-      "survivorsPerGame": 4.3,
+      "firstKillRoundAvg": 3.3,
+      "attacksPerGame": 24.5,
+      "movesPerGame": 73.3,
+      "actionsPerTurn": 2.48,
+      "doomstarShotsPerGame": 2.2,
+      "survivorsPerGame": 4.1,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 6.02,
-          "killsPerGame": 1.58,
-          "damagePerUnit": 1.51,
-          "killsPerUnit": 0.4,
-          "lossRate": 91.5
-        },
-        "guard": {
-          "fieldedPerGame": 4,
-          "damagePerGame": 7.56,
-          "killsPerGame": 2.47,
-          "damagePerUnit": 1.89,
-          "killsPerUnit": 0.62,
-          "lossRate": 93
-        },
-        "lancer": {
-          "fieldedPerGame": 4,
-          "damagePerGame": 11.16,
-          "killsPerGame": 5.34,
-          "damagePerUnit": 2.79,
-          "killsPerUnit": 1.33,
-          "lossRate": 69.6
-        },
-        "prism": {
-          "fieldedPerGame": 2,
-          "damagePerGame": 3.43,
-          "killsPerGame": 1.82,
-          "damagePerUnit": 1.72,
-          "killsPerUnit": 0.91,
-          "lossRate": 20.3
-        },
-        "nova": {
-          "fieldedPerGame": 2,
-          "damagePerGame": 3.04,
-          "killsPerGame": 0.99,
-          "damagePerUnit": 1.52,
-          "killsPerUnit": 0.5,
-          "lossRate": 56.8
-        },
-        "command": {
-          "fieldedPerGame": 2,
-          "damagePerGame": 0.03,
-          "killsPerGame": 0.01,
-          "damagePerUnit": 0.01,
-          "killsPerUnit": 0.01,
-          "lossRate": 24.5
-        }
-      },
-      "msPerGame": 399
-    },
-    {
-      "index": 28,
-      "name": "Scout range 1.5 (old)",
-      "rules": {
-        "preset": "doomstar",
-        "unitOverrides": {
-          "scout": {
-            "range": 1.5
-          }
-        }
-      },
-      "rulesLabel": "Doomstar: charge at the stars, fire from the center",
-      "p1": "balanced",
-      "p2": "balanced",
-      "swapSeats": false,
-      "games": 200,
-      "p1Win": 32.5,
-      "p2Win": 28,
-      "draw": 39.5,
-      "p1WinMargin": 6.4,
-      "botAWin": 32.5,
-      "botBWin": 28,
-      "reasons": {
-        "time": 39.5,
-        "doomstar": 20,
-        "command": 40.5
-      },
-      "roundsAvg": 39.7,
-      "roundsMedian": 34,
-      "roundsP10": 18,
-      "roundsP90": 61,
-      "firstKillRoundAvg": 4.6,
-      "attacksPerGame": 24.2,
-      "movesPerGame": 90.4,
-      "actionsPerTurn": 1.44,
-      "doomstarShotsPerGame": 1.1,
-      "survivorsPerGame": 5,
-      "units": {
-        "scout": {
-          "fieldedPerGame": 4,
-          "damagePerGame": 4.94,
-          "killsPerGame": 1.49,
-          "damagePerUnit": 1.24,
-          "killsPerUnit": 0.37,
-          "lossRate": 85
-        },
-        "guard": {
-          "fieldedPerGame": 4,
-          "damagePerGame": 8.82,
-          "killsPerGame": 2.19,
-          "damagePerUnit": 2.21,
-          "killsPerUnit": 0.55,
-          "lossRate": 95
-        },
-        "lancer": {
-          "fieldedPerGame": 4,
-          "damagePerGame": 10.49,
-          "killsPerGame": 5.34,
-          "damagePerUnit": 2.62,
-          "killsPerUnit": 1.34,
-          "lossRate": 60.8
-        },
-        "prism": {
-          "fieldedPerGame": 2,
-          "damagePerGame": 2.96,
-          "killsPerGame": 1.53,
-          "damagePerUnit": 1.48,
-          "killsPerUnit": 0.77,
-          "lossRate": 23
-        },
-        "nova": {
-          "fieldedPerGame": 2,
-          "damagePerGame": 2.13,
+          "damagePerGame": 9.73,
           "killsPerGame": 0.82,
-          "damagePerUnit": 1.06,
-          "killsPerUnit": 0.41,
-          "lossRate": 46.5
+          "damagePerUnit": 2.43,
+          "killsPerUnit": 0.2,
+          "lossRate": 91.3
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 18.18,
+          "killsPerGame": 3.27,
+          "damagePerUnit": 4.54,
+          "killsPerUnit": 0.82,
+          "lossRate": 75.5
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 23.94,
+          "killsPerGame": 4.43,
+          "damagePerUnit": 5.99,
+          "killsPerUnit": 1.11,
+          "lossRate": 77
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 15.88,
+          "killsPerGame": 2.98,
+          "damagePerUnit": 7.94,
+          "killsPerUnit": 1.49,
+          "lossRate": 38.8
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 8.64,
+          "killsPerGame": 1.13,
+          "damagePerUnit": 4.32,
+          "killsPerUnit": 0.56,
+          "lossRate": 68.8
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.1,
-          "killsPerGame": 0.06,
-          "damagePerUnit": 0.05,
-          "killsPerUnit": 0.03,
-          "lossRate": 20.3
+          "damagePerGame": 0.04,
+          "killsPerGame": 0,
+          "damagePerUnit": 0.02,
+          "killsPerUnit": 0,
+          "lossRate": 35.8
         }
       },
-      "msPerGame": 445
+      "msPerGame": 512
     },
     {
       "index": 29,
-      "name": "Nova 4.5 / Prism 3 move (old)",
+      "name": "Nova 3.5 / Prism 2.5 move (session 3)",
       "rules": {
         "preset": "doomstar",
         "unitOverrides": {
           "nova": {
-            "move": 4.5
+            "move": 3.5
           },
           "prism": {
-            "move": 3
+            "move": 2.5
           }
         }
       },
@@ -2518,78 +2507,167 @@
       "p2": "balanced",
       "swapSeats": false,
       "games": 200,
-      "p1Win": 40,
-      "p2Win": 34.5,
-      "draw": 25.5,
-      "p1WinMargin": 6.7,
-      "botAWin": 40,
-      "botBWin": 34.5,
+      "p1Win": 42.5,
+      "p2Win": 45,
+      "draw": 12.5,
+      "p1WinMargin": 6.8,
+      "botAWin": 42.5,
+      "botBWin": 45,
       "reasons": {
-        "command": 52.5,
-        "doomstar": 22,
-        "time": 25.5
+        "doomstar": 43.5,
+        "command": 44,
+        "time": 12.5
       },
-      "roundsAvg": 32.6,
-      "roundsMedian": 23,
-      "roundsP10": 17,
+      "roundsAvg": 24,
+      "roundsMedian": 19,
+      "roundsP10": 14,
       "roundsP90": 61,
-      "firstKillRoundAvg": 4.5,
-      "attacksPerGame": 25,
-      "movesPerGame": 76.3,
-      "actionsPerTurn": 1.55,
-      "doomstarShotsPerGame": 1.2,
-      "survivorsPerGame": 4.2,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 23.7,
+      "movesPerGame": 69.4,
+      "actionsPerTurn": 1.94,
+      "doomstarShotsPerGame": 3,
+      "survivorsPerGame": 5.2,
       "units": {
         "scout": {
           "fieldedPerGame": 4,
-          "damagePerGame": 5.7,
-          "killsPerGame": 1.39,
-          "damagePerUnit": 1.42,
-          "killsPerUnit": 0.35,
-          "lossRate": 89.5
+          "damagePerGame": 9.7,
+          "killsPerGame": 1.02,
+          "damagePerUnit": 2.42,
+          "killsPerUnit": 0.26,
+          "lossRate": 93.3
         },
         "guard": {
           "fieldedPerGame": 4,
-          "damagePerGame": 8.14,
-          "killsPerGame": 2.58,
-          "damagePerUnit": 2.04,
-          "killsPerUnit": 0.65,
-          "lossRate": 92.6
+          "damagePerGame": 22.27,
+          "killsPerGame": 3.58,
+          "damagePerUnit": 5.57,
+          "killsPerUnit": 0.89,
+          "lossRate": 77.4
         },
         "lancer": {
           "fieldedPerGame": 4,
-          "damagePerGame": 9.98,
-          "killsPerGame": 5.08,
-          "damagePerUnit": 2.5,
-          "killsPerUnit": 1.27,
-          "lossRate": 68
+          "damagePerGame": 26.21,
+          "killsPerGame": 4.49,
+          "damagePerUnit": 6.55,
+          "killsPerUnit": 1.12,
+          "lossRate": 72.9
         },
         "prism": {
           "fieldedPerGame": 2,
-          "damagePerGame": 4.28,
-          "killsPerGame": 2.1,
-          "damagePerUnit": 2.14,
-          "killsPerUnit": 1.05,
-          "lossRate": 33
+          "damagePerGame": 5.28,
+          "killsPerGame": 1.22,
+          "damagePerUnit": 2.64,
+          "killsPerUnit": 0.61,
+          "lossRate": 14.8
         },
         "nova": {
           "fieldedPerGame": 2,
-          "damagePerGame": 3.35,
-          "killsPerGame": 1.22,
-          "damagePerUnit": 1.67,
-          "killsPerUnit": 0.61,
-          "lossRate": 59
+          "damagePerGame": 6.6,
+          "killsPerGame": 0.97,
+          "damagePerUnit": 3.3,
+          "killsPerUnit": 0.49,
+          "lossRate": 40
         },
         "command": {
           "fieldedPerGame": 2,
-          "damagePerGame": 0.02,
-          "killsPerGame": 0.01,
+          "damagePerGame": 0.01,
+          "killsPerGame": 0,
           "damagePerUnit": 0.01,
-          "killsPerUnit": 0.01,
-          "lossRate": 26.3
+          "killsPerUnit": 0,
+          "lossRate": 22
         }
       },
-      "msPerGame": 406
+      "msPerGame": 398
+    },
+    {
+      "index": 30,
+      "name": "Command HP 10",
+      "rules": {
+        "preset": "doomstar",
+        "unitOverrides": {
+          "command": {
+            "hp": 10
+          }
+        }
+      },
+      "rulesLabel": "Doomstar: charge at the stars, fire from the center",
+      "p1": "balanced",
+      "p2": "balanced",
+      "swapSeats": false,
+      "games": 200,
+      "p1Win": 52.5,
+      "p2Win": 45,
+      "draw": 2.5,
+      "p1WinMargin": 6.9,
+      "botAWin": 52.5,
+      "botBWin": 45,
+      "reasons": {
+        "command": 16,
+        "time": 2.5,
+        "doomstar": 81.5
+      },
+      "roundsAvg": 14.2,
+      "roundsMedian": 12,
+      "roundsP10": 10,
+      "roundsP90": 18,
+      "firstKillRoundAvg": 3.5,
+      "attacksPerGame": 17.4,
+      "movesPerGame": 48.7,
+      "actionsPerTurn": 2.34,
+      "doomstarShotsPerGame": 2.3,
+      "survivorsPerGame": 7.6,
+      "units": {
+        "scout": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 7.93,
+          "killsPerGame": 0.7,
+          "damagePerUnit": 1.98,
+          "killsPerUnit": 0.17,
+          "lossRate": 79.3
+        },
+        "guard": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 16.11,
+          "killsPerGame": 2.42,
+          "damagePerUnit": 4.03,
+          "killsPerUnit": 0.61,
+          "lossRate": 46.5
+        },
+        "lancer": {
+          "fieldedPerGame": 4,
+          "damagePerGame": 21.3,
+          "killsPerGame": 3.89,
+          "damagePerUnit": 5.32,
+          "killsPerUnit": 0.97,
+          "lossRate": 68.4
+        },
+        "prism": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 5.31,
+          "killsPerGame": 1.04,
+          "damagePerUnit": 2.66,
+          "killsPerUnit": 0.52,
+          "lossRate": 8.5
+        },
+        "nova": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 3.4,
+          "killsPerGame": 0.47,
+          "damagePerUnit": 1.7,
+          "killsPerUnit": 0.24,
+          "lossRate": 21
+        },
+        "command": {
+          "fieldedPerGame": 2,
+          "damagePerGame": 0,
+          "killsPerGame": 0,
+          "damagePerUnit": 0,
+          "killsPerUnit": 0,
+          "lossRate": 8
+        }
+      },
+      "msPerGame": 393
     }
   ]
 }

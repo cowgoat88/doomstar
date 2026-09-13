@@ -20,6 +20,9 @@
   // Threat maps assume a typical target footprint.
   const TYPICAL_RADIUS = 1.1;
   const COMMAND_HP_VALUE = 3;
+  // Persona weights were tuned when the Command had 5 HP, so Command damage is scaled to that.
+  const COMMAND_SCALE = 5;
+  const commandShare = (command, amount) => (amount * COMMAND_SCALE) / command.maxHp;
   const COMMAND_LETHAL_THREAT = 150;
   const WIN_SCORE = 100000;
   const IMPROVEMENT_THRESHOLD = 0.05;
@@ -134,8 +137,8 @@
     const mine = [];
     // Distances in original-tile units, so persona weights keep their meaning on the fine grid.
     const tiles = (a, b) => D.distance(a.x, a.y, b.x, b.y) / state.scale;
-    let score = myCommand.hp * COMMAND_HP_VALUE * persona.commandGuard
-      - foeCommand.hp * COMMAND_HP_VALUE * persona.commandFocus;
+    let score = commandShare(myCommand, myCommand.hp) * COMMAND_HP_VALUE * persona.commandGuard
+      - commandShare(foeCommand, foeCommand.hp) * COMMAND_HP_VALUE * persona.commandFocus;
 
     for (const u of state.units) {
       if (u.type === 'command') continue;
@@ -146,7 +149,7 @@
       mine.push(u);
       score += unitWorth(u);
       score -= persona.advance * tiles(u, foeCommand);
-      if (D.canAttackFrom(state, u, u.x, u.y, foeCommand)) score += persona.siege * D.damageAgainst(u, foeCommand);
+      if (D.canAttackFrom(state, u, u.x, u.y, foeCommand)) score += persona.siege * commandShare(foeCommand, u.damage);
       if (u.type === 'guard' && persona.guardHome) {
         score -= persona.guardHome * Math.max(0, tiles(u, myCommand) - 1);
       }
@@ -172,11 +175,11 @@
       let incoming = 0;
       for (const threat of threats) {
         if (!alive.has(threat.id)) continue;
-        if (threat.close[i] || threat.ranged[i]) incoming += D.damageAgainst(threat.unit, u);
+        if (threat.close[i] || threat.ranged[i]) incoming += threat.unit.damage;
       }
       if (!incoming) continue;
       if (u.type === 'command') {
-        losses.push(incoming >= u.hp ? COMMAND_LETHAL_THREAT : incoming * COMMAND_HP_VALUE * persona.commandGuard);
+        losses.push(incoming >= u.hp ? COMMAND_LETHAL_THREAT : commandShare(u, incoming) * COMMAND_HP_VALUE * persona.commandGuard);
         continue;
       }
       // A ship that allies could avenge is a less attractive target.
@@ -205,7 +208,7 @@
     const nearest = (units, z) => units.reduce((best, u) => Math.min(best, toZone(u, z)), Infinity);
     const shotValue = (command, weight, lethal) => (command.hp <= rules.doomstarDamage
       ? lethal
-      : rules.doomstarDamage * COMMAND_HP_VALUE * weight);
+      : commandShare(command, rules.doomstarDamage) * COMMAND_HP_VALUE * weight);
     let score = 0;
 
     // Enemy-held stars matter more the closer the enemy is to a full charge.
@@ -234,20 +237,21 @@
       return score;
     }
 
-    // My gunner: with a full charge, bring an uncontested crew ship into the Doomstar.
+    // My gunner: with a full charge, bring a crew ship into the Doomstar.
     if (myCharge >= needed) {
-      if (crew.some((u) => D.inZone(u, zone) && !D.isContested(state, u))) {
+      if (crew.some((u) => D.isGunner(state, u))) {
         score += shotValue(foeCommand, persona.commandFocus, 60) * 0.3;
       }
       const d = nearest(crew, zone);
       if (d !== Infinity) score -= (persona.starSeek + persona.siege) * 0.5 * d;
     }
 
-    // Their gunner: a full enemy charge fires next turn if a crew ship reaches the center uncontested.
+    // Their gunner: a full enemy charge fires next turn if a crew ship reaches the center.
     if (foeCharge >= needed) {
-      const inPlace = foeCrew.some((u) => D.inZone(u, zone) && !D.isContested(state, u));
+      const inPlace = foeCrew.some((u) => D.isGunner(state, u));
       const inReach = foeCrew.some((u) => D.distance(u.x, u.y, zone.x, zone.y) <= zone.r + u.move);
-      const guarded = mine.some((u) => D.inZone(u, zone));
+      // My ships in the center can block a gunner only when contesting stops firing.
+      const guarded = rules.contestedFiring && mine.some((u) => D.inZone(u, zone));
       const hit = shotValue(myCommand, persona.commandGuard, COMMAND_LETHAL_THREAT);
       score -= hit * (inPlace ? 0.8 : inReach ? 0.5 : 0.15) * (guarded ? 0.5 : 1);
       const d = nearest(mine, zone);

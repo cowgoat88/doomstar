@@ -113,11 +113,10 @@
 
   // --- Combat ---
 
-  test('Armor reduces damage (minimum 1); Prism ignores it', () => {
-    const make = (type) => D.createUnit(type, type === 'guard' ? 'p2' : 'p1', 0, 0, type);
-    equal(D.damageAgainst(make('lancer'), make('guard')), 1, 'Lancer vs Guard');
-    equal(D.damageAgainst(make('prism'), make('guard')), 2, 'Prism vs Guard');
-    equal(D.damageAgainst(make('scout'), make('guard')), 1, 'Scout vs Guard (minimum 1)');
+  test('Hits deal the attacker\'s full damage (no armor)', () => {
+    const s = scenario('doomstar', [...COMMANDS, ['p1', 'lancer', 6, 6], ['p2', 'guard', 6, 10]]);
+    assert(D.applyAction(s, { type: 'attack', unitId: 'p1-lancer-1', targetId: 'p2-guard-1' }).ok, 'Attack');
+    equal(unit(s, 'p2-guard-1').hp, D.UNIT_TYPES.guard.hp - D.UNIT_TYPES.lancer.damage, 'Guard HP');
   });
 
   test('Nova splash hits nearby enemies but not allies or distant enemies', () => {
@@ -127,10 +126,12 @@
       ['p2', 'scout', 6, 14], ['p2', 'guard', 8, 15], ['p2', 'lancer', 6, 19],
     ]);
     assert(D.applyAction(s, { type: 'attack', unitId: 'p1-nova-1', targetId: 'p2-scout-1' }).ok, 'Attack is legal');
-    equal(unit(s, 'p2-scout-1').hp, 1, 'Target HP');
-    equal(unit(s, 'p2-guard-1').hp, 2, 'Splashed Guard HP');
-    equal(unit(s, 'p2-lancer-1').hp, 2, 'Lancer outside the blast');
-    equal(unit(s, 'p1-scout-1').hp, 2, 'No friendly fire');
+    const hp = (type) => D.UNIT_TYPES[type].hp;
+    const blast = D.UNIT_TYPES.nova.damage;
+    equal(unit(s, 'p2-scout-1').hp, hp('scout') - blast, 'Target HP');
+    equal(unit(s, 'p2-guard-1').hp, hp('guard') - blast, 'Splashed Guard HP');
+    equal(unit(s, 'p2-lancer-1').hp, hp('lancer'), 'Lancer outside the blast');
+    equal(unit(s, 'p1-scout-1').hp, hp('scout'), 'No friendly fire');
   });
 
   test('Destroying the Command ends the match', () => {
@@ -193,29 +194,33 @@
 
   test('Charge stops at the amount needed to fire', () => {
     const s = scenario('doomstar', [...COMMANDS, ['p1', 'guard', 4, 16], ['p1', 'lancer', 28, 16]]);
-    s.charge.p1 = 3;
+    s.charge.p1 = s.rules.doomstarCharge - 1;
     endTurn(s);
-    equal(s.charge.p1, 4, 'Charge is capped at doomstarCharge');
+    equal(s.charge.p1, s.rules.doomstarCharge, 'Charge is capped at doomstarCharge');
   });
 
   test('Firing needs full charge and a crew ship inside the Doomstar', () => {
     const s = scenario('doomstar', [...COMMANDS, ['p1', 'guard', 16, 16], ['p1', 'scout', 18, 14], ['p1', 'lancer', 10, 16]]);
-    s.charge.p1 = 3;
+    s.charge.p1 = s.rules.doomstarCharge - 1;
     assert(!D.canFireDoomstar(s, unit(s, 'p1-guard-1')), 'Not enough charge');
-    s.charge.p1 = 4;
+    s.charge.p1 = s.rules.doomstarCharge;
     assert(!fire(s, 'p1-scout-1').ok, 'Scouts cannot fire');
     assert(!fire(s, 'p1-lancer-1').ok, 'Crew outside the Doomstar cannot fire');
     assert(fire(s, 'p1-guard-1').ok, 'Crew inside the Doomstar fires');
-    equal(unit(s, 'p2-command-1').hp, 3, 'Enemy Command takes 2, ignoring armor');
+    equal(unit(s, 'p2-command-1').hp, D.UNIT_TYPES.command.hp - s.rules.doomstarDamage, 'Enemy Command takes the Doomstar damage');
     equal(s.charge.p1, 0, 'Charge resets');
     assert(unit(s, 'p1-guard-1').attacked, 'Firing uses the ship\'s attack');
     assert(!fire(s, 'p1-guard-1').ok, 'Cannot fire twice');
   });
 
-  test('An enemy at close range stops the gunner from firing', () => {
-    const s = scenario('doomstar', [...COMMANDS, ['p1', 'guard', 16, 16], ['p2', 'scout', 19, 16]]);
+  test('A gunner can fire while contested, unless contestedFiring is on', () => {
+    const units = [...COMMANDS, ['p1', 'guard', 16, 16], ['p2', 'scout', 19, 16]];
+    const s = scenario('doomstar', units);
     s.charge.p1 = 4;
-    assert(!D.canFireDoomstar(s, unit(s, 'p1-guard-1')), 'Contested gunner');
+    assert(D.canFireDoomstar(s, unit(s, 'p1-guard-1')), 'Contested gunner fires');
+    const strict = scenario({ preset: 'doomstar', contestedFiring: true }, units);
+    strict.charge.p1 = 4;
+    assert(!D.canFireDoomstar(strict, unit(strict, 'p1-guard-1')), 'Blocked when contestedFiring is on');
   });
 
   test('A Doomstar shot that destroys the Command wins', () => {
@@ -228,16 +233,17 @@
 
   test('Without the crew rule the Doomstar fires by itself at full charge', () => {
     const s = scenario({ preset: 'doomstar', doomstarNeedsCrew: false }, [...COMMANDS, ['p1', 'guard', 4, 16]]);
-    s.charge.p1 = 3;
+    s.charge.p1 = s.rules.doomstarCharge - 1;
     endTurn(s);
-    equal(unit(s, 'p2-command-1').hp, 3, 'Enemy Command HP');
+    equal(unit(s, 'p2-command-1').hp, D.UNIT_TYPES.command.hp - s.rules.doomstarDamage, 'Enemy Command HP');
     equal(s.charge.p1, 0, 'Charge resets');
   });
 
   // --- Map ---
 
-  test('Proving Ground: rotated armies, no overlaps, fair star distances, every ship can move', () => {
+  test('Proving Ground: rotated armies, no overlaps, fair star distances, every ship can move, no asteroids', () => {
     const s = D.createGame('doomstar');
+    assert(!s.terrain.includes('asteroid'), 'The small test map has no asteroids');
     const last = s.size - 1;
     const p1 = s.units.filter((u) => u.player === 'p1');
     const p2 = s.units.filter((u) => u.player === 'p2');

@@ -12,32 +12,32 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 2005 >>
+<< /Length 1949 >>
 stream
 BT /F1 24 Tf 72 760 Td (Doomstar Unit Guide) Tj ET
 BT /F1 11 Tf 72 736 Td (Distances in board tiles, 33 across. Range is measured hull to hull.) Tj ET
 BT /F1 14 Tf 72 706 Td (The Doomstar) Tj ET
 BT /F1 10 Tf 72 690 Td (Charge: at the end of your turn, each star held by a Guard, Lancer, Prism or Nova adds 1 charge.) Tj ET
-BT /F1 10 Tf 72 676 Td (Fire: at 4 charge, one of those ships inside the Doomstar fires instead of attacking: 2 damage to the enemy Command.) Tj ET
-BT /F1 10 Tf 72 662 Td (Contest: an enemy ship at close range, Scouts included, stops a star from charging and a gunner from firing.) Tj ET
+BT /F1 10 Tf 72 676 Td (Fire: at 3 charge, one of those ships inside the Doomstar fires instead of attacking: 5 damage to the enemy Command.) Tj ET
+BT /F1 10 Tf 72 662 Td (Contest: an enemy ship at close range, Scouts included, stops a star from charging. Gunners can still fire.) Tj ET
 BT /F1 13 Tf 72 628 Td (Command) Tj ET
-BT /F1 11 Tf 72 613 Td (Move 0 | Range 1.5 | HP 5 | Damage 1 | Armor 1 | Size 2) Tj ET
+BT /F1 11 Tf 72 613 Td (Move 0 | Range 1.5 | HP 15 | Damage 2 | Size 2) Tj ET
 BT /F1 10 Tf 72 599 Td (Your command star. It cannot move. Lose it and you lose the battle.) Tj ET
 BT /F1 13 Tf 72 570 Td (Guard) Tj ET
-BT /F1 11 Tf 72 555 Td (Move 4.5 | Range 1.5 | HP 3 | Damage 2 | Armor 1 | Size 1.4) Tj ET
-BT /F1 10 Tf 72 541 Td (Armored frontline defender with extra health. Doomstar crew.) Tj ET
+BT /F1 11 Tf 72 555 Td (Move 4.5 | Range 1.5 | HP 9 | Damage 4 | Size 1.4) Tj ET
+BT /F1 10 Tf 72 541 Td (Tough frontline brawler with the most hit points. Doomstar crew.) Tj ET
 BT /F1 13 Tf 72 512 Td (Scout) Tj ET
-BT /F1 11 Tf 72 497 Td (Move 9 | Range 3 | HP 2 | Damage 1 | Armor 0 | Size 0.9) Tj ET
+BT /F1 11 Tf 72 497 Td (Move 9 | Range 3 | HP 4 | Damage 2 | Size 0.9) Tj ET
 BT /F1 10 Tf 72 483 Td (Fast raider that harasses from short range and contests enemy stars. Cannot charge or fire.) Tj ET
 BT /F1 13 Tf 72 454 Td (Lancer) Tj ET
-BT /F1 11 Tf 72 439 Td (Move 6 | Range 5 | HP 2 | Damage 2 | Armor 0 | Size 1.1) Tj ET
+BT /F1 11 Tf 72 439 Td (Move 6 | Range 5 | HP 4 | Damage 4 | Size 1.1) Tj ET
 BT /F1 10 Tf 72 425 Td (Mid-range skirmisher that strikes from a distance. Doomstar crew.) Tj ET
 BT /F1 13 Tf 72 396 Td (Prism) Tj ET
-BT /F1 11 Tf 72 381 Td (Move 2.5 | Range 8 | HP 2 | Damage 2 | Armor 0 | Size 1.2) Tj ET
-BT /F1 10 Tf 72 367 Td (Slow beam artillery with the longest range. Ignores armor. Doomstar crew.) Tj ET
+BT /F1 11 Tf 72 381 Td (Move 4 | Range 8 | HP 4 | Damage 5 | Size 1.2) Tj ET
+BT /F1 10 Tf 72 367 Td (Beam artillery with the heaviest hit. Doomstar crew.) Tj ET
 BT /F1 13 Tf 72 338 Td (Nova) Tj ET
-BT /F1 11 Tf 72 323 Td (Move 3.5 | Range 7 | HP 2 | Damage 1 | Blast 3.5 | Size 1.2) Tj ET
-BT /F1 10 Tf 72 309 Td (Slow splash artillery: its blast also hits every enemy close to the target. Doomstar crew.) Tj ET
+BT /F1 11 Tf 72 323 Td (Move 7 | Range 10 | HP 4 | Damage 1 | Blast 3.5 | Size 1.2) Tj ET
+BT /F1 10 Tf 72 309 Td (Fast, long-range splash harasser: a weak blast that hits every enemy close to the target. Doomstar crew.) Tj ET
 endstream
 endobj
 xref
@@ -51,5 +51,5 @@ xref
 trailer
 << /Size 6 /Root 1 0 R >>
 startxref
-2367
+2311
 %%EOF

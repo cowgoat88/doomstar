@@ -117,8 +117,7 @@
 
   function describeUnit(unit) {
     const label = D.UNIT_TYPES[unit.type].label;
-    const armor = unit.armor ? `, armor ${unit.armor}` : '';
-    return `${D.PLAYER_NAMES[unit.player]} ${label}: HP ${unit.hp}/${unit.maxHp}, move ${unit.move}, range ${unit.range}, damage ${unit.damage}${armor}. ${Board.abilityText(state.rules, unit.type)}`;
+    return `${D.PLAYER_NAMES[unit.player]} ${label}: HP ${unit.hp}/${unit.maxHp}, move ${unit.move}, range ${unit.range}, damage ${unit.damage}. ${Board.abilityText(state.rules, unit.type)}`;
   }
 
   function perform(action) {
@@ -174,7 +173,6 @@
       .filter((u) => u.player === player)
       .map((u) => {
         const label = D.UNIT_TYPES[u.type].label;
-        const armor = u.armor ? ` • Armor ${u.armor}` : '';
         return `
           <div class="unit-card${u.id === selectedId ? ' selected' : ''}" data-unit="${u.id}">
             <div class="info">
@@ -182,7 +180,7 @@
                 ${Board.unitIcon(u.type, player)}
                 <span class="unit-small">${label}</span>
               </div>
-              <span class="unit-meta">HP ${u.hp}/${u.maxHp} • Damage ${u.damage} • Range ${u.range} • Move ${u.move}${armor}</span>
+              <span class="unit-meta">HP ${u.hp}/${u.maxHp} • Damage ${u.damage} • Range ${u.range} • Move ${u.move}</span>
               <span class="unit-meta">${Board.abilityText(state.rules, u.type)}</span>
             </div>
             <span class="unit-meta unit-status">${unitStatus(u)}</span>
