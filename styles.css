@@ -418,7 +418,24 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
   }
 
   .board-panel { min-height: 0; padding: 12px; }
-  .board { flex: 1 1 auto; min-height: 0; width: auto; height: auto; max-width: 100%; max-height: 100%; }
+  /* The frame fills whatever space is left after the header/HUD/status/legend, and need not be
+     square itself -- the actual battlefield square is centered inside it at the largest size that
+     fits both axes, using container query units (see `.battlefield` below). This replaces an
+     earlier version that gave the frame `aspect-ratio: 1` directly: that fought flex-grow (which
+     wants to set this frame's height independently of its width) and silently lost, leaving the
+     frame non-square. The SVG's default `preserveAspectRatio` then letterboxed its square content
+     inside that non-square box, and `board.js`'s `toBoard()` -- which maps a tap proportionally
+     across the SVG's own (now taller-than-wide) bounding box -- read every tap at the wrong board
+     position, low by the letterboxed margin: tapping a ship required tapping below it instead. */
+  .board { flex: 1 1 auto; min-width: 0; min-height: 0; width: 100%; container-type: size; }
+  .battlefield {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(100cqw, 100cqh);
+    height: min(100cqw, 100cqh);
+    transform: translate(-50%, -50%);
+  }
   .status-strip, .board-legend { flex: 0 0 auto; }
   .status-strip { margin-top: 8px; max-height: 3.4em; overflow-y: auto; }
   .board-legend { margin-top: 8px; }
@@ -459,6 +476,77 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 
 @media (min-width: 1025px) {
   .menu-btn, .sidebar-head, .sidebar-backdrop { display: none; }
+
+  /* index.html only (`.game-shell`, added to `.page-shell` there): everything below 1025px
+     already collapses to one simple shape -- a persistent HUD, a hamburger menu instead of a
+     permanent sidebar column, and a board that fills whatever screen is left. The owner asked for
+     the desktop view to be that same simple shape rather than a separate wide layout, so this
+     carries the exact same treatment up past the breakpoint, scoped to the game page only -- the
+     AI Arena's always-visible desktop sidebar (it has no menu button to reopen it) is untouched. */
+  html:has(.game-shell), body:has(.game-shell) { height: 100%; overflow: hidden; }
+
+  .page-shell.game-shell { height: 100dvh; max-width: none; display: flex; flex-direction: column; padding: 16px 20px; }
+  .game-shell .topbar, .game-shell .hud-bar { flex: 0 0 auto; margin-top: 0; }
+  .game-shell .topbar + .hud-bar { margin-top: 16px; }
+
+  .game-shell .layout {
+    flex: 1 1 auto;
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr);
+    margin-top: 16px;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .game-shell .board-panel { min-height: 0; }
+  .game-shell .board {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    max-width: none;
+    aspect-ratio: unset;
+    container-type: size;
+  }
+  .game-shell .battlefield {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(100cqw, 100cqh, 900px);
+    height: min(100cqw, 100cqh, 900px);
+    transform: translate(-50%, -50%);
+  }
+  .game-shell .status-strip, .game-shell .board-legend { flex: 0 0 auto; }
+
+  .game-shell .menu-btn { display: inline-flex; }
+
+  .game-shell .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    width: min(88vw, 380px);
+    margin: 0;
+    padding: 20px;
+    border-radius: 0 18px 18px 0;
+    overflow-y: auto;
+    transform: translateX(-105%);
+    transition: transform 0.25s ease;
+  }
+  .game-shell .sidebar.open { transform: translateX(0); }
+  .game-shell .sidebar-head { display: flex; align-items: center; justify-content: space-between; }
+  .game-shell .sidebar-head h2 { margin: 0; }
+
+  .game-shell .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 45;
+    background: rgba(2, 6, 16, 0.6);
+  }
+  .game-shell .sidebar-backdrop[hidden] { display: none; }
 }
 
 @media (max-width: 720px) {
